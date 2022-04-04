@@ -18,7 +18,9 @@ class Restaurantes extends Migration
             $table->string('nombre');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
-
+            $table->string('imagen');
+            $table->text('descripcion');
+            $table->integer('mesas');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

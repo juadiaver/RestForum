@@ -13,7 +13,7 @@ class Restaurante extends Model
 
     protected $table = 'restaurantes';
 
-    protected $fillable = ['nombre','user_id'];
+    protected $fillable = ['nombre','user_id','imagen','descripcion','mesas'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

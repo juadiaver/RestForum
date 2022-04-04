@@ -10,7 +10,7 @@
               <h5>  
             @guest
 				
-				{{ __('Welcome to') }} {{ config('app.name', 'Laravel') }} !!! </br>
+				{{ __('Welcome to') }} {{ config('app.name', 'Laravel') }} !!! <br>
 				Please contact admin to get your Login Credentials or click "Login" to go to your Dashboard.
                 
 			@else

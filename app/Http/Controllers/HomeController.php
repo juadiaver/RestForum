@@ -28,9 +28,9 @@ class HomeController extends Controller
     {
 
         return view('home', [
-            'restaurantes' => Restaurante::latest()
-						->orWhere('user_id', '=', Auth::user()->id)
-						->paginate(10),
+            'restaurantes' => Restaurante::all()
+						->where('user_id', '=', Auth::user()->id)
+						
         ]);
     }
 }

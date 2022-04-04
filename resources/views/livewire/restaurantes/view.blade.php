@@ -7,7 +7,10 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Restaurantes </h4>
+							Restaurante Listing </h4>
+						</div>
+						<div wire:poll.60s>
+							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -31,6 +34,9 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>User Id</th>
+								<th>Imagen</th>
+								<th>Descripcion</th>
+								<th>Mesas</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -40,6 +46,9 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->user_id }}</td>
+								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->descripcion }}</td>
+								<td>{{ $row->mesas }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

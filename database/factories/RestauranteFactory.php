@@ -15,6 +15,9 @@ class RestauranteFactory extends Factory
         return [
 			'nombre' => $this->faker->name,
 			'user_id' => $this->faker->name,
+			'imagen' => $this->faker->name,
+			'descripcion' => $this->faker->name,
+			'mesas' => $this->faker->name,
         ];
     }
 }
