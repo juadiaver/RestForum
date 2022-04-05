@@ -7,19 +7,17 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Restaurante Listing </h4>
+							Restaurantes</h4>
 						</div>
-						<div wire:poll.60s>
-							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
-						</div>
+						
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Restaurantes">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscador de restaurante">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Restaurantes
+						<i class="fa fa-plus"></i>  Añadir Restaurante
 						</div>
 					</div>
 				</div>
@@ -31,10 +29,8 @@
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
-								<td>#</td> 
+								<th WIDTH="200">Imagen</th>
 								<th>Nombre</th>
-								<th>User Id</th>
-								<th>Imagen</th>
 								<th>Descripcion</th>
 								<th>Mesas</th>
 								<td>ACTIONS</td>
@@ -42,21 +38,19 @@
 						</thead>
 						<tbody>
 							@foreach($restaurantes as $row)
-							<tr>
-								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->user_id }}</td>
-								<td>{{ $row->imagen }}</td>
-								<td>{{ $row->descripcion }}</td>
-								<td>{{ $row->mesas }}</td>
+							<tr> 
+								<td><img src="{{ asset('storage/'.$row->imagen) }}" alt="Card image cap" width="200" height="100"></td>
+								<td style="vertical-align:middle">{{ $row->nombre }}</td>
+								<td style="vertical-align:middle">{{ $row->descripcion }}</td>
+								<td style="vertical-align:middle">{{ $row->mesas }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Actions
+									Acciones
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Restaurante id {{$row->id}}? \nDeleted Restaurantes cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a>							 
+									<a class="dropdown-item" onclick="confirm('Eliminar Restaurante: {{$row->nombre}}? \nEl restaurante no puede ser recuperado!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a>   
 									</div>
 								</div>
 								</td>

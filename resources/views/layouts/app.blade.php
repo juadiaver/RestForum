@@ -35,10 +35,7 @@
                     <!-- Left Side Of Navbar -->
 					@auth()
                     <ul class="navbar-nav mr-auto">
-						<!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/restaurantes') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Restaurantes</a> 
-                        </li>
+						
 						
                     </ul>
 					@endauth()

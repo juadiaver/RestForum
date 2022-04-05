@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Restaurante;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 
 class Restaurantes extends Component
 {
@@ -54,7 +54,7 @@ class Restaurantes extends Component
 		'descripcion' => 'required',
 		'mesas' => 'required',
         ]);
-        
+
         //Guardamos la url remplazando la carpeta public para luego poder encontrarla desde la vista.
 
         $url =  str_replace("public/","",$this->imagen->store('public/Imagen-Restaurante'));
@@ -69,7 +69,7 @@ class Restaurantes extends Component
         
         $this->resetInput();
 		$this->emit('closeModal');
-		session()->flash('message', 'Restaurante Successfully created.');
+		session()->flash('message', 'Restaurante creado correctamente.');
     }
 
     public function edit($id)
@@ -108,7 +108,7 @@ class Restaurantes extends Component
 
             $this->resetInput();
             $this->updateMode = false;
-			session()->flash('message', 'Restaurante Successfully updated.');
+			session()->flash('message', 'Restaurante modificado correctamente.');
         }
     }
 
@@ -116,6 +116,9 @@ class Restaurantes extends Component
     {
         if ($id) {
             $record = Restaurante::where('id', $id);
+            //codigo para eliminar la foto si se elimina el restaurante. 
+            $rest = Restaurante::find($id);
+            Storage::delete('public/'.$rest->imagen);
             $record->delete();
         }
     }
