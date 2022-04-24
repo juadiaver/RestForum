@@ -8,16 +8,13 @@
                     <span wire:click.prevent="cancel()" aria-hidden="true">×</span>
                 </button>
             </div>
+            
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
             <div class="form-group">
                 <label for="nombre"></label>
-                <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="imagen"></label>
-                <input wire:model="imagen" type="text" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="nombre" type="text" class="form-control" id="nombre"  placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="descripcion"></label>
@@ -27,7 +24,13 @@
                 <label for="mesas"></label>
                 <input wire:model="mesas" type="text" class="form-control" id="mesas" placeholder="Mesas">@error('mesas') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
-
+            <div class="form-group">
+                <label for="imagen"></label>
+                <input  type="file" class="form-control" id="imagen" placeholder="Imagen">@error('imagen') <span class="error text-danger">{{ $message }}</span> @enderror
+                <br>
+                
+            </div>
+            
                 </form>
             </div>
             <div class="modal-footer">
@@ -37,3 +40,4 @@
        </div>
     </div>
 </div>
+

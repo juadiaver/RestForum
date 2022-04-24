@@ -14,8 +14,9 @@ class Restaurantes extends Component
     use WithPagination;
     use WithFileUploads;
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nombre, $user_id, $imagen, $descripcion, $mesas;
+    public $selected_id, $keyWord, $nombre, $user_id, $imagen, $descripcion, $mesas, $nueva;
     public $updateMode = false;
+    
 
     public function render()
     {
@@ -57,12 +58,12 @@ class Restaurantes extends Component
 
         //Guardamos la url remplazando la carpeta public para luego poder encontrarla desde la vista.
 
-        $url =  str_replace("public/","",$this->imagen->store('public/Imagen-Restaurante'));
+        $this-> imagen =  str_replace("public/","",$this->imagen->store('public/Imagen-Restaurante'));
 
         Restaurante::create([ 
 			'nombre' => $this-> nombre,
 			'user_id' => Auth::user()->id,
-			'imagen' => $url,
+			'imagen' => $this-> imagen,
 			'descripcion' => $this-> descripcion,
 			'mesas' => $this-> mesas
         ]);
@@ -87,7 +88,8 @@ class Restaurantes extends Component
     }
 
     public function update()
-    {
+    {   
+        
         $this->validate([
 		'nombre' => 'required',
 		'user_id' => 'required',
@@ -97,15 +99,23 @@ class Restaurantes extends Component
         ]);
 
         if ($this->selected_id) {
+
 			$record = Restaurante::find($this->selected_id);
+            
+            if ($this->imagen == $record->imagen) {
+                $url = $this->imagen;
+            } else {
+                $url =  str_replace("public/","",$this->imagen->store('public/Imagen-Restaurante'));
+            }
+            
             $record->update([ 
 			'nombre' => $this-> nombre,
 			'user_id' => $this-> user_id,
-			'imagen' => $this-> imagen,
+			'imagen' => $url,
 			'descripcion' => $this-> descripcion,
 			'mesas' => $this-> mesas
             ]);
-
+            
             $this->resetInput();
             $this->updateMode = false;
 			session()->flash('message', 'Restaurante modificado correctamente.');

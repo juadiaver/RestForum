@@ -8,11 +8,12 @@
                      <span aria-hidden="true close-btn">×</span>
                 </button>
             </div>
+        
            <div class="modal-body">
 				<form>
             <div class="form-group">
                 <label for="nombre"></label>
-                <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
+                <input wire:model="nombre" type="hidden" class="form-control" id="nombre"  placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label for="descripcion"></label>

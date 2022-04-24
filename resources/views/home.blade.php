@@ -12,17 +12,17 @@
 				<hr>
                 <div class="container">
                     <div class="card-columns">
-                    @foreach($restaurantes as $row)
+                    
 
 					<div class="card">
-                        <img class="card-img-top" src="{{ asset('storage/'.$row->imagen) }}" alt="Card image cap" width="500" height="200">
+                        <img class="card-img-top" src="" alt="Card image cap" width="500" height="200">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $row->nombre }}</h5>
-                            <p class="card-text">{{$row->descripcion}}</p>
-                                <a href="#" class="btn btn-primary">Entrar</a>
+                            <h5 class="card-title">Articulos</h5>
+                            <p class="card-text">Cosnulte o modifique sus articulos</p>
+                                <a href="/articulos" class="btn btn-primary">Entrar</a>
                         </div>
                     </div>
-                    @endforeach
+                    
 					</div>
 				</div>
 			</div>
