@@ -1,26 +1,40 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Restaurante
+ *
+ * @property $id
+ * @property $nombre
+ * @property $direccion
+ * @property $email
+ * @property $imagen
+ *
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Restaurante extends Model
 {
-	use HasFactory;
-	
-    public $timestamps = true;
-
-    protected $table = 'restaurantes';
-
-    protected $fillable = ['nombre','user_id','imagen','descripcion','mesas'];
-	
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function user()
-    {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
-    }
     
+    static $rules = [
+		'nombre' => 'required',
+		'direccion' => 'required',
+		'email' => 'required',
+		'imagen' => 'required',
+    ];
+
+    protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['nombre','direccion','email','imagen'];
+
+
+
 }

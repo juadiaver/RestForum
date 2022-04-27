@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Listado de articulos
+    Listado de categorias
 @endsection
 
 @section('content')
@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Listado de articulos') }}
+                                {{ __('Listado de categorias') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('articulos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Articulo') }}
+                                <a href="{{ route('categorias.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear Categoria') }}
                                 </a>
                               </div>
                         </div>
@@ -38,41 +38,34 @@
                                         
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Categoria</th>
 										<th>Imagen</th>
 										<th>Activo</th>
-										<th>Precio</th>
-										<th>Orden</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($articulos as $articulo)
+                                    @foreach ($categorias as $categoria)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $articulo->nombre }}</td>
-											<td>{{ $articulo->descripcion }}</td>
-											<td>{{ $articulo->categoria->nombre }}</td>
-											<td>{{ $articulo->imagen }}</td>
-											<td>{{ $articulo->activo }}</td>
-											<td>{{ $articulo->precio }}</td>
-											<td>{{ $articulo->orden }}</td>
+											<td>{{ $categoria->nombre }}</td>
+											<td>{{ $categoria->descripcion }}</td>
+											<td>{{ $categoria->imagen }}</td>
+											<td>{{ $categoria->activo }}</td>
 
                                             <td>
-                                               
                                                 <div class="btn-group">
-                                                    <form action="{{ route('articulos.destroy',$articulo->id) }}" method="POST">
+                                                    <form action="{{ route('categorias.destroy',$categoria->id) }}" method="POST">
                                                     <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Acciones
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item " href="{{ route('articulos.show',$articulo->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="dropdown-item" href="{{ route('articulos.edit',$articulo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                    <a class="dropdown-item " href="{{ route('categorias.show',$categoria->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="dropdown-item" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.stopImmediatePropagation()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el categoria:  {{$categoria->nombre}}? \nEl categoria no podra recuperarse!')||event.stopImmediatePropagation()"><i class="fa fa-trash"></i> Borrar </button>   
                                                     </div>
                                                     </form>
                                                 </div>
@@ -84,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $articulos->links() !!}
+                {!! $categorias->links() !!}
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $articulo->name ?? 'Show Articulo' }}
+    {{ $categoria->name ?? 'Show Categoria' }}
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Articulo</span>
+                            <span class="card-title">Show Categoria</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('articulos.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('categorias.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -22,31 +22,19 @@
                         
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $articulo->nombre }}
+                            {{ $categoria->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Descripcion:</strong>
-                            {{ $articulo->descripcion }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Categoria Id:</strong>
-                            {{ $articulo->categoria_id }}
+                            {{ $categoria->descripcion }}
                         </div>
                         <div class="form-group">
                             <strong>Imagen:</strong>
-                            {{ $articulo->imagen }}
+                            {{ $categoria->imagen }}
                         </div>
                         <div class="form-group">
                             <strong>Activo:</strong>
-                            {{ $articulo->activo }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Precio:</strong>
-                            {{ $articulo->precio }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Orden:</strong>
-                            {{ $articulo->orden }}
+                            {{ $categoria->activo }}
                         </div>
 
                     </div>

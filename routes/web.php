@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\RestauranteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,12 +27,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/Restaurante/{id}', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-
-Route::get('/Articulos', [ArticuloController::class, 'create'])->name('articulos.create');
-
 Route::resource('/articulos', ArticuloController::class);
 
+Route::resource('/categorias', CategoriaController::class);
 
-//Route Hooks - Do not delete//
-	Route::view('restaurantes', 'livewire.restaurantes.index')->middleware('auth');
+Route::resource('/restaurantes', RestauranteController::class);
+

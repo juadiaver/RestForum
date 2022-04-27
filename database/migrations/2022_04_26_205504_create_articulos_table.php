@@ -15,10 +15,15 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
             $table->string('nombre');
+            $table->string('descripcion');
+            $table->unsignedBigInteger('categoria_id');
+            $table->string('imagen');
+            $table->string('activo');
             $table->double('precio', 8, 2);
+            $table->integer('orden');
             $table->timestamps();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
         });
     }
 

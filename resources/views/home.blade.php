@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-header"><h5><span class="text-center fa fa-home"></span> @yield('title')</h5></div>
 			<div class="card-body">
-				<h5>Hola <strong>{{ Auth::user()->name }},</strong> elige el restaurante para administrar</h5>
+				<h5>Hola <strong>{{ Auth::user()->name }},</strong></h5>
 				<br>
 				<hr>
                 <div class="container">

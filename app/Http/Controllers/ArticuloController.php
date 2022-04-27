@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ArticuloController
@@ -19,11 +19,8 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::oldest()
-        ->where('descripcion', '=', Auth::user()->id)
-        ->paginate(10);
+        $articulos = Articulo::paginate();
 
-        
         return view('articulo.index', compact('articulos'))
             ->with('i', (request()->input('page', 1) - 1) * $articulos->perPage());
     }
@@ -36,8 +33,10 @@ class ArticuloController extends Controller
     public function create()
     {
         $articulo = new Articulo();
-        $id_user = Auth::user()->id;
-        return view('articulo.create', compact('articulo','id_user'));
+        
+        $categorias = Categoria::all()->pluck('nombre', 'id');
+        
+        return view('articulo.create', compact('articulo','categorias'));
     }
 
     /**
@@ -50,11 +49,12 @@ class ArticuloController extends Controller
     {
         request()->validate(Articulo::$rules);
 
+        
+
         $articulo = Articulo::create($request->all());
 
         return redirect()->route('articulos.index')
             ->with('success', 'Articulo created successfully.');
-            
     }
 
     /**
@@ -79,8 +79,9 @@ class ArticuloController extends Controller
     public function edit($id)
     {
         $articulo = Articulo::find($id);
-        $id_user = Auth::user()->id;
-        return view('articulo.edit', compact('articulo','id_user'));
+        $categorias = Categoria::all()->pluck('nombre', 'id');
+
+        return view('articulo.edit', compact('articulo','categorias'));
     }
 
     /**

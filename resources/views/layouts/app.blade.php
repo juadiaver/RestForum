@@ -63,9 +63,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    
 
-                                    <a href="{{ url('/restaurantes') }}" class="nav-link"><i class="far fa-building"></i> Restaurantes</a>
+                                    <a href="{{ url('/restaurantes') }}" class="nav-link"><i class="far fa-building"></i> Datos Restaurante</a>
+
+                                    <a href="{{ url('/articulos') }}" class="nav-link"><i class="far fa-building"></i> Articulos</a>
+
+                                    <a href="{{ url('/categorias') }}" class="nav-link"><i class="far fa-building"></i> Categorias</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

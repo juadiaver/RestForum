@@ -1,4 +1,4 @@
-@section('title', __('Restaurantes'))
+@section('title', __('Categorias'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
@@ -7,7 +7,7 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Restaurante Listing </h4>
+							Categoria Listing </h4>
 						</div>
 						<div wire:poll.60s>
 							<code><h5>{{ now()->format('H:i:s') }} UTC</h5></code>
@@ -16,39 +16,37 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Restaurantes">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Categorias">
 						</div>
 						<div class="btn btn-sm btn-info" data-toggle="modal" data-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Restaurantes
+						<i class="fa fa-plus"></i>  Add Categorias
 						</div>
 					</div>
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.restaurantes.create')
-						@include('livewire.restaurantes.update')
+						@include('livewire.categorias.create')
+						@include('livewire.categorias.update')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								<th>User Id</th>
-								<th>Imagen</th>
 								<th>Descripcion</th>
-								<th>Mesas</th>
+								<th>Imagen</th>
+								<th>Activo</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($restaurantes as $row)
+							@foreach($categorias as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->nombre }}</td>
-								<td>{{ $row->user_id }}</td>
-								<td>{{ $row->imagen }}</td>
 								<td>{{ $row->descripcion }}</td>
-								<td>{{ $row->mesas }}</td>
+								<td>{{ $row->imagen }}</td>
+								<td>{{ $row->activo }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,14 +54,14 @@
 									</button>
 									<div class="dropdown-menu dropdown-menu-right">
 									<a data-toggle="modal" data-target="#updateModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a>							 
-									<a class="dropdown-item" onclick="confirm('Confirm Delete Restaurante id {{$row->id}}? \nDeleted Restaurantes cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
+									<a class="dropdown-item" onclick="confirm('Confirm Delete Categoria id {{$row->id}}? \nDeleted Categorias cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a>   
 									</div>
 								</div>
 								</td>
 							@endforeach
 						</tbody>
 					</table>						
-					{{ $restaurantes->links() }}
+					{{ $categorias->links() }}
 					</div>
 				</div>
 			</div>
