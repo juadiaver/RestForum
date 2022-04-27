@@ -103,18 +103,14 @@ class ArticuloController extends Controller
         request()->validate(Articulo::$rules);
 
         $input = $request->all();
+        
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            if (file_exists("storage/".$articulo->imagen)) {
-                unlink("storage/".$articulo->imagen);
-                if ($imagen = $request->file('imagen')) {
-                    $direccion = str_replace("public/","",$imagen->store('public/Productos'));
-                    $input['imagen'] = "$direccion";
-                }
+            if (file_exists("storage/".$articulo->imagen) && "storage/".$articulo->imagen!="storage/sinimagen.png") {
+            unlink("storage/".$articulo->imagen);
             }
-            
-            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
+            $direccion = str_replace("public/","",$imagen->store('public/Productos'));
             $input['imagen'] = "$direccion";
         }else{
             unset($input['imagen']);
@@ -134,7 +130,7 @@ class ArticuloController extends Controller
     public function destroy($id)
     {
         $articulo = Articulo::find($id);
-        if (file_exists("storage/".$articulo->imagen)) {
+        if (file_exists("storage/".$articulo->imagen)&& "storage/".$articulo->imagen!="storage/sinimagen.png") {
             unlink("storage/".$articulo->imagen);
         }
 

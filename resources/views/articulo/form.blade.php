@@ -39,7 +39,7 @@
             {!! $errors->first('imagen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="col-md-12 mb-2">
-            <img id="preview-image-before-upload" src="/storage/{{$articulo->imagen}} "
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="/storage/{{$articulo->imagen}} "
                 alt="Sin imagen" style="height: 250px;">
         </div>
     </div>

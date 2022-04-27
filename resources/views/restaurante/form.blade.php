@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-md-12 mb-2">
-            <img id="preview-image-before-upload" src="/storage/{{$restaurante->imagen}} "
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="/storage/{{$restaurante->imagen}} "
                 alt="Sin imagen" style="height: 250px;">
         </div>
 

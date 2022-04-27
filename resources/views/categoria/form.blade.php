@@ -25,7 +25,8 @@
         </div>
         
         <div class="col-md-12 mb-2">
-            <img id="preview-image-before-upload" src="/storage/{{$categoria->imagen}} "
+            
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'" src="/storage/{{$categoria->imagen}} "
                 alt="Sin imagen" style="height: 250px;">
         </div>
     </div>
@@ -48,11 +49,14 @@
      
           $('#preview-image-before-upload').attr('src', e.target.result); 
         }
+        
      
         reader.readAsDataURL(this.files[0]); 
        
        });
        
     });
+
      
 </script>
+

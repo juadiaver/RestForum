@@ -50,7 +50,6 @@
                                     @foreach ($categorias as $categoria)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
                                             <td><img src="/storage/{{ $categoria->imagen }}" width="100px"></td>
 											<td>{{ $categoria->nombre }}</td>
 											<td>{{ $categoria->descripcion }}</td>
