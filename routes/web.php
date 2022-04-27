@@ -25,11 +25,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('/articulos', ArticuloController::class);
+Route::resource('/articulos', ArticuloController::class)->middleware('auth');
 
-Route::resource('/categorias', CategoriaController::class);
+Route::resource('/categorias', CategoriaController::class)->middleware('auth');
 
-Route::resource('/restaurantes', RestauranteController::class);
+Route::resource('/restaurantes', RestauranteController::class)->middleware('auth');
 
