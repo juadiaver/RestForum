@@ -51,6 +51,8 @@ class CategoriaController extends Controller
         if ($imagen = $request->file('imagen')) {
             $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
             $input['imagen'] = "$direccion";
+        } else{
+            $input['imagen'] = "sinimagen.png";
         }
 
         $categoria = Categoria::create($input);

@@ -55,7 +55,7 @@ class ArticuloController extends Controller
             $direccion = str_replace("public/","",$imagen->store('public/Productos'));
             $input['imagen'] = "$direccion";
         } else {
-            $input['imagen'] = "storage/sinimagen.png";
+            $input['imagen'] = "sinimagen.png";
         }
 
         $articulo = Articulo::create($input);
