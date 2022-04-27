@@ -12,16 +12,27 @@
 				<hr>
                 <div class="container">
                     <div class="card-columns">
+                        <div class="card">
+                          	<a href="/articulos">
+                        		<img class="card-img-top" src="storage\producto-servicio.jpg" alt="Card image cap" width="400" height="200">
+							</a>  
+                    	</div>
+						<div class="card">
+							<a href="/categorias">
+							  <img class="card-img-top" src="storage\categorias.jpg" alt="Card image cap" width="400" height="200">
+						  </a>  
+					  	</div>
+					  	<div class="card">
+							<a href="/restaurantes">
+						  		<img class="card-img-top" src="storage\restaurante.jpg" alt="Card image cap" width="400" height="200">
+					 		 </a>  
+				  		</div>
                     
+					
 
-					<div class="card">
-                        <img class="card-img-top" src="" alt="Card image cap" width="500" height="200">
-                        <div class="card-body">
-                            <h5 class="card-title">Articulos</h5>
-                            <p class="card-text">Cosnulte o modifique sus articulos</p>
-                                <a href="/articulos" class="btn btn-primary">Entrar</a>
-                        </div>
-                    </div>
+					
+
+					
                     
 					</div>
 				</div>

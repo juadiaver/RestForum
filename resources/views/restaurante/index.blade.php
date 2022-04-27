@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Restaurante') }}
+                                Datos del Restaurante
                             </span>
 
                              <div class="float-right">
@@ -23,6 +23,7 @@
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>{{ $message }}</p>
                         </div>
                     @endif
@@ -43,7 +44,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Imagen:</strong>
-                            {{ $restaurante->imagen }}
+                        </div>
+                        <div class="form-group">
+                            
+                            <img src="/storage/{{ $restaurante->imagen }}" width="300px">
+                            
                         </div>
 
                     

@@ -45,7 +45,15 @@ class CategoriaController extends Controller
     {
         request()->validate(Categoria::$rules);
 
-        $categoria = Categoria::create($request->all());
+        
+        $input = $request->all();
+
+        if ($imagen = $request->file('imagen')) {
+            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
+            $input['imagen'] = "$direccion";
+        }
+
+        $categoria = Categoria::create($input);
 
         return redirect()->route('categorias.index')
             ->with('success', 'Categoria created successfully.');
@@ -88,7 +96,18 @@ class CategoriaController extends Controller
     {
         request()->validate(Categoria::$rules);
 
-        $categoria->update($request->all());
+        $input = $request->all();
+
+        if ($imagen = $request->file('imagen')) {
+            // si cambiamos la imagen se borrar del storage la antigua
+            unlink("storage/".$categoria->imagen);
+            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
+            $input['imagen'] = "$direccion";
+        }else{
+            unset($input['imagen']);
+        }
+
+        $categoria->update($input);
 
         return redirect()->route('categorias.index')
             ->with('success', 'Categoria updated successfully');
@@ -101,7 +120,11 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $categoria = Categoria::find($id)->delete();
+        $categoria = Categoria::find($id);
+
+        unlink("storage/".$categoria->imagen);
+
+        $categoria->delete();
 
         return redirect()->route('categorias.index')
             ->with('success', 'Categoria deleted successfully');

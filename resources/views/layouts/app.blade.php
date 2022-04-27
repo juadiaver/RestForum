@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -64,11 +64,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a href="{{ url('/restaurantes') }}" class="nav-link"><i class="far fa-building"></i> Datos Restaurante</a>
+                                    <a class="dropdown-item" href="{{ url('/restaurantes') }}" class="nav-link"> Datos Restaurante</a>
 
-                                    <a href="{{ url('/articulos') }}" class="nav-link"><i class="far fa-building"></i> Articulos</a>
+                                    <a class="dropdown-item" href="{{ url('/articulos') }}" class="nav-link"> Articulos</a>
 
-                                    <a href="{{ url('/categorias') }}" class="nav-link"><i class="far fa-building"></i> Categorias</a>
+                                    <a class="dropdown-item" href="{{ url('/categorias') }}" class="nav-link"> Categorias</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -98,5 +98,6 @@
 		$('#createDataModal').modal('hide');
 	});
 </script>
+    @yield('js')
 </body>
 </html>

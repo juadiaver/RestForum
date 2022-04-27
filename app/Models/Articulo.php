@@ -29,7 +29,6 @@ class Articulo extends Model
 		'nombre' => 'required',
 		'descripcion' => 'required',
 		'categoria_id' => 'required',
-		'imagen' => 'required',
 		'activo' => 'required',
 		'precio' => 'required',
 		'orden' => 'required',

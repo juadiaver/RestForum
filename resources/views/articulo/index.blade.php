@@ -25,6 +25,7 @@
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>{{ $message }}</p>
                         </div>
                     @endif
@@ -72,7 +73,7 @@
                                                     <a class="dropdown-item" href="{{ route('articulos.edit',$articulo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.stopImmediatePropagation()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    <button class="dropdown-item" type="submit" onclick="return confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
                                                     </div>
                                                     </form>
                                                 </div>

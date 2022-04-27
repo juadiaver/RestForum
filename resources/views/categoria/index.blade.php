@@ -24,7 +24,9 @@
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
+                        
                         <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>{{ $message }}</p>
                         </div>
                     @endif
@@ -35,10 +37,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        <th>Imagen</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
-										<th>Imagen</th>
+										
 										<th>Activo</th>
 
                                         <th></th>
@@ -48,10 +50,10 @@
                                     @foreach ($categorias as $categoria)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
+                                            <td><img src="/storage/{{ $categoria->imagen }}" width="100px"></td>
 											<td>{{ $categoria->nombre }}</td>
 											<td>{{ $categoria->descripcion }}</td>
-											<td>{{ $categoria->imagen }}</td>
 											<td>{{ $categoria->activo }}</td>
 
                                             <td>
@@ -65,7 +67,7 @@
                                                     <a class="dropdown-item" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el categoria:  {{$categoria->nombre}}? \nEl categoria no podra recuperarse!')||event.stopImmediatePropagation()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el categoria:  {{$categoria->nombre}}? \nEl categoria no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
                                                     </div>
                                                     </form>
                                                 </div>

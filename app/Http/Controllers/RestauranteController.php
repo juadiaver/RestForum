@@ -90,7 +90,19 @@ class RestauranteController extends Controller
     {
         request()->validate(Restaurante::$rules);
 
-        $restaurante->update($request->all());
+        $input = $request->all();
+
+        if ($imagen = $request->file('imagen')) {
+            // si cambiamos la imagen se borrar del storage la antigua
+            unlink("storage/".$restaurante->imagen);
+            $direccion = str_replace("public/","",$imagen->store('public/Restaurante'));
+            $input['imagen'] = "$direccion";
+        }else{
+            unset($input['imagen']);
+        }
+
+        $restaurante->update($input);
+        
 
         return redirect()->route('restaurantes.index')
             ->with('success', 'Restaurante updated successfully');

@@ -36,9 +36,35 @@
             {{ Form::text('orden', $articulo->orden, ['class' => 'form-control' . ($errors->has('orden') ? ' is-invalid' : ''), 'placeholder' => 'Orden']) }}
             {!! $errors->first('orden', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <div id="uploadForm">
 
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
+
+<script type="text/javascript">
+      
+      function filePreview(input) {
+
+if (input.files && input.files[0]) {
+
+var reader = new FileReader();
+
+reader.readAsDataURL(input.files[0]);
+
+reader.onload = function (e) {
+
+$('#uploadForm + img').remove();
+
+$('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
+
+}
+
+}
+
+}
+     
+</script>

@@ -23,7 +23,6 @@ class Restaurante extends Model
 		'nombre' => 'required',
 		'direccion' => 'required',
 		'email' => 'required',
-		'imagen' => 'required',
     ];
 
     protected $perPage = 20;

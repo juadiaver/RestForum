@@ -9111,7 +9111,7 @@ input[type=button].btn-block {
 @media (min-width: 576px) {
   .card-columns {
     -moz-column-count: 3;
-         column-count: 3;
+         column-count: 5;
     -moz-column-gap: 1.25rem;
          column-gap: 1.25rem;
     orphans: 1;
