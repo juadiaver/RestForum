@@ -70,6 +70,8 @@
 
                                     <a class="dropdown-item" href="{{ url('/categorias') }}" class="nav-link"> Categorias</a>
 
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Mesas</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

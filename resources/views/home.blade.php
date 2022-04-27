@@ -27,13 +27,16 @@
 						  		<img class="card-img-top" src="storage\restaurante.jpg" alt="Card image cap" width="400" height="200">
 					 		 </a>  
 				  		</div>
-                    
-					
-
-					
-
-					
-                    
+						<div class="card">
+							<a href="/mesas">
+						  		<img class="card-img-top" src="storage\mesas.jpg" alt="Card image cap" width="400" height="200">
+					 		 </a>  
+				  		</div>
+						<div class="card">
+							<a href="/ventas">
+						  		<img class="card-img-top" src="storage\ventas.jpg" alt="Card image cap" width="400" height="200">
+					 		 </a>  
+				  		</div>
 					</div>
 				</div>
 			</div>

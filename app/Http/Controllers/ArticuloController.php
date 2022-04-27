@@ -19,7 +19,7 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::paginate();
+        $articulos = Articulo::paginate(10);
 
         return view('articulo.index', compact('articulos'))
             ->with('i', (request()->input('page', 1) - 1) * $articulos->perPage());
@@ -61,7 +61,7 @@ class ArticuloController extends Controller
         $articulo = Articulo::create($input);
 
         return redirect()->route('articulos.index')
-            ->with('success', 'Articulo created successfully.');
+            ->with('success', 'Articulo creado correctamente.');
     }
 
     /**
@@ -119,7 +119,7 @@ class ArticuloController extends Controller
         $articulo->update($input);
 
         return redirect()->route('articulos.index')
-            ->with('success', 'Articulo updated successfully');
+            ->with('success', 'Articulo actualizado correctamente');
     }
 
     /**
@@ -137,6 +137,6 @@ class ArticuloController extends Controller
         $articulo->delete();
 
         return redirect()->route('articulos.index')
-            ->with('success', 'Articulo deleted successfully');
+            ->with('success', 'Articulo borrado correctamente');
     }
 }
