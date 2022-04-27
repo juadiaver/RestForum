@@ -94,7 +94,13 @@ class RestauranteController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            unlink("storage/".$restaurante->imagen);
+            if (file_exists("storage/".$restaurante->imagen)) {
+                unlink("storage/".$restaurante->imagen);
+                if ($imagen = $request->file('imagen')) {
+                    $direccion = str_replace("public/","",$imagen->store('public/Restaurante'));
+                    $input['imagen'] = "$direccion";
+                }
+            }
             $direccion = str_replace("public/","",$imagen->store('public/Restaurante'));
             $input['imagen'] = "$direccion";
         }else{

@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Articulo</span>
+                            <span class="card-title">Ver Articulo</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('articulos.index') }}"> Back</a>
@@ -20,6 +20,12 @@
 
                     <div class="card-body">
                         
+                        <div class="form-group">
+                            
+                            <img src="/storage/{{ $articulo->imagen }}" width="300px">
+                            
+                        </div>
+
                         <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $articulo->nombre }}
@@ -32,10 +38,7 @@
                             <strong>Categoria Id:</strong>
                             {{ $articulo->categoria_id }}
                         </div>
-                        <div class="form-group">
-                            <strong>Imagen:</strong>
-                            {{ $articulo->imagen }}
-                        </div>
+
                         <div class="form-group">
                             <strong>Activo:</strong>
                             {{ $articulo->activo }}

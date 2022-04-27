@@ -49,9 +49,16 @@ class ArticuloController extends Controller
     {
         request()->validate(Articulo::$rules);
 
-        
+        $input = $request->all();
 
-        $articulo = Articulo::create($request->all());
+        if ($imagen = $request->file('imagen')) {
+            $direccion = str_replace("public/","",$imagen->store('public/Productos'));
+            $input['imagen'] = "$direccion";
+        } else {
+            $input['imagen'] = "storage/sinimagen.png";
+        }
+
+        $articulo = Articulo::create($input);
 
         return redirect()->route('articulos.index')
             ->with('success', 'Articulo created successfully.');
@@ -95,7 +102,25 @@ class ArticuloController extends Controller
     {
         request()->validate(Articulo::$rules);
 
-        $articulo->update($request->all());
+        $input = $request->all();
+
+        if ($imagen = $request->file('imagen')) {
+            // si cambiamos la imagen se borrar del storage la antigua
+            if (file_exists("storage/".$articulo->imagen)) {
+                unlink("storage/".$articulo->imagen);
+                if ($imagen = $request->file('imagen')) {
+                    $direccion = str_replace("public/","",$imagen->store('public/Productos'));
+                    $input['imagen'] = "$direccion";
+                }
+            }
+            
+            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
+            $input['imagen'] = "$direccion";
+        }else{
+            unset($input['imagen']);
+        }
+
+        $articulo->update($input);
 
         return redirect()->route('articulos.index')
             ->with('success', 'Articulo updated successfully');
@@ -108,7 +133,12 @@ class ArticuloController extends Controller
      */
     public function destroy($id)
     {
-        $articulo = Articulo::find($id)->delete();
+        $articulo = Articulo::find($id);
+        if (file_exists("storage/".$articulo->imagen)) {
+            unlink("storage/".$articulo->imagen);
+        }
+
+        $articulo->delete();
 
         return redirect()->route('articulos.index')
             ->with('success', 'Articulo deleted successfully');

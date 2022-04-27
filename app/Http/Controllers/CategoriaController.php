@@ -100,7 +100,13 @@ class CategoriaController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            unlink("storage/".$categoria->imagen);
+            if (file_exists("storage/".$categoria->imagen)) {
+                unlink("storage/".$categoria->imagen);
+                if ($imagen = $request->file('imagen')) {
+                    $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
+                    $input['imagen'] = "$direccion";
+                }
+            }
             $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
             $input['imagen'] = "$direccion";
         }else{
@@ -122,7 +128,9 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::find($id);
 
-        unlink("storage/".$categoria->imagen);
+        if (file_exists("storage/".$categoria->imagen)) {
+            unlink("storage/".$categoria->imagen);
+        }
 
         $categoria->delete();
 

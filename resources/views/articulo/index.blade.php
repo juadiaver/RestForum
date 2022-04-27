@@ -36,11 +36,11 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
+                                        <th>Imagen</th>
 										<th>Nombre</th>
 										<th>Descripcion</th>
 										<th>Categoria</th>
-										<th>Imagen</th>
 										<th>Activo</th>
 										<th>Precio</th>
 										<th>Orden</th>
@@ -53,10 +53,10 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
+                                            <td><img src="/storage/{{ $articulo->imagen }}" width="100px"></td>
 											<td>{{ $articulo->nombre }}</td>
 											<td>{{ $articulo->descripcion }}</td>
 											<td>{{ $articulo->categoria->nombre }}</td>
-											<td>{{ $articulo->imagen }}</td>
 											<td>{{ $articulo->activo }}</td>
 											<td>{{ $articulo->precio }}</td>
 											<td>{{ $articulo->orden }}</td>
