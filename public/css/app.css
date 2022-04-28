@@ -6702,6 +6702,10 @@ textarea.form-control {
   margin-bottom: 1rem;
 }
 
+.form-group img{
+  max-width: 100%;
+}
+
 .form-text {
   display: block;
   margin-top: 0.25rem;
@@ -14590,4 +14594,20 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+
 }
+
+.footer {
+  position: absolute;
+  bottom: 0 ;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+#div-footer{
+  margin-top: -20px;
+  height: 20px;
+}
+

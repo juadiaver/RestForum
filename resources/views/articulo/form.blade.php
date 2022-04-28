@@ -38,13 +38,15 @@
             {{ Form::file('imagen',['class' => 'form-control' . ($errors->has('imagen') ? ' is-invalid' : ''), 'placeholder' => 'Imagen']) }}
             {!! $errors->first('imagen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="col-md-12 mb-2">
+        <div class="form-group">
+        
             <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="/storage/{{$articulo->imagen}} "
-                alt="Sin imagen" style="height: 250px;">
+                alt="Sin imagen" style="max-height: 200px;">
+        
         </div>
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 </div>
 

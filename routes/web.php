@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\MesaController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ReservaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +40,7 @@ Route::resource('/restaurantes', RestauranteController::class)->middleware('auth
 Route::resource('/mesas', MesaController::class)->middleware('auth');
 
 Route::resource('/ventas', VentaController::class)->middleware('auth');
+
+Route::resource('/pedidos', PedidoController::class)->middleware('auth');
+
+Route::resource('/reservas', ReservaController::class)->middleware('auth');

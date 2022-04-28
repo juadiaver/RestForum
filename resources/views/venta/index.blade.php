@@ -25,6 +25,7 @@
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <p>{{ $message }}</p>
                         </div>
                     @endif
@@ -36,7 +37,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Mesa Id</th>
+										<th>Mesa</th>
 										<th>Precio</th>
 										<th>Modo Pago</th>
 										<th>Ticket</th>
@@ -49,7 +50,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $venta->mesa_id }}</td>
+											<td>{{ $venta->mesa->nombre }}</td>
 											<td>{{ $venta->precio }}</td>
 											<td>{{ $venta->modo_pago }}</td>
 											<td>{{ $venta->ticket }}</td>
