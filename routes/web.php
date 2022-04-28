@@ -7,6 +7,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\PosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,11 +28,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::resource('/articulos', ArticuloController::class)->middleware('auth');
+
+Route::resource('/pos', PosController::class)->middleware('auth');
 
 Route::resource('/categorias', CategoriaController::class)->middleware('auth');
 
