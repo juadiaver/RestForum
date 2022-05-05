@@ -39,6 +39,8 @@ Route::resource('/articulos', ArticuloController::class)->middleware('auth');
 
 Route::resource('/pos', PosController::class)->middleware('auth');
 
+Route::resource('/pos.menu', PosController::class)->middleware('auth');
+
 Route::resource('/categorias', CategoriaController::class)->middleware('auth');
 
 Route::resource('/restaurantes', RestauranteController::class)->middleware('auth');

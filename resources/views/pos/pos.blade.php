@@ -10,7 +10,7 @@
             @foreach ($mesas as $mesa)
             
                 {{$mesa->nombre }}
-
+                <a class="dropdown-item " href="{{ route('pos.edit',$mesa->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
             @endforeach
             </div>
         </div>
