@@ -51,6 +51,11 @@ class Articulo extends Model
     {
         return $this->hasOne('App\Models\Categoria', 'id', 'categoria_id');
     }
+
+    public function mesas(){
+
+        return $this->belongsToMany(Mesa::class , 'articulo_mesa');
+    }
     
 
 }

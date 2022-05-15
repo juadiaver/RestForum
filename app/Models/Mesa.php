@@ -33,6 +33,9 @@ class Mesa extends Model
      */
     protected $fillable = ['nombre','activo'];
 
+    public function articulos(){
 
+      return $this->belongsToMany(Articulo::class, 'articulo_mesa');
+  }
 
 }

@@ -37,4 +37,20 @@
         <button type="submit" class="btn btn-primary">PAGAR</button>
         <button type="submit" class="btn btn-primary">GUARDAR</button>
     </div>
+
+    <div class="card-body">
+        <div class="row">
+            
+        @foreach ($mesa->articulos as $articulos)
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{$articulos->nombre}}</h5>
+            </div>
+          </div>
+        @endforeach 
+        </div>
+        
+        </div>
+    </div>
 </div>
