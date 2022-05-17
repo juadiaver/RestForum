@@ -44,11 +44,50 @@ class PosController extends Controller
         $mesa = Mesa::find($id);
 
         $cat = $request->get('buscar');
+        
+        
+        
+        if ($request->get('anadir') != null) {
+            
+            $idArticulo = $request->get('anadir');
+            $this->anadirArticulo($id, $idArticulo);
+            return redirect()->back();
+        } 
+        
 
         $articulos = Articulo::where('categoria_id','like',"%$cat%")->paginate(7);
         $categorias = Categoria::all();
 
         return view('pos.edit', compact('mesa','articulos','categorias','cat'));
         
+    }
+
+    public static function  anadirArticulo($idMesa , $idArticulo){
+        
+        $mesa = Mesa::find($idMesa);
+        
+        if ($mesa->articulos()->find($idArticulo) == null) {
+            $mesa->articulos()->attach($idArticulo);
+        } else {
+            $cantidad = $mesa->articulos()->find($idArticulo)->pivot->cantidad;
+            $mesa->articulos()->sync([$idArticulo => [ 'cantidad' => $cantidad + 1] ], false);
+        }
+
+
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(Request $request, $id)
+    {   
+        $mesa = Mesa::find($request->mesa);
+        
+        $mesa->articulos()->detach($id);
+
+        return redirect()->back()
+            ->with('success', 'Articulo borrado correctamente');
     }
 }

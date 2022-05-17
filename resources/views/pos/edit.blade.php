@@ -19,8 +19,14 @@
                         <a class="btn btn-primary" href="{{ route('pos.index') }}"> Atras</a>
                     </div>
                 </div>
+                @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
                     <div class="card-body">
-                        
+
                             @csrf
 
                             @include('pos.form')
