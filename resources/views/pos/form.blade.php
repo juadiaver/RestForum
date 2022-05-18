@@ -1,8 +1,6 @@
 <div class="box box-info padding-1">
-    <div class="box-body">
-        <form >
-
-            
+    <form >
+        <div class="box-body">
             <div class="card-body">
                 <h2>Selecciona la categoria.</h2>
                 <div class="row">
@@ -12,11 +10,8 @@
                     <button name="buscar" value="{{$categoria->id }}" type="submit"><img src="/storage/{{$categoria->imagen}}" width="150" height="150"></button>
                 </div>   
                 @endforeach
-            </div>
                 </div>
-         
-          
-        
+            </div>
         </div>
         
         <div class="card-body">
@@ -39,7 +34,7 @@
             {!! $articulos->appends(["buscar" => $cat]) !!} 
             </div>
         </div>
-        </form>
+    </form>
         
         @php
             $precioTotal = 0;
@@ -87,12 +82,7 @@
                             </td>
                         </tr>
                 </tbody>
-                <h1>Total : {{$precioTotal}}€ </h1>
-                <div class="box-footer mt20">
-                    <a class="btn btn-primary" href="{{ route('pos.pago',$mesa->id) }}"> PAGAR</a>
-                    <a class="btn btn-primary" href="{{ route('pos.index') }}"> GUARDAR</a>
-                </div>
-                <br>
+
                 @empty
                 <div class="columns">
                     <div class="column">
@@ -101,7 +91,14 @@
           
                 </div>
                 @endforelse
-                    
+                @if($precioTotal>0)
+                <h1>Total : {{$precioTotal}}€ </h1>
+                <div class="box-footer mt20">
+                    <a class="btn btn-primary" href="{{ route('pos.pago',$mesa->id) }}"> PAGAR</a>
+                    <a class="btn btn-primary" href="{{ route('pos.index') }}"> GUARDAR</a>
+                </div> 
+                <br>
+                @endif    
             </table>
         </div>
     </div>

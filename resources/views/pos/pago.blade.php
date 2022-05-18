@@ -42,13 +42,7 @@
                                     <td>{{ $articulos->precio * $articulos->pivot->cantidad }} €</td>
                                 </tr>
                             </tbody>
-                            <h1>Total : {{ $precioTotal }}€ </h1>
-                            <form action="{{ route('pos.completarPago', $mesa->id) }}" method="POST">
-                                @csrf
-                                <button class="btn btn-primary" type="submit"> REALIZAR PAGO </button>
-                            </form>
                 </div>
-                
             @empty
                 <div class="columns">
                     <div class="column">
@@ -56,7 +50,14 @@
                     </div>
                 </div>
                 @endforelse
+                
+                <h1>Total : {{ $precioTotal }}€ </h1>
+                <form action="{{ route('pos.completarPago', $mesa->id) }}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary" type="submit"> REALIZAR PAGO </button>
+                </form>
 
+                <br>
                 </table>
             </div>
         </div>

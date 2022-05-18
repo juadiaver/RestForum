@@ -29,6 +29,17 @@ class PosController extends Controller
 
         $mesas = Mesa::all();
 
+        foreach ($mesas as $mesa){
+            if($mesa->articulos()->count() >= 1){
+                $mesa->activo ='NO';
+                $mesa->save();
+
+            }else{
+                $mesa->activo ='SI';
+                $mesa->save(); 
+            };
+        }
+
         return view('pos.pos', compact('mesas'));
     }
 
@@ -53,9 +64,11 @@ class PosController extends Controller
 
             $idArticulo = $request->get('anadir');
             $this->anadirArticulo($id, $idArticulo);
-            return redirect()->back()->with('success', 'Articulo añadido correctamente');;
+
+            return redirect()->back()->with('success', 'Articulo añadido correctamente');
         } else {
-            $articulos = Articulo::where('categoria_id', 'like', "%$cat%")->paginate(7);
+
+            $articulos = Articulo::where('categoria_id', 'like', "%$cat%")->paginate(20);
             $categorias = Categoria::all();
 
             return view('pos.edit', compact('mesa', 'articulos', 'categorias', 'cat'));
