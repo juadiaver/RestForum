@@ -39,9 +39,9 @@ Route::resource('/articulos', ArticuloController::class)->middleware('auth');
 
 Route::resource('/pos', PosController::class)->middleware('auth');
 
-Route::get('/pos/{idMesa}', 'PosController@anadirArticulo')->name('pos.anadirArticulo')->middleware('auth');
+Route::get('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'pago'])->name('pos.pago')->middleware('auth');
 
-Route::resource('/pos.menu', PosController::class)->middleware('auth');
+Route::post('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'completarPago'])->name('pos.completarPago')->middleware('auth');
 
 Route::resource('/categorias', CategoriaController::class)->middleware('auth');
 

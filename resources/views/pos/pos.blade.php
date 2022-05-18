@@ -5,7 +5,12 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-            
+            @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
             <div class="card-body">
             @foreach ($mesas as $mesa)
             

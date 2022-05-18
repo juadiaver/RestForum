@@ -40,13 +40,7 @@
             </div>
         </div>
         </form>
-        <div class="box-footer mt20">
-            <button type="submit" class="btn btn-primary">PAGAR</button>
-            <button type="submit" class="btn btn-primary">GUARDAR</button>
-        </div>
-    <br>
-    <h2>Resumen pedido</h2>
-    
+        
         @php
             $precioTotal = 0;
         @endphp
@@ -84,13 +78,21 @@
                                     <div class="dropdown-menu dropdown-menu-right">							 
                                     @csrf
                                     @method('DELETE')
-                                    <button class="dropdown-item" type="submit" onclick="return confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
+                                    <button class="dropdown-item" type="submit" onclick="return confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar Todo
+                                        </button>
+                                    <button class="dropdown-item" value="{{ $articulos->id }}" name="borrarUno" type="submit" onclick="return confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar Uno </button>   
                                     </div>
                                     </form>
                                 </div>
                             </td>
                         </tr>
                 </tbody>
+                <h1>Total : {{$precioTotal}}€ </h1>
+                <div class="box-footer mt20">
+                    <a class="btn btn-primary" href="{{ route('pos.pago',$mesa->id) }}"> PAGAR</a>
+                    <a class="btn btn-primary" href="{{ route('pos.index') }}"> GUARDAR</a>
+                </div>
+                <br>
                 @empty
                 <div class="columns">
                     <div class="column">
@@ -99,7 +101,7 @@
           
                 </div>
                 @endforelse
-                    <h1>Total : {{$precioTotal}}€ </h1>
+                    
             </table>
         </div>
     </div>
