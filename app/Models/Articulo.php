@@ -56,6 +56,11 @@ class Articulo extends Model
 
         return $this->belongsToMany(Mesa::class , 'articulo_mesa')->withPivot('cantidad');
     }
+
+    public function ventas(){
+
+        return $this->belongsToMany(Venta::class , 'articulo_venta')->withPivot('cantidad');
+    }
     
 
 }

@@ -54,6 +54,8 @@
                 <h1>Total : {{ $precioTotal }}€ </h1>
                 <form action="{{ route('pos.completarPago', $mesa->id) }}" method="POST">
                     @csrf
+                    <input type="hidden" name="total" value="{{ $precioTotal }}">
+                    {{ Form::select('metodoPago',$metodoPago, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
                     <button class="btn btn-primary" type="submit"> REALIZAR PAGO </button>
                 </form>
 

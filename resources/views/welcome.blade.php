@@ -1,25 +1,111 @@
+
 @extends('layouts.app')
-@section('title', __('Welcome'))
+@section('title', __('Dashboard'))
 @section('content')
-<div class="container-fluid">
-<div class="row justify-content-center">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header"><h5><span class="text-center fa fa-home"></span> @yield('title')</h5></div>
-            <div class="card-body">
-              <h5>  
-            @guest
-				
-				{{ __('Welcome to') }} {{ config('app.name', 'Laravel') }} !!! <br>
-				Please contact admin to get your Login Credentials or click "Login" to go to your Dashboard.
-                
-			@else
-					Hi {{ Auth::user()->name }}, Welcome back to {{ config('app.name', 'Laravel') }}.
-            @endif	
-				</h5>
+    <div class="container-fluid">
+        <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="text-center">
+                        <br>
+                        <h2>Bienvenidos a CASA JUAN</strong></h2>
+                        <br>
+                        <div class="container">
+                            <div class="card-columns">
+                                <div class="card">
+                                    <a href="/articulos">
+                                        <img class="card-img-top" src="storage\producto-servicio.jpg" alt="Card image cap"
+                                            width="400" height="200">
+                                    </a>
+                                    <div class="text-center"><h2>Productos</h2></div>
+                                </div>
+                                <div class="card">
+                                    <a href="/categorias">
+                                        <img class="card-img-top" src="storage\categorias.jpg" alt="Card image cap"
+                                            width="400" height="200">
+                                    </a>
+                                    <div class="text-center"><h2>Reservas</h2></div>
+                                </div>
+                                <div class="card">
+                                    <a href="/restaurantes">
+                                        <img class="card-img-top" src="storage\restaurante.jpg" alt="Card image cap"
+                                            width="400" height="200">
+                                    </a>
+                                    <div class="text-center"><h2>Pedidos</h2></div>
+                                </div>
+                                <div class="card">
+                                    <a href="/mesas">
+                                        <img class="card-img-top" src="storage\mesas.jpg" alt="Card image cap" width="400"
+                                            height="200">
+                                    </a>
+                                    <div class="text-center"><h2>Mesas Libres</h2></div>
+                                </div>
+                                <div class="card">
+                                    <a href="/ventas">
+                                        <img class="card-img-top" src="storage\ventas.jpg" alt="Card image cap"
+                                            width="400" height="200">
+                                    </a>
+                                    <div class="text-center"><h2>Promociones</h2></div>
+                                </div>
+
+                            </div>
+
+                            
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="text-center">
+                            <br>
+                            <h2>Ultimos productos</strong></h2>
+                            <br>
+                        </div>
+                        <div class="card-columns">
+                            
+                        @foreach ($articulos as $articulo)
+                           
+                        <div class="card">
+                            <a href="/articulos">
+                                <img class="card-img-top" src="/storage/{{$articulo->imagen}}" alt="Card image cap"
+                                    width="400" height="200">
+                            </a>
+                            <div class="text-center"><h2>{{$articulo->nombre}}</h2></div>
+                        </div>
+                        
+                        @endforeach 
+                    
+                        </div>
+                        <br>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 @endsection

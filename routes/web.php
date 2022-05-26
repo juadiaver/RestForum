@@ -10,6 +10,7 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\Articulo;
 
 
 
@@ -25,7 +26,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $articulos = Articulo::latest()
+     ->take(10)
+     ->get();
+    return view('welcome', compact('articulos'));
 });
 
 
@@ -33,24 +37,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth')->middleware('admin');
 
-Route::resource('/articulos', ArticuloController::class)->middleware('auth');
+Route::resource('/articulos', ArticuloController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/pos', PosController::class)->middleware('auth');
+Route::resource('/pos', PosController::class)->middleware('auth')->middleware('admin');
 
-Route::get('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'pago'])->name('pos.pago')->middleware('auth');
+Route::get('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'pago'])->name('pos.pago')->middleware('auth')->middleware('admin');
 
-Route::post('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'completarPago'])->name('pos.completarPago')->middleware('auth');
+Route::post('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'completarPago'])->name('pos.completarPago')->middleware('auth')->middleware('admin');
 
-Route::resource('/categorias', CategoriaController::class)->middleware('auth');
+Route::resource('/categorias', CategoriaController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/restaurantes', RestauranteController::class)->middleware('auth');
+Route::resource('/restaurantes', RestauranteController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/mesas', MesaController::class)->middleware('auth');
+Route::resource('/mesas', MesaController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/ventas', VentaController::class)->middleware('auth');
+Route::resource('/ventas', VentaController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/pedidos', PedidoController::class)->middleware('auth');
+Route::resource('/pedidos', PedidoController::class)->middleware('auth')->middleware('admin');
 
-Route::resource('/reservas', ReservaController::class)->middleware('auth');
+Route::resource('/reservas', ReservaController::class)->middleware('auth')->middleware('admin');

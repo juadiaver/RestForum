@@ -41,5 +41,51 @@
                 </div>
             </div>
         </div>
+
+        @php
+        $precioTotal = 0;
+    @endphp
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Precio total</th>
+                </tr>
+            </thead>
+            @forelse ($venta->articulos as $articulos)
+            <tbody>
+                
+                @php
+                    $precioTotal = $precioTotal+$articulos->precio*$articulos->pivot->cantidad;
+                @endphp 
+                    <tr>
+
+                        <td>{{ $articulos->nombre }}</td>
+                        <td>{{ $articulos->precio }} €</td>
+                        <td>{{$articulos->pivot->cantidad}}</td>
+                        <td>{{$articulos->precio*$articulos->pivot->cantidad}} €</td>
+                        
+                    </tr>
+            </tbody>
+
+            @empty
+            <div class="columns">
+                <div class="column">
+                    <h1 class="is-size-1">No hay articulos en la mesa</h1>
+                </div>
+      
+            </div>
+            @endforelse
+            @if($precioTotal>0)
+            <h1>Total : {{$precioTotal}}€ </h1>
+            <br>
+            @endif    
+        </table>
+    </div>
+</div>
     </section>
 @endsection

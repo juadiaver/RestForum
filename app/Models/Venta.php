@@ -47,5 +47,9 @@ class Venta extends Model
         return $this->hasOne('App\Models\Mesa', 'id', 'mesa_id');
     }
     
+    public function articulos(){
+
+      return $this->belongsToMany(Articulo::class, 'articulo_venta')->withPivot('cantidad');;
+  }
 
 }

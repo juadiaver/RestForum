@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Articulo;
 use App\Models\Categoria;
 use App\Models\Mesa;
+use App\Models\Venta;
 use Illuminate\Http\Request;
 
 class PosController extends Controller
@@ -121,19 +122,52 @@ class PosController extends Controller
 
         $mesa = Mesa::find($id);
 
-        return view('pos.pago', compact('mesa'));
+        $metodoPago = array(
+            'Efectivo' => 'Efectivo',
+            'Tarjeta' => 'Tarjeta',
+    );
+
+        return view('pos.pago', compact('mesa','metodoPago'));
         
         
     }
 
-    public function completarPago($id)
+    public function completarPago(Request $request, $id)
     {
         
         $mesa = Mesa::find($id);
+        
+        // Se genera el modelo de venta para luego añadirle los articulos con la cantidades. 
+        $venta = new Venta();
+        $venta->mesa_id = $mesa->id;
+        $venta->precio = $request->get('total');
+        $venta->modo_pago = $request->get('metodoPago');
+        $venta->ticket = $this->crearTicket($id);
+        $venta->save();
+
+        //Una vez generada la venta se recorre los articulos asociados con la mesa y se meten en la tabla pivote articulo_venta
+        foreach ($mesa->articulos as $articulo){
+            $venta->articulos()->attach($articulo->id);
+            $cantidad = $mesa->articulos()->find($articulo->id)->pivot->cantidad;
+            $venta->articulos()->sync([$articulo->id => ['cantidad' => $cantidad]], false);
+            $venta->articulos()->sync([$articulo->id => ['created_at' => now()->format('Y-m-d')]], false);
+        }
+
         $mesa->articulos()->detach();
+        
         return redirect()->action([PosController::class, 'index'])
         ->with('success', 'Pago realizado con exito');;
         
         
+    }
+
+    // Metodo para crear ticket recibiendo el id de la mesa, se llama desde completar pago. 
+    public function crearTicket ($id){
+
+        $mesa = Mesa::find($id);
+
+
+        return 'borrar esta columna el ticke se manda en pdf ';
+
     }
 }

@@ -15,10 +15,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	 @livewireStyles
+     
 </head>
 <body >
     <div id="app" >
@@ -63,7 +64,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                                    @php
+                                        $user = Auth::user();
+                                    @endphp
+                                    @if ($user->role == 0)
                                     <a class="dropdown-item" href="{{ url('/restaurantes') }}" class="nav-link"> Datos Restaurante</a>
 
                                     <a class="dropdown-item" href="{{ url('/articulos') }}" class="nav-link"> Articulos</a>
@@ -71,6 +75,18 @@
                                     <a class="dropdown-item" href="{{ url('/categorias') }}" class="nav-link"> Categorias</a>
 
                                     <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Mesas</a>
+
+                                    @endif
+
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Datos Personales</a>
+
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Pedidos</a>
+
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Consultar mesas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Contacto</a>
+
+                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Promociones</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
