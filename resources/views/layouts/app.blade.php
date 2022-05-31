@@ -17,6 +17,24 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     <!-- Styles -->
+    <style type="text/css">
+        html {
+      min-height: 100%;
+      position: relative;
+    }
+    body {
+      margin: 0;
+      margin-bottom: 50px;
+    }
+    footer {
+      
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 80px;
+      
+    }
+        </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	 @livewireStyles
      
@@ -111,14 +129,13 @@
         </main>
 
         <br>
+        <br>
+        <br>
+        
 
     </div>
     <footer class=" bg-dark text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-          <!-- Section: Social media -->
-          <section class="mb-4">
-            <!-- Facebook -->
+            <div>
             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
               ><i class="fab fa-facebook-f"></i
             ></a>
@@ -147,16 +164,14 @@
             <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
               ><i class="fab fa-github"></i
             ></a>
-          </section>
-          <!-- Section: Social media -->
-        </div>
+              </div> 
+              <div class="text-center" >
+                © 2020 Copyright:
+                <a class="text-white" href="https://mdbootstrap.com/">CasaJuan.com</a>
+              </div>   
         <!-- Grid container -->
       
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2022 Copyright: Restforum.com
-          
-        </div>
+        
         <!-- Copyright -->
       </footer>
     @livewireScripts
@@ -165,6 +180,7 @@
 		$('#createDataModal').modal('hide');
 	});
 </script>
+
     @yield('js')
 </body>
 </html>

@@ -39,6 +39,8 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Guardar e ir al indice</button>
+        <button name="calendario" value="{{ true }}" type="submit" class="btn btn-primary">Guardar y volver a calendario</button>
+        
     </div>
 </div>

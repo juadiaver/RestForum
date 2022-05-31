@@ -26,7 +26,6 @@ class Reserva extends Model
 {
     
     static $rules = [
-		'user_id' => 'required',
 		'nombre' => 'required',
 		'comensales' => 'required',
 		'comentarios' => 'required',

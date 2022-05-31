@@ -17,9 +17,10 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('reservas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                <a href="{{ route('reservas.create') }}" class="btn btn-primary"  data-placement="left">
+                                  Crear reserva
                                 </a>
+                                <a class="btn btn-primary" href="{{ asset('/calendar') }}"> Ir a calendario</a>
                               </div>
                         </div>
                     </div>

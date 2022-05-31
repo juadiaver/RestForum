@@ -16,11 +16,17 @@ class Admin
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {
         $user = Auth::user();
-        if ($user->role == 1) {
-            return redirect('/');
+
+        if (Auth::check()) {
+            if ($user->role == 1) {
+                return redirect('/');
+            }
+        } else { 
+            return redirect('/login');
         }
+
         return $next($request);
     }
 }

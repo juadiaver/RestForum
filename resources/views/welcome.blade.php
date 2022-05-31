@@ -34,7 +34,32 @@
                         <br>
                         <h2>Bienvenidos a CASA JUAN</strong></h2>
                         <br>
-                        <div class="container">
+                        <div class="float-center">
+                        
+                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                        </div>
+
+                        <br>
+
+                        <div class="float-center">
+                        
+                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                        </div>
+
+                        <br>
+                        <div class="float-center">
+                        
+                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                        </div>  
+                                     
+                        <br>
+                        <div class="container d-none d-sm-block">
                             <div class="card-columns">
                                 <div class="card">
                                     <a href="/articulos">
@@ -80,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="container">
+                    <div class="container d-none d-sm-block">
                         <div class="text-center">
                             <br>
                             <h2>Ultimos productos</strong></h2>

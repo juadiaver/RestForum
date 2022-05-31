@@ -64,6 +64,12 @@
                                     </a>
                                 </div>
 
+								<div class="card">
+                                    <a href="/calendar">
+                                        <img class="card-img-top" src="storage\reservas.png" alt="Card image cap"
+                                            width="400" height="200">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

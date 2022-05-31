@@ -11,10 +11,12 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Reserva</span>
+                            <span class="card-title">Reserva</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('reservas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('reservas.edit',$reserva->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                            <a class="btn btn-primary" href="{{ asset('/calendar') }}"> Ir a calendario</a>
+                            <a class="btn btn-primary" href="{{ route('reservas.index') }}"> Ir al indice</a>
                         </div>
                     </div>
 
@@ -22,7 +24,11 @@
                         
                         <div class="form-group">
                             <strong>Usuario:</strong>
-                            {{ $reserva->user->name }}
+                            @if($reserva->user != null)
+                                {{ $reserva->user->name }}
+                            @else
+                                Usuario no registrado
+                            @endif
                         </div>
                         <div class="form-group">
                             <strong>Nombre:</strong>

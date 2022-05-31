@@ -6,7 +6,10 @@ use App\Models\Articulo;
 use App\Models\Categoria;
 use App\Models\Mesa;
 use App\Models\Venta;
+use App\Models\Caja;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 
 class PosController extends Controller
 {
@@ -29,6 +32,9 @@ class PosController extends Controller
     {
 
         $mesas = Mesa::all();
+        $caja = Caja::all()->sortByDesc('fechaApertura')->sortByDesc('horaApertura')->take(1)->first();
+
+
 
         foreach ($mesas as $mesa){
             if($mesa->articulos()->count() >= 1){
@@ -41,7 +47,7 @@ class PosController extends Controller
             };
         }
 
-        return view('pos.pos', compact('mesas'));
+        return view('pos.pos', compact('mesas','caja'));
     }
 
 
@@ -155,19 +161,107 @@ class PosController extends Controller
 
         $mesa->articulos()->detach();
         
-        return redirect()->action([PosController::class, 'index'])
-        ->with('success', 'Pago realizado con exito');;
+        return redirect()->route('pos.ticket', ['idVenta' => $venta->id]);
         
         
     }
 
     // Metodo para crear ticket recibiendo el id de la mesa, se llama desde completar pago. 
-    public function crearTicket ($id){
+    public function crearTicket ( $id){
 
         $mesa = Mesa::find($id);
 
+        $ticket = "<h1>Casa Juan</h1>";
+        $ticket = $ticket."<h2>Resumen de compra</h2>";
+        $ticket = $ticket."<table><thead><tr><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Precio total</th></tr></thead>";
+        $precioTotal = 0;
+        foreach ($mesa->articulos as $articulo){
+            $precioTotal = $precioTotal+$articulo->precio*$articulo->pivot->cantidad;
+            $ticket = $ticket."<tbody><tr>";
+            $ticket = $ticket."<td>".$articulo->nombre."</td>";
+            $ticket = $ticket."<td>".$articulo->precio." €</td>";
+            $ticket = $ticket."<td>".$articulo->pivot->cantidad."</td>";
+            $ticket = $ticket."<td>".$articulo->precio*$articulo->pivot->cantidad." €</td>";
+            $ticket = $ticket."<tr><tbody>";
 
-        return 'borrar esta columna el ticke se manda en pdf ';
+        }
+        $ticket = $ticket."</table>";
+        $ticket = $ticket."<h2>Precio total: ".$precioTotal." €</h2>";
+
+        return $ticket;
 
     }
+
+    public function pdf($idVenta)
+{
+    $venta = Venta::find($idVenta);
+    
+    $pdf = app('dompdf.wrapper');
+    $pdf->loadHTML($venta->ticket);
+
+    return $pdf->stream('ticket de venta Nº: '.$venta->ticket );
+}
+
+public function ticket(Request $request,$idVenta)
+{
+    $venta = Venta::find($idVenta);
+    
+    return view('pos.ticket', compact('venta'));
+}
+
+public function cerrarCaja(Request $request,$idCaja)
+{
+    $caja = Caja::find($idCaja);
+    $fecha = new Carbon($caja->fechaApertura.' '.$caja->horaApertura);
+
+    $ventas = Venta::all()->where('created_at','>',$fecha);
+    $ventasEfectivo = 0;
+    $totalEfectivo = 0;
+    $ventasTarjeta = 0;
+    $totalTarjeta = 0;
+    $total = 0;
+
+    foreach($ventas as $venta){
+        if($venta->modo_pago == "Efectivo"){
+            $ventasEfectivo = $ventasEfectivo + 1;
+            $totalEfectivo = $totalEfectivo + $venta->precio;
+        }else{
+            $ventasTarjeta = $ventasTarjeta + 1;
+            $totalTarjeta = $totalTarjeta + $venta->precio;
+        }
+
+        $total = $total + $venta->precio;
+        
+    }
+ 
+    
+    return view('pos.cerrarCaja', compact('caja','ventas','ventasEfectivo','totalEfectivo','ventasTarjeta','totalTarjeta','total'));
+}
+
+public function completarCierre(Request $request,$idCaja)
+{
+    $caja = Caja::find($idCaja);
+    
+    $caja->dineroFinal = 2000;
+    $caja->tarjeta= 2;
+    $caja->dineroTarjeta=2;
+    $caja->efectivo=5;
+    $caja->dineroEfectivo=200;
+    $caja->abierta= "Cerrada";
+    $caja->fechaCierre= Carbon::now()->toDateString();
+    $caja->horaCierre= Carbon::now()->toTimeString();
+
+    $caja->save();
+
+
+    
+ 
+    
+    return redirect()->route('pos.index')
+            ->with('success', 'Caja cerrada ');
+}
+
+
+
+
 }

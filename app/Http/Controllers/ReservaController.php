@@ -56,8 +56,17 @@ class ReservaController extends Controller
         
         $reserva = Reserva::create($request->all());
 
-        return redirect()->route('reservas.index')
-            ->with('success', 'Reserva created successfully.');
+        if ($request->calendario != null) {
+
+            return redirect()->route('calendario')
+            ->with('success', 'Reserva actualizada correctamente');
+            
+        } else {
+
+            return redirect()->route('reservas.index')
+            ->with('success', 'Reserva actualizada correctamente');
+            
+        }
     }
 
     /**
@@ -104,8 +113,19 @@ class ReservaController extends Controller
 
         $reserva->update($request->all());
 
-        return redirect()->route('reservas.index')
+        if ($request->calendario != null) {
+
+            return redirect()->route('calendario')
             ->with('success', 'Reserva updated successfully');
+            
+        } else {
+
+            return redirect()->route('reservas.index')
+            ->with('success', 'Reserva updated successfully');
+            
+        }
+
+        
     }
 
     /**

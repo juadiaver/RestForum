@@ -22,7 +22,10 @@ class CreateCajasTable extends Migration
             $table->double('efectivo',8,2);
             $table->double('dineroEfectivo',8,2);
             $table->String('abierta');
-            
+            $table->date('fechaApertura');
+            $table->time('horaApertura');
+            $table->date('fechaCierre');
+            $table->time('horaCierre');
             $table->timestamps();
         });
     }

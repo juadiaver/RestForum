@@ -8,10 +8,14 @@
 
                     <div class="card-body">
 
-
-                        {{ $mesa->nombre }} Rseumen del pago
-
+                        {{ $mesa->nombre }}:  Resumen del pago
+                        <div class="float-right">
+                            <a class="btn btn-primary" onClick="history.go(-1);"> Volver</a>
+                            <a class="btn btn-primary" href="{{ route('pos.index') }}"> Volver a mesas</a>
+                        </div>
                     </div>
+
+                    
                 </div>
             </div>
             @php
@@ -55,10 +59,14 @@
                 <form action="{{ route('pos.completarPago', $mesa->id) }}" method="POST">
                     @csrf
                     <input type="hidden" name="total" value="{{ $precioTotal }}">
+                    <br>
+                    <h3>Seleccione modalidad de pago</h3>
                     {{ Form::select('metodoPago',$metodoPago, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria Id']) }}
+                    <br>
+                    <br>
                     <button class="btn btn-primary" type="submit"> REALIZAR PAGO </button>
                 </form>
-
+                <br>
                 <br>
                 </table>
             </div>
