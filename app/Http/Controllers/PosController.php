@@ -173,7 +173,7 @@ class PosController extends Controller
 
         $ticket = "<h1>Casa Juan</h1>";
         $ticket = $ticket."<h2>Resumen de compra</h2>";
-        $ticket = $ticket."<table><thead><tr><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Precio total</th></tr></thead>";
+        $ticket = $ticket.'<table border="1"><thead><tr><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Precio total</th></tr></thead>';
         $precioTotal = 0;
         foreach ($mesa->articulos as $articulo){
             $precioTotal = $precioTotal+$articulo->precio*$articulo->pivot->cantidad;
@@ -241,27 +241,42 @@ public function cerrarCaja(Request $request,$idCaja)
 public function completarCierre(Request $request,$idCaja)
 {
     $caja = Caja::find($idCaja);
+
+    $fecha = new Carbon($caja->fechaApertura.' '.$caja->horaApertura);
+
+    $ventas = Venta::all()->where('created_at','>',$fecha);
+    $ventasEfectivo = 0;
+    $totalEfectivo = 0;
+    $ventasTarjeta = 0;
+    $totalTarjeta = 0;
+    $total = 0;
+
+    foreach($ventas as $venta){
+        if($venta->modo_pago == "Efectivo"){
+            $ventasEfectivo = $ventasEfectivo + 1;
+            $totalEfectivo = $totalEfectivo + $venta->precio;
+        }else{
+            $ventasTarjeta = $ventasTarjeta + 1;
+            $totalTarjeta = $totalTarjeta + $venta->precio;
+        }
+
+        $total = $total + $venta->precio;
+        
+    }
     
     $caja->dineroFinal = 2000;
-    $caja->tarjeta= 2;
-    $caja->dineroTarjeta=2;
-    $caja->efectivo=5;
-    $caja->dineroEfectivo=200;
+    $caja->tarjeta= $ventasTarjeta;
+    $caja->dineroTarjeta=$totalTarjeta;
+    $caja->efectivo=$ventasEfectivo;
+    $caja->dineroEfectivo=$totalEfectivo;
     $caja->abierta= "Cerrada";
     $caja->fechaCierre= Carbon::now()->toDateString();
     $caja->horaCierre= Carbon::now()->toTimeString();
 
     $caja->save();
 
-
-    
- 
-    
     return redirect()->route('pos.index')
             ->with('success', 'Caja cerrada ');
 }
-
-
-
 
 }

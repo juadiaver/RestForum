@@ -11,13 +11,13 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-            <div class="card " style="width: 20rem;">
-                <a class="btn btn-secondary" href="{{ route('pos.cerrarCaja',$caja->id) }}"> Cerrar Caja</a>
-            </div>
             <div class="card-body ">
 
                 @if($caja->abierta == 'Abierta')
-                
+                <div class="card " style="width: 20rem;">
+                    <a class="btn btn-secondary" href="{{ route('pos.cerrarCaja',$caja->id) }}"> Cerrar Caja</a>
+                </div>
+                <br>
                 @foreach ($mesas as $mesa)
                 @if($mesa->activo == 'SI')
                     <div class="card" style="width: 20rem;">
