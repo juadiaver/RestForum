@@ -10,6 +10,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CajaController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PosController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
@@ -74,3 +75,5 @@ Route::resource('/pedidos', PedidoController::class)->middleware('auth')->middle
 Route::resource('/reservas', ReservaController::class)->middleware('auth')->middleware('admin');
 
 Route::resource('/cajas', CajaController::class)->middleware('auth')->middleware('admin');
+
+Route::resource('/menus', MenuController::class)->middleware('auth')->middleware('admin');
