@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Menu
+    Crear carta
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Menu</span>
+                        <span class="card-title">Create Carta</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('menus.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('cartas.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('menu.form')
+                            @include('carta.form')
 
                         </form>
                     </div>

@@ -34,28 +34,23 @@
                         <br>
                         <h2>Bienvenidos a CASA JUAN</strong></h2>
                         <br>
-                        <div class="float-center">
+                        <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
+                        
                         </div>
 
                         <br>
 
-                        <div class="float-center">
+                        <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
                         </div>
 
                         <br>
-                        <div class="float-center">
+                        <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark" href="{{ asset('/calendar') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
-                            <a class="btn btn-dark" href="{{ route('reservas.index') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
                         </div>  
                                      
                         <br>

@@ -6,6 +6,7 @@ use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\ControllerCalendar;
+use App\Http\Controllers\CartaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CajaController;
 use App\Http\Controllers\ReservaController;
@@ -77,3 +78,5 @@ Route::resource('/reservas', ReservaController::class)->middleware('auth')->midd
 Route::resource('/cajas', CajaController::class)->middleware('auth')->middleware('admin');
 
 Route::resource('/menus', MenuController::class)->middleware('auth')->middleware('admin');
+
+Route::resource('/cartas', CartaController::class)->middleware('auth')->middleware('admin');

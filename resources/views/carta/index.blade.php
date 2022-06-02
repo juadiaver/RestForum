@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Menu
+    Carta
 @endsection
 
 @section('content')
@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Menu') }}
+                                {{ __('Carta') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('menus.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                <a href="{{ route('cartas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Crear carta') }}
                                 </a>
                               </div>
                         </div>
@@ -37,33 +37,27 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
+										<th>Activa</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($menus as $menu)
+                                    @foreach ($cartas as $carta)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $menu->nombre }}</td>
-											
+											<td>{{ $carta->nombre }}</td>
+											<td>{{ $carta->activa }}</td>
 
                                             <td>
-                                                <div class="btn-group">
-                                                    <form action="{{ route('menus.destroy',$menu->id) }}" method="POST">
-                                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Acciones
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item " href="{{ route('menus.show',$menu->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="dropdown-item" href="{{ route('menus.edit',$menu->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                <form action="{{ route('cartas.destroy',$carta->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('cartas.show',$carta->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('cartas.edit',$carta->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar la venta:  {{$menu->id}}? \nLa venta no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
-                                                    </div>
-                                                    </form>
-                                                </div>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -72,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $menus->links() !!}
+                {!! $cartas->links() !!}
             </div>
         </div>
     </div>
