@@ -25,6 +25,10 @@
     body {
       margin: 0;
       margin-bottom: 50px;
+      background: #23EC55;
+      background: -webkit-radial-gradient(top right, #23EC55, #2D51C1);
+      background: -moz-radial-gradient(top right, #23EC55, #2D51C1);
+      background: radial-gradient(to bottom left, #23EC55, #2D51C1);  
     }
     footer {
       
@@ -34,6 +38,7 @@
       height: 80px;
       
     }
+    
         </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	 @livewireStyles
@@ -43,7 +48,7 @@
     <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm border border-dark">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/home') }}">
+                <a class="navbar-brand text-white" href="{{ url('/') }}">
                     INICIO
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -95,16 +100,6 @@
                                     <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Mesas</a>
 
                                     @endif
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Datos Personales</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Pedidos</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Consultar mesas</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Contacto</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Promociones</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

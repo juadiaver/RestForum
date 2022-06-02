@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reserva;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ReservaController
@@ -25,6 +26,15 @@ class ReservaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $reservas->perPage());
     }
 
+    public function lista()
+    {
+        $user = Auth::user();
+        $reservas = Reserva::where('user_id', '=', $user->id)->orderBy('fecha','desc')->paginate();
+
+        return view('reservaCliente.index', compact('reservas'))
+            ->with('i', (request()->input('page', 1) - 1) * $reservas->perPage());
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,6 +52,7 @@ class ReservaController extends Controller
         ];
         return view('reserva.create', compact('reserva','user','estado'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -67,6 +78,30 @@ class ReservaController extends Controller
             ->with('success', 'Reserva actualizada correctamente');
             
         }
+    }
+
+    public function crear()
+    {
+        $reserva = new Reserva();
+        
+        return view('reservaCliente.create', compact('reserva'));
+    }
+
+    public function creado(Request $request)
+    {
+        request()->validate(Reserva::$rules);
+
+        $input = $request->all();
+        $user = auth::user();
+        $input['user_id']=$user->id;
+        $input['estado']="Pendiente";
+
+        $reserva = Reserva::create($input);
+
+ 
+        return redirect()->route('reservaCliente.lista')
+            ->with('success', 'Reserva actualizada correctamente');
+            
     }
 
     /**
@@ -124,6 +159,30 @@ class ReservaController extends Controller
             ->with('success', 'Reserva updated successfully');
             
         }
+
+        
+    }
+
+    public function editar($id)
+    {
+        $reserva = Reserva::find($id);
+
+        return view('reservaCliente.edit', compact('reserva'));
+    }
+
+    public function editado(Request $request, $id)
+    {
+        request()->validate(Reserva::$rules);
+
+        $reserva = Reserva::find($id);
+        $input = $request->all();
+        $input['estado']="Modificado";
+        $reserva->update($input);
+
+            return redirect()->route('reservaCliente.lista')
+            ->with('success', 'Reserva actualizada correctamente');
+            
+        
 
         
     }

@@ -7,13 +7,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                    <img src="https://s3.eu-west-1.amazonaws.com/cdn.spydeals.nl/images/uploads/QEv83MjE4cuZhag4DoaGMxz1tusM7PiYkGxFaRgD.webp" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                    <img src="https://www.fincomercio.com/wp-content/uploads/2019/06/alimentacion-saludable.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://wallpaperaccess.com/full/2397000.jpg" class="d-block w-100" alt="...">
+                    <img src="https://d2z0k43lzfi12d.cloudfront.net/blog/vcdn335/wp-content/uploads/2021/10/calculator-thumbnail_1200x300_BMR.jpg.webp" class="d-block w-100" alt="...">
                 </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -27,16 +27,16 @@
             </div>
         </div>
         <br>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
             <div class="col-md-12">
-                <div class="card">
+                <div class="card " >
                     <div class="text-center">
                         <br>
                         <h2>Bienvenidos a CASA JUAN</strong></h2>
                         <br>
                         <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Reservas</a>
                         
                         </div>
 
@@ -44,13 +44,13 @@
 
                         <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{  route('reservaCliente.lista') }}"> Pedidos</a>
                         </div>
 
                         <br>
                         <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Menu</a>
                         </div>  
                                      
                         <br>
@@ -64,8 +64,8 @@
                                     <div class="text-center"><h2>Productos</h2></div>
                                 </div>
                                 <div class="card">
-                                    <a href="/categorias">
-                                        <img class="card-img-top" src="storage\categorias.jpg" alt="Card image cap"
+                                    <a href="{{  route('reservaCliente.lista') }}">
+                                        <img class="card-img-top" src="storage\reserva.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Reservas</h2></div>

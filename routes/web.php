@@ -12,6 +12,7 @@ use App\Http\Controllers\CajaController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\DatosUsuarioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
@@ -49,6 +50,20 @@ Route::get('calendar',[App\Http\Controllers\ControllerCalendar::class, 'index'])
 
 Route::resource('/articulos', ArticuloController::class)->middleware('admin');
 
+Route::resource('/datos-usuarios', DatosUsuarioController::class)->middleware('auth');
+
+Route::get('/datos/editar/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'edit'])->name('usuarios.editar')->middleware('auth');
+
+Route::post('/datos/editar/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'update'])->name('usuarios.editar')->middleware('auth');
+
+Route::get('/datos/crear',  [App\Http\Controllers\DatosUsuarioController::class, 'create'])->name('usuarios.crear')->middleware('auth');
+
+Route::post('/datos/crear',  [App\Http\Controllers\DatosUsuarioController::class, 'store'])->name('usuarios.crear')->middleware('auth');
+
+Route::get('/datos/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'show'])->name('usuarios.datos')->middleware('auth');
+
+Route::post('/datos/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'show'])->name('usuarios.datos')->middleware('auth');
+
 Route::resource('/pos', PosController::class)->middleware('auth')->middleware('admin');
 
 Route::get('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, 'pago'])->name('pos.pago')->middleware('auth')->middleware('admin');
@@ -80,3 +95,13 @@ Route::resource('/cajas', CajaController::class)->middleware('auth')->middleware
 Route::resource('/menus', MenuController::class)->middleware('auth')->middleware('admin');
 
 Route::resource('/cartas', CartaController::class)->middleware('auth')->middleware('admin');
+
+Route::get('/reserva',  [App\Http\Controllers\ReservaController::class, 'lista'])->name('reservaCliente.lista')->middleware('auth');
+
+Route::get('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'crear'])->name('reservaCliente.crear')->middleware('auth');
+
+Route::post('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'creado'])->name('reservaCliente.crear')->middleware('auth');
+
+Route::get('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editar'])->name('reservaCliente.editar')->middleware('auth');
+
+Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editado'])->name('reservaCliente.editar')->middleware('auth');

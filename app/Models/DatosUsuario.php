@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Reserva
+ * Class DatosUsuario
  *
  * @property $id
- * @property $user_id
  * @property $nombre
- * @property $comensales
- * @property $comentarios
- * @property $estado
- * @property $fecha
- * @property $hora
+ * @property $apellidos
+ * @property $user_id
+ * @property $direccion
+ * @property $edad
  * @property $created_at
  * @property $updated_at
  *
@@ -22,15 +20,14 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Reserva extends Model
+class DatosUsuario extends Model
 {
     
     static $rules = [
 		'nombre' => 'required',
-		'comensales' => 'required',
-		'comentarios' => 'required',
-		'fecha' => 'required',
-		'hora' => 'required',
+		'apellidos' => 'required',
+		'direccion' => 'required',
+		'edad' => 'required',
     ];
 
     protected $perPage = 20;
@@ -40,7 +37,7 @@ class Reserva extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','nombre','comensales','comentarios','estado','fecha','hora'];
+    protected $fillable = ['nombre','apellidos','user_id','direccion','edad'];
 
 
     /**

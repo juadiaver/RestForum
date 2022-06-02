@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>@hasSection('title') @yield('title') | @endif {{ config('app.name', 'Laravel') }}</title>
+	  <title>@hasSection('title') @yield('title') | @endif {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,6 +25,10 @@
     body {
       margin: 0;
       margin-bottom: 50px;
+      background: #23EC55;
+background: -webkit-radial-gradient(top right, #23EC55, #2D51C1);
+background: -moz-radial-gradient(top right, #23EC55, #2D51C1);
+background: radial-gradient(to bottom left, #23EC55, #2D51C1);
     }
     footer {
       
@@ -35,6 +39,8 @@
       
     }
         </style>
+
+        
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	 @livewireStyles
      
@@ -43,7 +49,7 @@
     <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm border border-dark">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ url('/home') }}">
+                <a class="navbar-brand text-white" href="{{ url('/') }}">
                     INICIO
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -86,17 +92,19 @@
                                         $user = Auth::user();
                                     @endphp
                                     @if ($user->role == 0)
-                                    <a class="dropdown-item" href="{{ url('/restaurantes') }}" class="nav-link"> Datos Restaurante</a>
-
-                                    <a class="dropdown-item" href="{{ url('/articulos') }}" class="nav-link"> Articulos</a>
-
-                                    <a class="dropdown-item" href="{{ url('/categorias') }}" class="nav-link"> Categorias</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Mesas</a>
+                                    <a class="dropdown-item" href="{{ url('/home') }}" class="nav-link"> Administracion</a>
 
                                     @endif
 
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Datos Personales</a>
+                                    @if ($user->datosUsuario == null)
+                                    <a class="dropdown-item" href="{{  route('usuarios.crear') }}" class="nav-link"> Introduce tus datos</a>
+
+                                    @else
+
+                                    <a class="dropdown-item" href="{{ route('usuarios.datos',$user->datosUsuario->id) }}" class="nav-link"> Datos Personales</a>
+                                    @endif
+
+                                    
 
                                     <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Pedidos</a>
 

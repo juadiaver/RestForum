@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Mesa
+    Crear Reserva
 @endsection
 
 @section('content')
@@ -11,15 +11,15 @@
 
                 @includeif('partials.errors')
 
-                <div class="card card-default" >
+                <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Crear Mesa</span>
+                        <span class="card-title">Crear Reserva</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('mesas.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('reservaCliente.crear') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('mesa.form')
+                            @include('reservaCliente.form')
 
                         </form>
                     </div>
