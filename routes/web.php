@@ -6,6 +6,7 @@ use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\ControllerCalendar;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\CajaController;
@@ -105,3 +106,9 @@ Route::post('/reserva/crear',  [App\Http\Controllers\ReservaController::class, '
 Route::get('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editar'])->name('reservaCliente.editar')->middleware('auth');
 
 Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editado'])->name('reservaCliente.editar')->middleware('auth');
+
+Route::get('/carrito', [ProductController::class, 'index']);  
+Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');

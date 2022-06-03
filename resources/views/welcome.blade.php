@@ -71,7 +71,7 @@
                                     <div class="text-center"><h2>Reservas</h2></div>
                                 </div>
                                 <div class="card">
-                                    <a href="/restaurantes">
+                                    <a href="/carrito">
                                         <img class="card-img-top" src="storage\restaurante.jpg" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
