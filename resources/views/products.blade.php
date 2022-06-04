@@ -10,7 +10,7 @@
     <div class="card-columns">
         @foreach($products as $product)
     <!-- Card 1 -->
-    <div class="card h-100">
+    <div class="card h-50">
         <img class="card-img-top" src="/storage/{{$product->imagen}}" alt="Card image cap" width="400" height="200">
     <div class="card-header"><h4>{{ $product->nombre }}</h4></div>
     <div class="card-body">

@@ -85,4 +85,12 @@ class ProductController extends Controller
             session()->flash('success', 'Product removed successfully');
         }
     }
+
+    public function realizarPedido(Request $request)
+    {
+        session()->forget('cart');
+            
+        return view('cart');    
+        
+    }
 }

@@ -56,7 +56,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
 }
 .dropdown{
     float:right;
-    padding-right: 30px;
+    
 }
 .btn{
     border:0px;
@@ -65,11 +65,13 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
 }
 .dropdown .dropdown-menu{
     padding:20px;
-    top:30px !important;
-    width:350px !important;
-    left:-110px !important;
+    
+    width:300px !important;
+    
     box-shadow:0px 5px 30px black;
 }
+
+
 .total-header-section{
     border-bottom:1px solid #d2d2d2;
 }
@@ -106,7 +108,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
     height:50px;
 }
 .dropdown-menu:before{
-    content: " ";
+    
     position:absolute;
     top:-20px;
     right:50px;
@@ -134,11 +136,12 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                 </button>
                 <div class="container">
                   <div class="row">
-                      <div class="col-lg-12 col-sm-12 col-12 main-section">
-                          <div class="dropdown">
-                              <button type="button" class="btn btn-info" data-toggle="dropdown">
+                      
+                              <button type="button" class="btn btn-info float-right" data-toggle="dropdown">
                                   <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                               </button>
+                              <div class="col-lg-3 col-sm-3 col-3 main-section">
+                              <div class="dropdown">
                               <div class="dropdown-menu">
                                   <div class="row total-header-section">
                                       <div class="col-lg-6 col-sm-6 col-6">

@@ -27,7 +27,7 @@
                     </td>
                     <td data-th="Price">${{ $details['price'] }}</td>
                     <td data-th="Quantity">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                        <input type="number"  value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
                     <td class="actions" data-th="">
@@ -43,8 +43,16 @@
         </tr>
         <tr>
             <td colspan="5" class="text-right">
-                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <button class="btn btn-success">Checkout</button>
+                <td colspan="5" class="text-right">
+                    <form action="{{ route('realizarPedido.cart') }}" method="POST">						 
+                        @csrf
+                        <button class="btn btn-success" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
+                        </div>
+                        </form>
+                </td>    
+                
+                
+                
             </td>
         </tr>
     </tfoot>
