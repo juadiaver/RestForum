@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 /**
  * Class PedidoController
  * @package App\Http\Controllers
@@ -129,4 +129,6 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido deleted successfully');
     }
+
+    
 }

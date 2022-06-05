@@ -34,7 +34,9 @@
                         </div>
                         <div class="form-group">
                             <strong>Ticket:</strong>
-                            {{ $pedido->ticket }}
+                            <div class="col-md-3 " style="background-color: rgb(255, 255, 255)">
+                            {!! $pedido->ticket !!}
+                            </div>
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>

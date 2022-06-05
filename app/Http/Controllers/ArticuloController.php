@@ -17,11 +17,32 @@ class ArticuloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $articulos = Articulo::paginate(10);
+    public function index(Request $request)
+    {   
 
-        return view('articulo.index', compact('articulos'))
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        //metodo para buscar por categorias, solo se buscara por la categoria encontrada en la busqueda.
+        if ($tipo == "categoria" && $buscar != ""){
+            
+            //busquedad de la categoria 
+            $categoria = Categoria::where("nombre",'like',"%$buscar%")->first();
+
+            //busqueda de lod articulos
+            $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+
+        } else {
+           $articulos = Articulo::buscarpor($tipo, $buscar)->paginate(10);  
+        }
+
+           
+        
+
+        
+
+        return view('articulo.index', compact('articulos','buscar','tipo'))
             ->with('i', (request()->input('page', 1) - 1) * $articulos->perPage());
     }
 
@@ -34,6 +55,7 @@ class ArticuloController extends Controller
     {
         $articulo = new Articulo();
         
+        //se crea un array con el nombre y el id de las categorias para pasarlo a la vista
         $categorias = Categoria::all()->pluck('nombre', 'id');
         
         return view('articulo.create', compact('articulo','categorias'));

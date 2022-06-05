@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
   
 use Illuminate\Http\Request;
 use App\Models\Articulo;
-  
+use App\Models\Pedido;
+use App\Models\Categoria;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 class ProductController extends Controller
 {
     /**
@@ -12,10 +16,29 @@ class ProductController extends Controller
      *
      * @return response()
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Articulo::all();
-        return view('products', compact('products'));
+        
+
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        //metodo para buscar por categorias, solo se buscara por la categoria encontrada en la busqueda.
+        if ($tipo == "categoria" && $buscar != ""){
+            
+            //busquedad de la categoria 
+            $categoria = Categoria::where("nombre",'like',"%$buscar%")->first();
+
+            //busqueda de lod articulos
+            $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+
+        } else {
+           $articulos = Articulo::buscarpor($tipo, $buscar)->paginate(10);  
+        }
+
+        return view('products', compact('articulos','buscar','tipo'))
+            ->with('i', (request()->input('page', 1) - 1) * $articulos->perPage());
     }
   
     /**
@@ -87,10 +110,53 @@ class ProductController extends Controller
     }
 
     public function realizarPedido(Request $request)
-    {
+    {   
+        $cart = session()->get('cart');
+        $user = Auth::user();
+        $pedido = new Pedido();
+        $pedido->user_id = $user->id;
+
+        $total = 0;
+
+        foreach ($cart as $articulo){
+            $total += $articulo['price'] * $articulo['quantity'];
+        }
+
+        $pedido->precio = $total;
+        $pedido->estado = "Pendiente";
+        $pedido->fecha = Carbon::now()->toDateString();
+        $pedido->modo_pago = "Pago en local";
+        $pedido->ticket = $this->crearTicket();
+        $pedido->save();
         session()->forget('cart');
             
-        return view('cart');    
+        return redirect()->route('carrito');    
         
+    }
+    
+
+    public function crearTicket (){
+
+        $cart = session()->get('cart');
+
+        $ticket = "<h1>Casa Juan</h1>";
+        $ticket = $ticket."<h2>Resumen de compra</h2>";
+        $ticket = $ticket.'<table border="1"><thead><tr><th>Nombre</th><th>Precio</th><th>Cantidad</th><th>Precio total</th></tr></thead>';
+        $precioTotal = 0;
+        foreach ($cart as $articulo){
+            $precioTotal += $articulo['price'] * $articulo['quantity'];
+            $ticket = $ticket."<tbody><tr>";
+            $ticket = $ticket."<td>".$articulo['name']."</td>";
+            $ticket = $ticket."<td>".$articulo['price']." €</td>";
+            $ticket = $ticket."<td>".$articulo['quantity']."</td>";
+            $ticket = $ticket."<td>".$articulo['price'] * $articulo['quantity']." €</td>";
+            $ticket = $ticket."<tr><tbody>";
+
+        }
+        $ticket = $ticket."</table>";
+        $ticket = $ticket."<h2>Precio total: ".$precioTotal." €</h2>";
+
+        return $ticket;
+
     }
 }

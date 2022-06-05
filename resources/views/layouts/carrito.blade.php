@@ -7,8 +7,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <style>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+	  <title>@hasSection('title') @yield('title') | @endif {{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    
+    
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <style>
+    
         
         html {
       min-height: 100%;
@@ -104,6 +120,9 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
     border:10px solid transparent;
     border-bottom-color:#fff;
 }
+
+
+
     </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -124,7 +143,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                   <div class="row">
                       
                               <button type="button" class="btn btn-info float-right" data-toggle="dropdown">
-                                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrito <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                               </button>
                               <div class="col-lg-3 col-sm-3 col-3 main-section">
                               <div class="dropdown">
@@ -138,7 +157,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                           @php $total += $details['price'] * $details['quantity'] @endphp
                                       @endforeach
                                       <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                          <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                                          <p>Total: <span class="text-info"> {{ $total }} €</span></p>
                                       </div>
                                   </div>
                                   @if(session('cart'))
@@ -149,14 +168,14 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                               </div>
                                               <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                                   <p>{{ $details['name'] }}</p>
-                                                  <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                                  <span class="price text-info">{{ $details['price'] }} €</span> <span class="count"> Cantidad:{{ $details['quantity'] }}</span>
                                               </div>
                                           </div>
                                       @endforeach
                                   @endif
                                   <div class="row">
                                       <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                          <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                                          <a href="{{ route('cart') }}" class="btn btn-primary btn-block">Ver Carrito</a>
                                       </div>
                                   </div>
                               </div>
@@ -241,6 +260,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
         </nav>
   
 <br/>
+
 <div class="container">
   
     @if(session('success'))

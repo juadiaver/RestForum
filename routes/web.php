@@ -107,9 +107,10 @@ Route::get('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::cla
 
 Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editado'])->name('reservaCliente.editar')->middleware('auth');
 
-Route::get('/carrito', [ProductController::class, 'index']);  
-Route::get('cart', [ProductController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
-Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
-Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
-Route::post('/cart', [ProductController::class, 'realizarPedido'])->name('realizarPedido.cart');
+//rutas para carro de compra
+Route::get('/carrito', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
+Route::get('cart', [ProductController::class, 'cart'])->name('cart')->middleware('auth');
+Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart')->middleware('auth');
+Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart')->middleware('auth');
+Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart')->middleware('auth');
+Route::post('/cart', [ProductController::class, 'realizarPedido'])->name('realizarPedido.cart')->middleware('auth');

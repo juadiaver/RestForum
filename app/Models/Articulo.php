@@ -62,5 +62,10 @@ class Articulo extends Model
         return $this->belongsToMany(Venta::class , 'articulo_venta')->withPivot('cantidad');
     }
     
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+    	if ( ($tipo) && ($buscar) ) {
+    		return $query->where($tipo,'like',"%$buscar%");
+    	}
+    }
 
 }

@@ -1,12 +1,12 @@
 @extends('layouts.carrito')
   
 @section('content')
-<table id="cart" class="table table-hover table-condensed">
+<table id="cart" class="">
     <thead>
         <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
+            <th style="width:50%">Producto</th>
+            <th style="width:10%">Precio</th>
+            <th style="width:8%">Cantidad</th>
             <th style="width:22%" class="text-center">Subtotal</th>
             <th style="width:10%"></th>
         </tr>
@@ -17,7 +17,7 @@
             @foreach(session('cart') as $id => $details)
                 @php $total += $details['price'] * $details['quantity'] @endphp
                 <tr data-id="{{ $id }}">
-                    <td data-th="Product">
+                    <td >
                         <div class="row">
                             <div class="col-sm-3 hidden-xs"><img src="/storage/{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div>
                             <div class="col-sm-9">
@@ -25,13 +25,13 @@
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">${{ $details['price'] }}</td>
+                    <td data-th="Price">{{ $details['price'] }} €</td>
                     <td data-th="Quantity">
                         <input type="number"  value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
-                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} €</td>
                     <td class="actions" data-th="">
-                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
+                        <button class="btn btn-danger  remove-from-cart">X</button>
                     </td>
                 </tr>
             @endforeach
@@ -39,14 +39,15 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
+            <td colspan="5" class="text-right"><h3><strong>Total {{ $total }} €</strong></h3></td>
         </tr>
         <tr>
             <td colspan="5" class="text-right">
-                <td colspan="5" class="text-right">
                     <form action="{{ route('realizarPedido.cart') }}" method="POST">						 
                         @csrf
-                        <button class="btn btn-success" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
+                        <div class="float-right">
+                        <a class="btn btn-primary" href="{{ route('carrito') }}"> Volver</a>
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
                         </div>
                         </form>
                 </td>    

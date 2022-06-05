@@ -29,7 +29,26 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    <nav class="navbar navbar-light float-right">
+                        <form class="form-inline">
+                      
+                          <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                            <option>nombre</option>
+                            <option>categoria</option>
+                            <option>activo</option>
+                            <option>precio</option>
+                            
+                          </select>
+                      
+                      
+                          <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por ..." aria-label="Search">
+                      
+                      
+                          
+                          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
 
+                      </nav>    
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -85,7 +104,8 @@
                         </div>
                     </div>
                 </div>
-                {!! $articulos->links() !!}
+                {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!} 
+
             </div>
         </div>
     </div>

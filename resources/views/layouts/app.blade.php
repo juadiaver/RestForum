@@ -60,7 +60,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
 }
 .btn{
     border:0px;
-    margin:10px 0px;
+    
     box-shadow:none !important;
 }
 .dropdown .dropdown-menu{
@@ -134,11 +134,13 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                @auth
+   
                 <div class="container">
                   <div class="row">
                       
                               <button type="button" class="btn btn-info float-right" data-toggle="dropdown">
-                                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carro <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                               </button>
                               <div class="col-lg-3 col-sm-3 col-3 main-section">
                               <div class="dropdown">
@@ -152,7 +154,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                           @php $total += $details['price'] * $details['quantity'] @endphp
                                       @endforeach
                                       <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                          <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                                          <p>Total: <span class="text-info">{{ $total }} €</span></p>
                                       </div>
                                   </div>
                                   @if(session('cart'))
@@ -163,14 +165,14 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                               </div>
                                               <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                                   <p>{{ $details['name'] }}</p>
-                                                  <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                                  <span class="price text-info">{{ $details['price'] }} €</span> <span class="count"> Cantidad:{{ $details['quantity'] }}</span>
                                               </div>
                                           </div>
                                       @endforeach
                                   @endif
                                   <div class="row">
                                       <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                          <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                                          <a href="{{ route('cart') }}" class="btn btn-primary btn-block">Ver carrito</a>
                                       </div>
                                   </div>
                               </div>
@@ -178,6 +180,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                       </div>
                   </div>
               </div>
+              @endauth
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
 					@auth()
