@@ -35,7 +35,7 @@ Route::get('/', function () {
 
     $articulos = Articulo::all();
     
-    return view('welcome','articulos');
+    return view('welcome',compact('articulos'));
 });
 
 
