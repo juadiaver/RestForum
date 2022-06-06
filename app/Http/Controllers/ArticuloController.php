@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 /**
  * Class ArticuloController
@@ -76,6 +78,7 @@ class ArticuloController extends Controller
         if ($imagen = $request->file('imagen')) {
             $direccion = str_replace("public/","",$imagen->store('public/Productos'));
             $input['imagen'] = "$direccion";
+            Storage::disk('s3')->put($request['nombre'], file_get_contents($input['imagen']));
         } else {
             $input['imagen'] = "sinimagen.png";
         }
