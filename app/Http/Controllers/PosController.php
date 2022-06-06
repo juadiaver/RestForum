@@ -32,7 +32,7 @@ class PosController extends Controller
     {
 
         $mesas = Mesa::all();
-        $caja = Caja::all()->sortByDesc('fechaApertura')->sortByDesc('horaApertura')->take(1)->first();
+        $caja = Caja::all()->sortByDesc('fechaApertura')->sortByDesc('horaApertura')->last();
 
 
 

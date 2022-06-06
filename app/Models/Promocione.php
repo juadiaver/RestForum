@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Promocion
+ * Class Promocione
  *
  * @property $id
  * @property $codigo
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Promocion extends Model
+class Promocione extends Model
 {
     
     static $rules = [

@@ -5,7 +5,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\MesaController;
-use App\Http\Controllers\ControllerCalendar;
+use App\Http\Controllers\PromocioneController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartaController;
 use App\Http\Controllers\PedidoController;
@@ -88,6 +88,8 @@ Route::resource('/mesas', MesaController::class)->middleware('auth')->middleware
 Route::resource('/ventas', VentaController::class)->middleware('auth')->middleware('admin');
 
 Route::resource('/pedidos', PedidoController::class)->middleware('auth')->middleware('admin');
+
+Route::resource('/promociones', PromocioneController::class)->middleware('auth')->middleware('admin');
 
 Route::resource('/reservas', ReservaController::class)->middleware('auth')->middleware('admin');
 

@@ -32,11 +32,11 @@
                 <div class="card " >
                     <div class="text-center">
                         <br>
-                        <h2>Bienvenidos a CASA JUAN</strong></h2>
+                        <h1>Bienvenidos a CASA JUAN</strong></h1>
                         <br>
                         <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Reservas</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Productos</a>
                         
                         </div>
 
@@ -44,7 +44,7 @@
 
                         <div class="float-center d-block d-sm-none">
                         
-                            <a class="btn btn-dark btn-lg btn-block" href="{{  route('reservaCliente.lista') }}"> Pedidos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{  route('reservaCliente.lista') }}"> Reservas</a>
                         </div>
 
                         <br>
@@ -58,7 +58,7 @@
                             <div class="card-columns">
                                 <div class="card">
                                     <a href="/articulos">
-                                        <img class="card-img-top" src="storage\producto-servicio.jpg" alt="Card image cap"
+                                        <img class="card-img-top" src="storage\articulos.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Productos</h2></div>
@@ -72,21 +72,21 @@
                                 </div>
                                 <div class="card">
                                     <a href="/carrito">
-                                        <img class="card-img-top" src="storage\restaurante.jpg" alt="Card image cap"
+                                        <img class="card-img-top" src="storage\carrito.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Pedidos</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="/mesas">
-                                        <img class="card-img-top" src="storage\mesas.jpg" alt="Card image cap" width="400"
+                                        <img class="card-img-top" src="storage\mesa.png" alt="Card image cap" width="400"
                                             height="200">
                                     </a>
                                     <div class="text-center"><h2>Mesas Libres</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="/ventas">
-                                        <img class="card-img-top" src="storage\ventas.jpg" alt="Card image cap"
+                                        <img class="card-img-top" src="storage\promocion.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Promociones</h2></div>
@@ -104,7 +104,7 @@
                     <div class="container d-none d-sm-block">
                         <div class="text-center">
                             <br>
-                            <h2>Ultimos productos</strong></h2>
+                            <h1>Ultimos productos</strong></h1>
                             <br>
                         </div>
                         <div class="card-columns">

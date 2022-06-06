@@ -12,7 +12,7 @@
                         </div>
                     @endif
             <div class="card-body ">
-
+                {{$caja->id}}
                 @if($caja->abierta == 'Abierta')
                 <div class="card " style="width: 20rem;">
                     <a class="btn btn-secondary" href="{{ route('pos.cerrarCaja',$caja->id) }}"> Cerrar Caja</a>

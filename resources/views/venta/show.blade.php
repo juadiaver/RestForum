@@ -14,7 +14,7 @@
                             <span class="card-title">Show Venta</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-danger" href="{{ route('pos.pdf',$venta->id) }}" target="blank"> Generar pdf</a>
+                            <a class="btn btn-danger" href="{{ route('pos.pdf',$venta->id) }}" target="blank"> Generar ticket</a>
                             <a class="btn btn-primary" href="{{ route('ventas.index') }}"> Back</a>
                         </div>
                     </div>
@@ -32,10 +32,6 @@
                         <div class="form-group">
                             <strong>Modo Pago:</strong>
                             {{ $venta->modo_pago }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Ticket:</strong>
-                            {{ $venta->ticket }}
                         </div>
 
                     </div>

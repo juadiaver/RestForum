@@ -23,11 +23,12 @@
     }
     .box-day{
       border:1px solid #E3E9E5;
-      height:150px;
+      height:100px;
     }
+    
     .box-dayoff{
       border:1px solid #E3E9E5;
-      height:150px;
+      height:100px;
       background-color: #ccd1ce;
     }
     </style>
@@ -61,15 +62,24 @@
         </div>
 
       </div>
-      <div class="row">
-        <div class="col header-col">Lunes</div>
-        <div class="col header-col">Martes</div>
-        <div class="col header-col">Miercoles</div>
-        <div class="col header-col">Jueves</div>
-        <div class="col header-col">Viernes</div>
-        <div class="col header-col">Sabado</div>
-        <div class="col header-col">Domingo</div>
+      <div class="row ">
+        <div class="col header-col d-none d-sm-block">Lunes</div>
+        <div class="col header-col d-none d-sm-block">Martes</div>
+        <div class="col header-col d-none d-sm-block">Miercoles</div>
+        <div class="col header-col d-none d-sm-block">Jueves</div>
+        <div class="col header-col d-none d-sm-block">Viernes</div>
+        <div class="col header-col d-none d-sm-block">Sabado</div>
+        <div class="col header-col d-none d-sm-block">Domingo</div>
+        <div class="col header-col d-block d-sm-none">L</div>
+        <div class="col header-col d-block d-sm-none">M</div>
+        <div class="col header-col d-block d-sm-none">M</div>
+        <div class="col header-col d-block d-sm-none">J</div>
+        <div class="col header-col d-block d-sm-none">V</div>
+        <div class="col header-col d-block d-sm-none">S</div>
+        <div class="col header-col d-block d-sm-none">D</div>
       </div>
+
+
       <!-- inicio de semana -->
       @foreach ($data['calendar'] as $weekdata)
         <div class="row">
@@ -86,7 +96,8 @@
               <div>
             @if ($dayweek['pendientes']->count() >= 1)
             
-            <button class="badge badge-danger" type="button" data-toggle="modal" data-target="#Pendiente{{ $day }}">{{$dayweek['pendientes']->count() }}  Pendientes</button>
+            <button class="badge badge-danger d-none d-sm-block" type="button" data-toggle="modal" data-target="#Pendiente{{ $day }}">{{$dayweek['pendientes']->count() }}  Pendientes</button>
+            <button class="badge badge-danger d-block d-sm-none" type="button" data-toggle="modal" data-target="#Pendiente{{ $day }}">{{$dayweek['pendientes']->count() }}</button>
             <div class="modal fade" id="Pendiente{{ $day }}" tabindex="-1" role="dialog" aria-labelledby="EjemploModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -114,8 +125,8 @@
             @endif
 
             @if ($dayweek['confirmadas']->count() >= 1)
-            <button class="badge badge-primary" type="button" data-toggle="modal" data-target="#Confirmada{{ $day }}">{{$dayweek['confirmadas']->count() }} Confirmadas</button>
-
+            <button class="badge badge-primary d-none d-sm-block" type="button" data-toggle="modal" data-target="#Confirmada{{ $day }}">{{$dayweek['confirmadas']->count() }} Confirmadas</button>
+            <button class="badge badge-primary d-block d-sm-none" type="button" data-toggle="modal" data-target="#Confirmada{{ $day }}">{{$dayweek['confirmadas']->count() }} </button>
             <div class="modal fade" id="Confirmada{{ $day }}" tabindex="-1" role="dialog" aria-labelledby="EjemploModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -143,8 +154,8 @@
             @endif
 
             @if ($dayweek['modificadas']->count() >= 1)
-                <button class="badge badge-secondary" type="button" data-toggle="modal" data-target="#Modificada{{ $day }}">{{$dayweek['modificadas']->count() }} Modificadas</button>
-
+                <button class="badge badge-secondary d-none d-sm-block" type="button" data-toggle="modal" data-target="#Modificada{{ $day }}">{{$dayweek['modificadas']->count() }}  Modificadas</button>
+            <button class="badge badge-secondary d-block d-sm-none" type="button" data-toggle="modal" data-target="#Modificada{{ $day }}">{{$dayweek['modificadas']->count() }}</button>
                 <div class="modal fade" id="Modificada{{ $day }}" tabindex="-1" role="dialog" aria-labelledby="EjemploModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">

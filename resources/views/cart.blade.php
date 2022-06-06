@@ -1,6 +1,8 @@
 @extends('layouts.carrito')
   
 @section('content')
+@if (count((array) session('cart'))>=1)
+    
 <table id="cart" class="">
     <thead>
         <tr>
@@ -40,24 +42,71 @@
     <tfoot>
         <tr>
             <td colspan="5" class="text-right"><h3><strong>Total {{ $total }} €</strong></h3></td>
+            
+        </tr>
+        <tr>
+            @if (session()->has('nombrePromocion'))
+                @php
+                    $porcentaje = (int)session('porcentaje');
+                @endphp
+            <td colspan="5" class="text-right"><h3><strong>Total con promocion: {{ $total - $total*$porcentaje/100 }} €</strong></h3></td>
+            @endif
         </tr>
         <tr>
             <td colspan="5" class="text-right">
+                @if (session()->has('nombrePromocion'))
+                    Promocion activa: {{session('nombrePromocion')}}
+                    <form action="{{ route('realizarPedido.cart') }}" method="POST">						 
+                        @csrf
+                        
+                        <div class="float-right">
+                        <button class="btn btn-danger" name="realizarPedido" value="quitarPromocion" type="submit" > Quitar Promocion </button>  
+                        </div>
+                    </form>
+                @else
+                    <form action="{{ route('realizarPedido.cart') }}" method="POST">						 
+                        @csrf
+                        <br>
+                        <div class="float-right">
+                            @if (session()->has('promocionNoEncontrada'))
+                                <h5>La promocion: {{session('promocionNoEncontrada')}} no existe</h5>
+                            @else
+                                <h5>Tienes Promociones?, aplicalas...</h5>
+                            @endif
+                            
+                        <input type="text" name="codigoPromocion" class="form-control"> 
+                        <button class="btn btn-danger" name="realizarPedido" value="promocion" type="submit" > VALIDAR </button>  
+                        </div>
+                    </form>
+                @endif
+           
+           </td> 
+            </tr>       
+            <tr>            
+                   
+                <td colspan="5" class="text-right">
                     <form action="{{ route('realizarPedido.cart') }}" method="POST">						 
                         @csrf
                         <div class="float-right">
                         <a class="btn btn-primary" href="{{ route('carrito') }}"> Volver</a>
-                        <button class="btn btn-danger" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
+                        <button class="btn btn-danger" name="realizarPedido" value="ok" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
                         </div>
                         </form>
-                </td>    
+                        
+                </td> 
                 
                 
-                
-            </td>
+            
         </tr>
     </tfoot>
 </table>
+@else
+<div class="text-center">
+    <h1 class="justify-center">No hay articulos en al carro</h1>
+    <a class="btn btn-primary" href="{{ route('carrito') }}"> Volver</a>
+</div>
+@endif
+
 @endsection
   
 @section('scripts')

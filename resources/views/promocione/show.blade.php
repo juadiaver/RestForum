@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $promocion->name ?? 'Show Promocion' }}
+    {{ $promocione->name ?? 'Show Promocione' }}
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Promocion</span>
+                            <span class="card-title">Show Promocione</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('promocions.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('promociones.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -22,19 +22,19 @@
                         
                         <div class="form-group">
                             <strong>Codigo:</strong>
-                            {{ $promocion->codigo }}
+                            {{ $promocione->codigo }}
                         </div>
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $promocion->nombre }}
+                            {{ $promocione->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Descuento:</strong>
-                            {{ $promocion->descuento }}
+                            {{ $promocione->descuento }}
                         </div>
                         <div class="form-group">
                             <strong>Activo:</strong>
-                            {{ $promocion->activo }}
+                            {{ $promocione->activo }}
                         </div>
 
                     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Articulo;
 use App\Models\Pedido;
 use App\Models\Categoria;
+use App\Models\Promocione;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -47,6 +48,11 @@ class ProductController extends Controller
      * @return response()
      */
     public function cart()
+    {
+        return view('cart');
+    }
+
+    public function promociones()
     {
         return view('cart');
     }
@@ -111,16 +117,26 @@ class ProductController extends Controller
 
     public function realizarPedido(Request $request)
     {   
-        $cart = session()->get('cart');
-        $user = Auth::user();
-        $pedido = new Pedido();
-        $pedido->user_id = $user->id;
 
-        $total = 0;
+        if ($request['realizarPedido']=='ok') {
+            $cart = session()->get('cart');
+            $user = Auth::user();
+            $pedido = new Pedido();
+            $pedido->user_id = $user->id;
 
-        foreach ($cart as $articulo){
+            $total = 0;
+        if (session()->has('nombrePromocion')) {
+            foreach ($cart as $articulo){
+                $total += $articulo['price'] * $articulo['quantity'];
+            }
+            $total = $total - $total*(int)session('porcentaje')/100;
+        } else {
+            foreach ($cart as $articulo){
             $total += $articulo['price'] * $articulo['quantity'];
+            }
         }
+            
+        
 
         $pedido->precio = $total;
         $pedido->estado = "Pendiente";
@@ -129,8 +145,37 @@ class ProductController extends Controller
         $pedido->ticket = $this->crearTicket();
         $pedido->save();
         session()->forget('cart');
+        session()->forget('nombrePromocion');
+        session()->forget('porcentaje');
+        session()->forget('promocionNoEncontrada');
             
-        return redirect()->route('carrito');    
+        return redirect()->route('carrito'); 
+        } else {
+            if ($request['realizarPedido']=='quitarPromocion') {
+                
+                session()->forget('nombrePromocion');
+                session()->forget('porcentaje');
+
+                return view('cart');
+
+            } else {
+
+                $codigoPromocion = $request['codigoPromocion'];
+
+                $promocion = Promocione::where('codigo', $codigoPromocion)->first();
+                
+                if ($promocion != null) {
+                    session()->forget('promocionNoEncontrada');
+                    session(['nombrePromocion' => $promocion->nombre,'porcentaje' => $promocion->descuento ]);
+                    return view('cart');
+                } else {
+                    session(['promocionNoEncontrada' => $request['codigoPromocion']]);
+                    return view('cart');
+                }
+                
+            }
+  
+        }        
         
     }
     
@@ -154,7 +199,15 @@ class ProductController extends Controller
 
         }
         $ticket = $ticket."</table>";
-        $ticket = $ticket."<h2>Precio total: ".$precioTotal." €</h2>";
+        if (session()->has('nombrePromocion')) {
+            $precioPromocion = $precioTotal - $precioTotal*(int)session('porcentaje')/100;
+            $ticket = $ticket."<h2>Total: ".$precioTotal." €</h2>";
+            $ticket = $ticket."<h2>Promocion: ".session('nombrePromocion')."</h2>";
+            $ticket = $ticket."<h2>Subtotal: ".$precioPromocion." €</h2>";
+        } else {
+            $ticket = $ticket."<h2>Precio Total: ".$precioTotal." €</h2>";
+
+        }
 
         return $ticket;
 

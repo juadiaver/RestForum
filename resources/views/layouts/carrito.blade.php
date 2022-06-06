@@ -173,11 +173,14 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                           </div>
                                       @endforeach
                                   @endif
+                                  @if(count((array) session('cart'))>=1)
                                   <div class="row">
                                       <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
                                           <a href="{{ route('cart') }}" class="btn btn-primary btn-block">Ver Carrito</a>
                                       </div>
-                                  </div>
+                                  </div>    
+                                  @endif
+                                  
                               </div>
                           </div>
                       </div>
