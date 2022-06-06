@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
 
-header('Access-Control-Allow-Origin: *');
-header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
 
 
 /*
@@ -34,8 +32,10 @@ header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
 */
 
 Route::get('/', function () {
+
+    $articulos = Articulo::all();
     
-    return view('welcome');
+    return view('welcome','articulos');
 });
 
 
