@@ -58,7 +58,7 @@
                             <div class="card-columns">
                                 <div class="card">
                                     <a href="/articulos">
-                                        <img class="card-img-top" src="https://drive.google.com/file/d/1TipCizXDRXSN7DpmImJD5Hb5naTwkAJD/view?usp=sharing" alt="Card image cap"
+                                        <img class="card-img-top" src="https://www.dropbox.com/home/Capturas%20de%20pantalla?preview=Captura+de+pantalla+2015-05-04+03.26.43.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Productos</h2></div>
@@ -109,12 +109,10 @@
                         </div>
                         <div class="card-columns">
                             
-                        
-                    
-                        </div>
-                        <br>
-                        </div>
-                    </div>
+                        @foreach ($articulos as $articulo)
+                           
+                                                
+          </div>
                 </div>
             </div>
         </div>
