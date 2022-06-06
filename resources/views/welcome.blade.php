@@ -58,7 +58,7 @@
                             <div class="card-columns">
                                 <div class="card">
                                     <a href="/articulos">
-                                        <img class="card-img-top" src="storage\articulos.png" alt="Card image cap"
+                                        <img class="card-img-top" src="public\storage\articulos.png" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Productos</h2></div>
