@@ -32,10 +32,8 @@ use App\Models\Articulo;
 */
 
 Route::get('/', function () {
-    $articulos = Articulo::latest()
-     ->take(10)
-     ->get();
-    return view('welcome', compact('articulos'));
+    
+    return view('welcome');
 });
 
 
