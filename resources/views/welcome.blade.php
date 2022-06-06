@@ -109,7 +109,8 @@
                         </div>
                         <div class="card-columns">
                             
-                        @foreach ($articulos as $articulo)
+                        
+
                            
                                                 
           </div>
