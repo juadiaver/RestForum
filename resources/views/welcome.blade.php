@@ -109,17 +109,7 @@
                         </div>
                         <div class="card-columns">
                             
-                        @foreach ($articulos as $articulo)
-                           
-                        <div class="card">
-                            <a href="/articulos">
-                                <img class="card-img-top" src="/storage/{{$articulo->imagen}}" alt="Card image cap"
-                                    width="400" height="200">
-                            </a>
-                            <div class="text-center"><h2>{{$articulo->nombre}}</h2></div>
-                        </div>
                         
-                        @endforeach 
                     
                         </div>
                         <br>
