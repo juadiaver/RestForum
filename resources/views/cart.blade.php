@@ -1,8 +1,10 @@
 @extends('layouts.carrito')
   
 @section('content')
+
+<div class="container-fluid"> 
 @if (count((array) session('cart'))>=1)
-    
+   
 <table id="cart" class="">
     <thead>
         <tr>
@@ -100,13 +102,17 @@
         </tr>
     </tfoot>
 </table>
+<br>
+<br>
+<br>
+<br>
 @else
 <div class="text-center">
     <h1 class="justify-center">No hay articulos en al carro</h1>
     <a class="btn btn-primary" href="{{ route('carrito') }}"> Volver</a>
 </div>
 @endif
-
+</div>
 @endsection
   
 @section('scripts')

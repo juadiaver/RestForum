@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('descuento') }}
-            {{ Form::number('descuento', $promocione->descuento, ['class' => 'form-control' . ($errors->has('descuento') ? ' is-invalid' : ''), 'placeholder' => 'Descuento']) }}
+            {{ Form::number('descuento', $promocione->descuento, ['class' => 'form-control','step'=>'any' . ($errors->has('descuento') ? ' is-invalid' : ''), 'placeholder' => 'Descuento']) }}
             {!! $errors->first('descuento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

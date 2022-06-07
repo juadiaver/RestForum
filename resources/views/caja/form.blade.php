@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('dineroInicial') }}
-            {{ Form::text('dineroInicial', $caja->dineroInicial, ['class' => 'form-control' . ($errors->has('dineroInicial') ? ' is-invalid' : ''), 'placeholder' => 'Dineroinicial']) }}
+            {{ Form::number('dineroInicial', $caja->dineroInicial, ['class' => 'form-control','step'=>'any' . ($errors->has('dineroInicial') ? ' is-invalid' : ''), 'placeholder' => 'Dineroinicial']) }}
             {!! $errors->first('dineroInicial', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

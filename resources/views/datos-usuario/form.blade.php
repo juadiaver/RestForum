@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('edad') }}
-            {{ Form::text('edad', $datosUsuario->edad, ['class' => 'form-control' . ($errors->has('edad') ? ' is-invalid' : ''), 'placeholder' => 'Edad']) }}
+            {{ Form::number('edad', $datosUsuario->edad, ['class' => 'form-control' . ($errors->has('edad') ? ' is-invalid' : ''), 'placeholder' => 'Edad']) }}
             {!! $errors->first('edad', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
