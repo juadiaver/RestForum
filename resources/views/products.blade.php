@@ -9,14 +9,8 @@
         grid-gap: 50px;
       
     }
-    @media only screen and (max-width: 768px) {
-   #producto {
-      margin-left:0 ;
-      margin-right:0 ;
-      padding-left:0 ;
-      padding-right:0 ;
-   }
-}
+    
+
     
     
   </style>
