@@ -87,8 +87,8 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
     padding:15px 0px;
 }
 .cart-detail-img img{
-    width:100%;
-    height:100%;
+    width:70px;
+    height:70px;
     padding-left:15px;
 }
 .cart-detail-product p{
