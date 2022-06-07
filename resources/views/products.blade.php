@@ -1,22 +1,6 @@
 @extends('layouts.app')
 <style>
-    .producto {
-        padding-right: 300px;
-        padding-left: 300px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
-        grid-auto-rows: minmax(100px, auto);
-        grid-gap: 50px;
-      
-    }
-    @media only screen and (max-width: 768px) {
-   .producto {
-      margin-left:0 ;
-      margin-right:0 ;
-      padding-left:0 ;
-      padding-right:0 ;
-   }
-}
+    
 
 html {
       min-height: 100%;
