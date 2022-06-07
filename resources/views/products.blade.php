@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.carrito')
 <style>
     .cards {
         padding-right: 300px;
