@@ -113,7 +113,7 @@
                            
                         <div class="card">
                             <a href="/articulos">
-                                <img class="card-img-top" src="/storage/{{$articulo->imagen}}" alt="Card image cap"
+                                <img class="card-img-top" src="{{Storage::disk('s3')->url($articulo->imagen)}}" alt="Card image cap"
                                     width="400" height="200">
                             </a>
                             <div class="text-center"><h2>{{$articulo->nombre}}</h2></div>

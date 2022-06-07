@@ -76,10 +76,9 @@ class ArticuloController extends Controller
         $input = $request->all();
 
         if ($imagen = $request->file('imagen')) {
-            $direccion = str_replace("public/","",$imagen->store('public/Productos'));
             
             Storage::disk('s3')->put($request['nombre'], file_get_contents($input['imagen']));
-            $input['imagen'] = "$direccion";
+            $input['imagen'] = $request['nombre'];
         } else {
             $input['imagen'] = "sinimagen.png";
         }
