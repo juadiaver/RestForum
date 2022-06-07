@@ -82,8 +82,8 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
     padding:15px 0px;
 }
 .cart-detail-img img{
-    width:100%;
-    height:100%;
+    width:70px;
+    height:70px;
     padding-left:15px;
 }
 .cart-detail-product p{
@@ -160,7 +160,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                   @if(session('cart'))
                                       @foreach(session('cart') as $id => $details)
                                           <div class="row cart-detail">
-                                              <div class="col-lg-4 col-sm-4 col-4 cart-detail-img d-none d-sm-block" >
+                                              <div class="col-lg-4 col-sm-4 col-4 cart-detail-img " >
                                                   <img src="{{Storage::disk('s3')->url($details['image'])}} "  />
                                               </div>
                                               <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
