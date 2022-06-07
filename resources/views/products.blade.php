@@ -1,19 +1,11 @@
 @extends('layouts.app')
 <style>
-    #producto {
-        padding-right: 300px;
-        padding-left: 300px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
-        grid-auto-rows: minmax(100px, auto);
-        grid-gap: 50px;
-      
-    }
+    
     
 
     
     
-  </style>
+</style>
    
 @section('content')
 
