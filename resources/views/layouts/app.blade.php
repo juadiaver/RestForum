@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	  <title>@hasSection('title') @yield('title') | @endif {{ config('app.name', 'Laravel') }}</title>
+	  <title>@hasSection('title') @yield('title') | @endif {{ config('app.name', 'CASA JUAN') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

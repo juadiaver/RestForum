@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <style>
-    .cards-producto {
+    .producto {
         padding-right: 300px;
         padding-left: 300px;
         display: grid;
@@ -10,7 +10,7 @@
       
     }
     @media only screen and (max-width: 768px) {
-   .cards-producto {
+   .producto {
       margin-left:0 ;
       margin-right:0 ;
       padding-left:0 ;
@@ -42,7 +42,7 @@
         </div> 
 
         
-        <main class="cards-producto">
+        <main class="producto">
             
         @foreach($articulos as $product)
             <article class="card">
