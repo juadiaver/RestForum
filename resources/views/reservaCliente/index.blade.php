@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
+                <div class="card " >
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
@@ -29,7 +29,7 @@
                         </div>
                     @endif
 
-                    <div class="card-body">
+                    <div class="card-body d-none d-sm-block" >
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
@@ -69,7 +69,34 @@
                             </table>
                         </div>
                     </div>
+                <div class="row">    
+                    <div class="col-sm-6 d-block d-sm-none">
+                        @foreach ($reservas as $reserva)
+                        @php
+                            if (condition) {
+                                # code...
+                            } else {
+                                # code...
+                            }
+                            
+                        @endphp
+                        <div class="card  bg-primary mb-3 ">
+                            <h4 class="card-header">{{ $reserva->fecha }}</h4>
+                            <div class="card-body bg-white">
+                            <br>
+                              <h5 class="card-title text-center">{{ $reserva->nombre }} : {{ $reserva->comensales }} PAX</h5>
+                              <h5 class="card-title text-center">Hora : {{ $reserva->hora }}</h5>
+                              <h5 class="card-title text-center">Comentarios : </h5>
+                              <p class="card-text text-center">{{ $reserva->comentarios }}</p>
+                              <a class="btn btn-primary btn-lg btn-block" href="{{ route('reservaCliente.editar',$reserva->id) }}"> Editar</a>
+                            </div>
+                          </div> 
+                        @endforeach
+                    <br>
+                    </div>
+                    <br>
                 </div>
+
                 {!! $reservas->links() !!}
             </div>
         </div>
