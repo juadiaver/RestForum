@@ -77,7 +77,7 @@
                             @endif
                             
                         <input type="text" name="codigoPromocion" class="form-control"> 
-                        <button class="btn btn-danger" name="realizarPedido" value="promocion" type="submit" > VALIDAR </button>  
+                        <button class="btn btn-warning" name="realizarPedido" value="promocion" type="submit" > VALIDAR </button>  
                         </div>
                     </form>
                 @endif
@@ -91,7 +91,7 @@
                         @csrf
                         <div class="float-right">
                         <a class="btn btn-primary" href="{{ route('carrito') }}"> Volver</a>
-                        <button class="btn btn-danger" name="realizarPedido" value="ok" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Pedir </button>   
+                        <button class="btn btn-danger" name="realizarPedido" value="ok" type="submit" onclick="return confirm('Deseas realizar el pedido')||event.preventDefault()"> Realizar pedido </button>   
                         </div>
                         </form>
                         

@@ -32,27 +32,31 @@
                 <div class="card " >
                     <div class="text-center">
                         <br>
-                        <h1>Bienvenidos a CASA JUAN</strong></h1>
-                        <br>
+                        <h1 class="d-block d-sm-none">CASA JUAN</strong></h1>
+                        <h1 class="d-none d-sm-block">Bienvenidos a CASA JUAN</strong></h1>
+                        <br class="d-block d-sm-none">
                         <div class="float-center d-block d-sm-none">
-                        
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Productos</a>
-                        
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/carrito') }}"> Haz tu pedido</a>
                         </div>
-
                         <br>
-
                         <div class="float-center d-block d-sm-none">
-                        
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/carrito') }}"> Productos</a>
+                        </div>
+                        <br>
+                        <div class="float-center d-block d-sm-none">
                             <a class="btn btn-dark btn-lg btn-block" href="{{  route('reservaCliente.lista') }}"> Reservas</a>
                         </div>
-
                         <br>
                         <div class="float-center d-block d-sm-none">
-                        
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/calendar') }}"> Menu</a>
-                        </div>  
-                                     
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/mesas') }}"> Mesas disponibles</a>
+                        </div>              
+                        <br>
+                        <div class="float-center d-block d-sm-none">
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/menus') }}"> Menus y cartas</a>
+                        </div>              
+                        <br><div class="float-center d-block d-sm-none">
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/promociones') }}"> Promociones</a>
+                        </div>              
                         <br>
                         <div class="container d-none d-sm-block">
                             <div class="card-columns">
