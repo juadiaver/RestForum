@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class CategoriaController
@@ -49,10 +50,13 @@ class CategoriaController extends Controller
         $input = $request->all();
 
         if ($imagen = $request->file('imagen')) {
-            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
-            $input['imagen'] = "$direccion";
-        } else{
-            $input['imagen'] = "sinimagen.png";
+            
+            Storage::disk('s3')->put("img".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "img".$request['nombre'];
+        } else {
+            
+            Storage::disk('s3')->put("img".$request['nombre'], Storage::disk('s3')->get("sinimagen.png"));
+            $input['imagen'] = "img".$request['nombre'];
         }
 
         $categoria = Categoria::create($input);
@@ -102,11 +106,9 @@ class CategoriaController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            if (file_exists("storage/".$categoria->imagen) && "storage/".$categoria->imagen!="storage/sinimagen.png") {
-            unlink("storage/".$categoria->imagen);
-            }
-            $direccion = str_replace("public/","",$imagen->store('public/Categorias'));
-            $input['imagen'] = "$direccion";
+            Storage::disk('s3')->delete($categoria->imagen);
+            Storage::disk('s3')->put("img".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "img".$request['nombre'];
         }else{
             unset($input['imagen']);
         }
@@ -127,9 +129,7 @@ class CategoriaController extends Controller
     {
         $categoria = Categoria::find($id);
 
-        if (file_exists("storage/".$categoria->imagen)&& "storage/".$categoria->imagen!="storage/sinimagen.png") {
-            unlink("storage/".$categoria->imagen);
-        }
+        Storage::disk('s3')->delete($categoria->imagen);
 
         $categoria->delete();
 

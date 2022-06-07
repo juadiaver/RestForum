@@ -21,7 +21,7 @@
                 <tr data-id="{{ $id }}">
                     <td >
                         <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="/storage/{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div>
+                            <div class="col-sm-3 hidden-xs"><img src="{{Storage::disk('s3')->url($details['image'])}}" width="100" height="100" class="img-responsive"/></div>
                             <div class="col-sm-9">
                                 <h4 class="nomargin">{{ $details['name'] }}</h4>
                             </div>

@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 mx-auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -22,7 +22,7 @@
                         
                         <div class="form-group">
                             
-                            <img src="/storage/{{ $articulo->imagen }}" width="300px">
+                            <img src="{{Storage::disk('s3')->url($articulo->imagen)}}" width="300px">
                             
                         </div>
 

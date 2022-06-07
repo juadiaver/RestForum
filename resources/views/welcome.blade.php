@@ -58,35 +58,35 @@
                             <div class="card-columns">
                                 <div class="card">
                                     <a href="/articulos">
-                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('datos.png')}}" alt="Card image cap"
+                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('Productos')}}" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Productos</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="{{  route('reservaCliente.lista') }}">
-                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('datos.png')}}" alt="Card image cap"
+                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('Reservas')}}" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Reservas</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="/carrito">
-                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('datos.png')}}" alt="Card image cap"
+                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('Pedidos')}}" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Pedidos</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="/mesas">
-                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('datos.png')}}" alt="Card image cap" width="400"
+                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('Mesas')}}" alt="Card image cap" width="400"
                                             height="200">
                                     </a>
                                     <div class="text-center"><h2>Mesas Libres</h2></div>
                                 </div>
                                 <div class="card">
                                     <a href="/ventas">
-                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('datos.png')}}" alt="Card image cap"
+                                        <img class="card-img-top" src="{{Storage::disk('s3')->url('Promociones')}}" alt="Card image cap"
                                             width="400" height="200">
                                     </a>
                                     <div class="text-center"><h2>Promociones</h2></div>

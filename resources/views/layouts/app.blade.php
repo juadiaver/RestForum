@@ -161,7 +161,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                       @foreach(session('cart') as $id => $details)
                                           <div class="row cart-detail">
                                               <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                                  <img src="/storage/{{$details['image'] }}" />
+                                                  <img src="{{Storage::disk('s3')->url($details['image'])}}" />
                                               </div>
                                               <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                                   <p>{{ $details['name'] }}</p>

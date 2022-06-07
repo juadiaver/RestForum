@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             
-                            <img src="/storage/{{ $restaurante->imagen }}" width="300px">
+                            <img src="{{Storage::disk('s3')->url($restaurante->imagen)}}" width="300px">
                             
                         </div>
 

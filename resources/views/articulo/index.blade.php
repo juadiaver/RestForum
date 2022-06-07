@@ -72,7 +72,7 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-                                            <td><img src="{{Storage::disk('s3')->url($articulo->imagen)}}" width="100px"></td>
+                                            <td><img src="{{Storage::disk('s3')->url($articulo->imagen)}}" width="150" height="100"></td>
 											<td>{{ $articulo->nombre }}</td>
 											<td>{{ $articulo->descripcion }}</td>
 											<td>{{ $articulo->categoria->nombre }}</td>

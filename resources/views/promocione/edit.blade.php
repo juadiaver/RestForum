@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     Update Promocione
@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container-fluid">
         <div class="">
-            <div class="col-md-12">
+            <div class="col-md-6 mx-auto">
 
                 @includeif('partials.errors')
 

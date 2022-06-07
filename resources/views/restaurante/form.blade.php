@@ -22,9 +22,14 @@
             {!! $errors->first('imagen', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
-        <div class="col-md-12 mb-2">
-            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="/storage/{{$restaurante->imagen}} "
-                alt="Sin imagen" style="height: 250px;">
+        <div class="form-group">
+            @if (Storage::disk('s3')->has($restaurante->imagen)==true)
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url($articulo->imagen)}}"
+            alt="Sin imagen" style="max-height: 200px;">
+            @else
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url('sinimagen.png')}}"
+                alt="Sin imagen" style="max-height: 200px;">
+            @endif
         </div>
 
     </div>

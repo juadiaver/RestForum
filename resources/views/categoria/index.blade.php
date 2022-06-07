@@ -50,7 +50,7 @@
                                     @foreach ($categorias as $categoria)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            <td><img src="/storage/{{ $categoria->imagen }}" width="100px"></td>
+                                            <td><img src="{{Storage::disk('s3')->url($categoria->imagen)}}" width="150" height="100"></td>
 											<td>{{ $categoria->nombre }}</td>
 											<td>{{ $categoria->descripcion }}</td>
 											<td>{{ $categoria->activo }}</td>

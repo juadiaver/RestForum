@@ -7,7 +7,7 @@
                 
                 @foreach ($categorias as $categoria)
                 <div class="card" style="width: 11rem;">
-                    <button name="buscar" value="{{$categoria->id }}" type="submit"><img src="/storage/{{$categoria->imagen}}" width="150" height="150"></button>
+                    <button name="buscar" value="{{$categoria->id }}" type="submit"><img src="{{Storage::disk('s3')->url($categoria->imagen)}}" width="150" height="150"></button>
                 </div>   
                 @endforeach
                 </div>
@@ -21,7 +21,7 @@
                
             <div class="card" style="width: 18rem;">
                 
-                <button name="anadir" value="{{$articulo->id }}" type="submit"><img class="card-img-top" src="/storage/{{$articulo->imagen}}" width="200" height="200" alt="Card image cap"></button>
+                <button name="anadir" value="{{$articulo->id }}" type="submit"><img class="card-img-top" src="{{Storage::disk('s3')->url($articulo->imagen)}}" width="200" height="200" alt="Card image cap"></button>
                 <div class="card-body">
                   <h5 class="card-title">{{$articulo->nombre}}</h5>
                 </div>

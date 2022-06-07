@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurante;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 /**
  * Class RestauranteController
  * @package App\Http\Controllers
@@ -94,15 +94,9 @@ class RestauranteController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            if (file_exists("storage/".$restaurante->imagen)) {
-                unlink("storage/".$restaurante->imagen);
-                if ($imagen = $request->file('imagen')) {
-                    $direccion = str_replace("public/","",$imagen->store('public/Restaurante'));
-                    $input['imagen'] = "$direccion";
-                }
-            }
-            $direccion = str_replace("public/","",$imagen->store('public/Restaurante'));
-            $input['imagen'] = "$direccion";
+            Storage::disk('s3')->delete($restaurante->imagen);
+            Storage::disk('s3')->put("img".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "img".$request['nombre'];
         }else{
             unset($input['imagen']);
         }

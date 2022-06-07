@@ -46,7 +46,7 @@
             
         @foreach($articulos as $product)
             <article class="card">
-                <img class="card-img-top" src="/storage/{{$product->imagen}}" alt="Card image cap" width="400" height="200">
+                <img class="card-img-top" src="{{Storage::disk('s3')->url($product->imagen)}}" alt="Card image cap" width="400" height="200">
             <div class="card-header"><h4>{{ $product->nombre }}</h4></div>
             <div class="card-body">
                 <p>Precio : {{ $product->precio }} €</p>

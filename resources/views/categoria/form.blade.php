@@ -23,11 +23,14 @@
             {{ Form::radio('activo', 'NO', false)}}
             
         </div>
-        
         <div class="form-group">
-            
-            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'" src="/storage/{{$categoria->imagen}} "
-                alt="Sin imagen" style="height: 250px;">
+            @if (Storage::disk('s3')->has($categoria->imagen)==true)
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url($categoria->imagen)}}"
+            alt="Sin imagen" style="max-height: 200px;">
+            @else
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url('sinimagen.png')}}"
+                alt="Sin imagen" style="max-height: 200px;">
+            @endif
         </div>
     </div>
     <div class="box-footer mt20">

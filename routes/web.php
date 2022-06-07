@@ -33,7 +33,7 @@ use App\Models\Articulo;
 
 Route::get('/', function () {
 
-    $articulos = Articulo::all();
+    $articulos = Articulo::all()->sortByDesc('created_at')->take(10);
     
     return view('welcome',compact('articulos'));
 });

@@ -77,10 +77,12 @@ class ArticuloController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             
-            Storage::disk('s3')->put($request['nombre'], file_get_contents($input['imagen']));
-            $input['imagen'] = $request['nombre'];
+            Storage::disk('s3')->put("img".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "img".$request['nombre'];
         } else {
-            $input['imagen'] = "sinimagen.png";
+            
+            Storage::disk('s3')->put("img".$request['nombre'], Storage::disk('s3')->get("sinimagen.png"));
+            $input['imagen'] = "img".$request['nombre'];
         }
 
         $articulo = Articulo::create($input);
@@ -132,11 +134,9 @@ class ArticuloController extends Controller
 
         if ($imagen = $request->file('imagen')) {
             // si cambiamos la imagen se borrar del storage la antigua
-            if (file_exists("storage/".$articulo->imagen) && "storage/".$articulo->imagen!="storage/sinimagen.png") {
-            unlink("storage/".$articulo->imagen);
-            }
-            $direccion = str_replace("public/","",$imagen->store('public/Productos'));
-            $input['imagen'] = "$direccion";
+            Storage::disk('s3')->delete($articulo->imagen);
+            Storage::disk('s3')->put("img".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "img".$request['nombre'];
         }else{
             unset($input['imagen']);
         }
@@ -155,9 +155,8 @@ class ArticuloController extends Controller
     public function destroy($id)
     {
         $articulo = Articulo::find($id);
-        if (file_exists("storage/".$articulo->imagen)&& "storage/".$articulo->imagen!="storage/sinimagen.png") {
-            unlink("storage/".$articulo->imagen);
-        }
+        
+        Storage::disk('s3')->delete($articulo->imagen);
 
         $articulo->delete();
 
