@@ -1,11 +1,5 @@
 @extends('layouts.app')
-<style>
-    
 
-    
-    
-  </style>
-   
 @section('content')
 
 <div class="container-fluid">
@@ -24,6 +18,7 @@
 
               <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
             </form> 
+        </nav>
         </div> 
 
         
@@ -44,12 +39,10 @@
     
     </div>
     {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!} 
-    </div>
+</div>
 
 
-</div>
-    
-</div>
+
 
 
 
