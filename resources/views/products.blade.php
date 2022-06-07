@@ -1,5 +1,26 @@
 @extends('layouts.app')
-
+<style>
+    .cards {
+        padding-right: 300px;
+        padding-left: 300px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 50px;
+      
+    }
+    @media only screen and (max-width: 768px) {
+   .cards {
+      margin-left:0 ;
+      margin-right:0 ;
+      padding-left:0 ;
+      padding-right:0 ;
+   }
+}
+    
+    
+  </style>
+   
 @section('content')
 
 <div class="container-fluid">
@@ -39,12 +60,7 @@
     
     </div>
     {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!} 
-</div>
-
-
-
-
-
+    </div>
 
 
     
