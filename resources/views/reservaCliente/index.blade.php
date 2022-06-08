@@ -73,23 +73,53 @@
                     <div class="col-sm-6 d-block d-sm-none">
                         @foreach ($reservas as $reserva)
                         @php
-                            if (condition) {
-                                # code...
+                            if ($reserva->estado == "Confirmado") {
+                                
                             } else {
-                                # code...
+                                if ($reserva->estado == "Modificada") {
+                                    
+                                } else {
+                                    
+                                }
+                                
                             }
                             
                         @endphp
-                        <div class="card  bg-primary mb-3 ">
-                            <h4 class="card-header">{{ $reserva->fecha }}</h4>
-                            <div class="card-body bg-white">
-                            <br>
-                              <h5 class="card-title text-center">{{ $reserva->nombre }} : {{ $reserva->comensales }} PAX</h5>
-                              <h5 class="card-title text-center">Hora : {{ $reserva->hora }}</h5>
-                              <h5 class="card-title text-center">Comentarios : </h5>
-                              <p class="card-text text-center">{{ $reserva->comentarios }}</p>
-                              <a class="btn btn-primary btn-lg btn-block" href="{{ route('reservaCliente.editar',$reserva->id) }}"> Editar</a>
+                        <div class="card  mb-3 ">
+                            <h4 class="card-header">
+                                
+                            <div class="btn-group">
+                                
+                                <button type="button" class="btn btn-info  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ $reserva->fecha }}
+                                </button>
+                                <button  class="btn   " >
+                                    {{ $reserva->estado }}
+                                </button>
+                                
+                                <div class="dropdown dropdown-menu" style="width: 310px;position: absolute;">
+                                        
+                                    <div class="card-body ">
+                                        <br>
+                                        <h5 class="card-title text-center">Estado: {{ $reserva->estado }}</h5>
+                                          <h5 class="card-title text-center">{{ $reserva->nombre }} : {{ $reserva->comensales }} PAX</h5>
+                                          <h5 class="card-title text-center">Hora : {{ $reserva->hora }}</h5>
+                                          <h5 class="card-title text-center">Comentarios : </h5>
+                                          <p class="card-text text-center">{{ $reserva->comentarios }}</p>
+                                          <a class="btn btn-primary btn-lg btn-block" href="{{ route('reservaCliente.editar',$reserva->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                          <form action="{{ route('reservaCliente.eliminar',$reserva->id) }}" method="POST">
+                                            @csrf
+                                            
+                                            <button type="submit" class="btn btn-danger btn-lg btn-block"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                        </form>
+                                          
+                                        			 
+                                    </div>
+                                </div>
                             </div>
+                          
+                            </h4>
+                            
                           </div> 
                         @endforeach
                     <br>

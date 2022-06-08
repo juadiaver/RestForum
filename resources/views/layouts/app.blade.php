@@ -72,6 +72,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
 }
 
 
+
 .total-header-section{
     border-bottom:1px solid #d2d2d2;
 }

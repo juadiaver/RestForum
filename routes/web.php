@@ -9,6 +9,7 @@ use App\Http\Controllers\PromocioneController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartaController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\CarruselController;
 use App\Http\Controllers\CajaController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PosController;
@@ -99,6 +100,8 @@ Route::resource('/menus', MenuController::class)->middleware('auth')->middleware
 
 Route::resource('/cartas', CartaController::class)->middleware('auth')->middleware('admin');
 
+Route::resource('/carrusel', CarruselController::class)->middleware('auth')->middleware('admin');
+
 Route::get('/reserva',  [App\Http\Controllers\ReservaController::class, 'lista'])->name('reservaCliente.lista')->middleware('auth');
 
 Route::get('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'crear'])->name('reservaCliente.crear')->middleware('auth');
@@ -108,6 +111,8 @@ Route::post('/reserva/crear',  [App\Http\Controllers\ReservaController::class, '
 Route::get('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editar'])->name('reservaCliente.editar')->middleware('auth');
 
 Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editado'])->name('reservaCliente.editar')->middleware('auth');
+
+Route::post('/reserva/{id}',  [App\Http\Controllers\ReservaController::class, 'eliminar'])->name('reservaCliente.eliminar')->middleware('auth');
 
 //rutas para carro de compra
 Route::get('/carrito', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
