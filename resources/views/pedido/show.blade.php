@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Ticket:</strong>
-                            <div class="col-md-3 " style="background-color: rgb(255, 255, 255)">
+                            <div class="col-md-12 " style="background-color: rgb(255, 255, 255)">
                             {!! $pedido->ticket !!}
                             </div>
                         </div>

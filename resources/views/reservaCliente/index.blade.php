@@ -60,7 +60,12 @@
 
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item" href="{{ route('reservaCliente.editar',$reserva->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                    <a class="dropdown-item" href="{{ route('reservaCliente.editar',$reserva->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <form action="{{ route('reservaCliente.eliminar',$reserva->id) }}" method="POST">
+                                                        @csrf
+                                                        
+                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Deseas borrar la reserva del:\n  {{$reserva->fecha}} ')||event.preventDefault()"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
+                                                      </form>							 
                                                 </div>
                                             </td>
                                         </tr>
@@ -126,7 +131,7 @@
                                             @csrf
                                             
                                             <button type="submit" class="btn btn-danger btn-lg btn-block" onclick="return confirm('Deseas borrar la reserva del:\n  {{$reserva->fecha}} ')||event.preventDefault()"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
-                                        </form>
+                                          </form>
                                           
                                         			 
                                     </div>

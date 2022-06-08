@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Carta</span>
+                            <span class="card-title">Ver Carta</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('cartas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('cartas.index') }}"> Volver</a>
                         </div>
                     </div>
 
@@ -31,7 +31,9 @@
                         </div>
                         <div class="form-group">
                             <strong>Contenido:</strong>
+                            <div class="" style="background-color: rgb(255, 255, 255)">
                             {!! $carta->contenido !!}
+                            </div>
                         </div>
                     </div>
                 </div>

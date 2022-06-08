@@ -22,9 +22,11 @@
             {!! $errors->first('ticket', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('estado: ') }} En curso
+            Pendiente
+            {{ Form::radio('estado', 'Pendiente', true) }}
+            En curso
             {{ Form::radio('estado', 'En curso', true) }}
-             Terminado
+            Terminado
             {{ Form::radio('estado', 'Terminado', false)}}
             
         </div>

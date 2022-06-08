@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $menu->name ?? 'Show Menu' }}
+    {{ $categoria->nombre ?? 'Show Categoria' }}
 @endsection
 
 @section('content')
@@ -11,24 +11,19 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Menu</span>
+                            <span class="card-title"><strong>{{ $carta->nombre }}</strong></span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('menus.index') }}"> Volver</a>
+                            <a class="btn btn-primary" href="{{ route('cartamenu.index') }}"> Atras</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $menu->nombre }}
-                        </div>
-                        <div class="form-group">
                             
-                            <strong>Contenido:</strong>
                             <div class="" style="background-color: rgb(255, 255, 255)">
-                            {!! $menu->contenido !!}
+                            {!! $carta->contenido !!}
                             </div>
                         </div>
 

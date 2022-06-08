@@ -40,7 +40,7 @@
 										<th>Mesa</th>
 										<th>Precio</th>
 										<th>Modo Pago</th>
-										<th>Ticket</th>
+										
 
                                         <th></th>
                                     </tr>
@@ -53,7 +53,6 @@
 											<td>{{ $venta->mesa->nombre }}</td>
 											<td>{{ $venta->precio }}</td>
 											<td>{{ $venta->modo_pago }}</td>
-											<td>{{ $venta->ticket }}</td>
                                             <td>
                                             <div class="btn-group">
                                                 <form action="{{ route('ventas.destroy',$venta->id) }}" method="POST">

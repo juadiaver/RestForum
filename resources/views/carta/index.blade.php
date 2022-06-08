@@ -49,15 +49,21 @@
                                             
 											<td>{{ $carta->nombre }}</td>
 											<td>{{ $carta->activa }}</td>
-
                                             <td>
-                                                <form action="{{ route('cartas.destroy',$carta->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('cartas.show',$carta->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('cartas.edit',$carta->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <div class="btn-group">
+                                                    <form action="{{ route('cartas.destroy',$carta->id) }}" method="POST">
+                                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Acciones
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                    <a class="dropdown-item " href="{{ route('cartas.show',$carta->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="dropdown-item" href="{{ route('cartas.edit',$carta->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                </form>
+                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar la carta:  {{$carta->id}}? \nLa carta no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    </div>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -52,7 +52,7 @@
                         </div>              
                         <br>
                         <div class="float-center d-block d-sm-none">
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/menus') }}"> Menus y cartas</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/cartas&menus') }}"> Menus y cartas</a>
                         </div>              
                         <br><div class="float-center d-block d-sm-none">
                             <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/promociones') }}"> Promociones</a>

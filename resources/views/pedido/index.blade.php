@@ -40,7 +40,6 @@
 										<th>Cliente</th>
 										<th>Precio</th>
 										<th>Modo Pago</th>
-										<th>Ticket</th>
 										<th>Estado</th>
 										<th>Fecha</th>
 
@@ -55,7 +54,6 @@
 											<td>{{ $pedido->user->name }}</td>
 											<td>{{ $pedido->precio }}</td>
 											<td>{{ $pedido->modo_pago }}</td>
-											<td>{{ $pedido->ticket }}</td>
 											<td>{{ $pedido->estado }}</td>
 											<td>{{ $pedido->fecha }}</td>
 
@@ -74,7 +72,7 @@
                                                     </div>
                                                     </form>
                                                 </div>
-                                                </td>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

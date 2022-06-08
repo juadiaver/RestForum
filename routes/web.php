@@ -114,6 +114,12 @@ Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::cl
 
 Route::post('/reserva/{id}',  [App\Http\Controllers\ReservaController::class, 'eliminar'])->name('reservaCliente.eliminar')->middleware('auth');
 
+Route::get('/cartas&menus',  [App\Http\Controllers\CartaMenuController::class, 'index'])->name('cartamenu.index');
+
+Route::get('/cartas&menus/carta/{id}',  [App\Http\Controllers\CartaMenuController::class, 'carta'])->name('cartamenu.carta');
+
+Route::get('/cartas&menus/menu/{id}',  [App\Http\Controllers\CartaMenuController::class, 'menu'])->name('cartamenu.menu');
+
 //rutas para carro de compra
 Route::get('/carrito', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
 Route::get('cart', [ProductController::class, 'cart'])->name('cart')->middleware('auth');

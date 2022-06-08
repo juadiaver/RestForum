@@ -176,7 +176,7 @@ class ReservaController extends Controller
 
         $reserva = Reserva::find($id);
         $input = $request->all();
-        $input['estado']="Modificada";
+        $input['estado']="Pendiente";
         $reserva->update($input);
 
             return redirect()->route('reservaCliente.lista')
