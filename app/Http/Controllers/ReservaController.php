@@ -199,4 +199,12 @@ class ReservaController extends Controller
         return redirect()->route('reservas.index')
             ->with('success', 'Reserva deleted successfully');
     }
+
+    public function eliminar($id)
+    {
+        $reserva = Reserva::find($id)->delete();
+
+        return redirect()->route('reservaCliente.lista')
+            ->with('success', 'Reserva borrada correctamente');
+    }
 }
