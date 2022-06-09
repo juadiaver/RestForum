@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Listado menus y cartas
+    Listado de las promociones
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Listado de menus y cartas') }}
+                                {{ __('Listado de las promociones') }}
                             </span>
                             <div class="float-right">
                                 <a href="{{ redirect()->back()->getTargetUrl() }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
@@ -36,18 +36,18 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-										<th>Cartas</th>
+										<th>Promociones</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cartas as $carta)
+                                    @foreach ($promociones as $promocion)
                                         <tr>
-											<td>{{ $carta->nombre }}</td>
+											<td>{{ $promocion->nombre }}</td>
                                             <td>
                                                 
                                                 <div class="float-right">
-                                                    <a href="{{ route('cartamenu.carta',$carta->id) }}" class="btn btn-primary"  data-placement="left">
+                                                    <a href="{{ route('verpromociones.ver',$promocion->id) }}" class="btn btn-primary"  data-placement="left">
                                                         <i class="fa fa-fw fa-eye"></i> Ver
                                                     </a>
                                                   </div>
@@ -60,33 +60,6 @@
                     </div>
                     <br>
                     <br>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-										<th>Menus</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($menus as $menu)
-                                        <tr>
-											<td>{{ $menu->nombre }}</td>
-                                            <td>
-                                                
-                                                <div class="float-right">
-                                                    <a href="{{ route('cartamenu.menu',$menu->id) }}" class="btn btn-primary"  data-placement="left">
-                                                        <i class="fa fa-fw fa-eye"></i> Ver
-                                                    </a>
-                                                  </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

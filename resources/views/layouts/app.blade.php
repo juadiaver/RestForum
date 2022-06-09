@@ -232,15 +232,15 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                     <a class="dropdown-item" href="{{ route('usuarios.datos',$user->datosUsuario->id) }}" class="nav-link"> Datos Personales</a>
                                     @endif
 
-                                    
+                                    <a class="dropdown-item" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Productos</a>
 
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Pedidos</a>
+                                    <a class="dropdown-item" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Pedidos</a>
 
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Consultar mesas</a>
+                                    <a class="dropdown-item" href="{{ asset('/mesasdisponibles') }}" class="nav-link"> Consultar mesas</a>
 
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Contacto</a>
+                                    <a class="dropdown-item" href="{{ asset('/cartas&menus') }}" class="nav-link"> Cartas y menus</a>
 
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Promociones</a>
+                                    <a class="dropdown-item" href="{{ asset('/verpromociones') }}" class="nav-link"> Promociones</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('carrusel.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear nueva imagen') }}
                                 </a>
                               </div>
                         </div>
@@ -49,18 +49,25 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $carrusel->nombre }}</td>
-											<td>{{ $carrusel->imagen }}</td>
+											<td><img src="{{Storage::disk('s3')->url($carrusel->imagen)}}" width="200px" height="100px"></td>
 											<td>{{ $carrusel->activa }}</td>
-
                                             <td>
-                                                <form action="{{ route('carrusels.destroy',$carrusel->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('carrusels.show',$carrusel->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('carrusels.edit',$carrusel->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <div class="btn-group">
+                                                    <form action="{{ route('carrusel.destroy',$carrusel->id) }}" method="POST">
+                                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Acciones
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item " href="{{ route('carrusel.show',$carrusel->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="dropdown-item" href="{{ route('carrusel.edit',$carrusel->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                </form>
+                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar la iamgen? \nLa imagen no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    </div>
+                                                    </form>
+                                                </div>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

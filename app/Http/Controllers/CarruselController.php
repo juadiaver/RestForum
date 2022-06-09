@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrusel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Image;
+
+
 
 /**
  * Class CarruselController
@@ -45,9 +49,17 @@ class CarruselController extends Controller
     {
         request()->validate(Carrusel::$rules);
 
-        $carrusel = Carrusel::create($request->all());
+        $input = $request->all();
+        
+        
 
-        return redirect()->route('carrusels.index')
+            Storage::disk('s3')->put("carrusel".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "carrusel".$request['nombre'];
+        
+
+        $carrusel = Carrusel::create($input);
+
+        return redirect()->route('carrusel.index')
             ->with('success', 'Carrusel created successfully.');
     }
 
@@ -88,10 +100,21 @@ class CarruselController extends Controller
     {
         request()->validate(Carrusel::$rules);
 
-        $carrusel->update($request->all());
+        $input = $request->all();
 
-        return redirect()->route('carrusels.index')
-            ->with('success', 'Carrusel updated successfully');
+        if ($imagen = $request->file('imagen')) {
+            // si cambiamos la imagen se borrar del storage la antigua
+            Storage::disk('s3')->delete($carrusel->imagen);
+            Storage::disk('s3')->put("carrusel".$request['nombre'], file_get_contents($input['imagen']));
+            $input['imagen'] = "carrusel".$request['nombre'];
+        }else{
+            unset($input['imagen']);
+        }
+
+        $carrusel->update($input);
+
+        return redirect()->route('carrusel.index')
+            ->with('success', 'Imagen de carrusel actualizada');
     }
 
     /**
@@ -101,9 +124,14 @@ class CarruselController extends Controller
      */
     public function destroy($id)
     {
-        $carrusel = Carrusel::find($id)->delete();
+        $carrusel = Carrusel::find($id);
 
-        return redirect()->route('carrusels.index')
-            ->with('success', 'Carrusel deleted successfully');
+        Storage::disk('s3')->delete($carrusel->imagen);
+
+        $carrusel->delete();
+
+
+        return redirect()->route('carrusel.index')
+            ->with('success', 'Imagen de carrusel eliminada');
     }
 }

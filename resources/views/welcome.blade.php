@@ -6,15 +6,25 @@
         <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://s3.eu-west-1.amazonaws.com/cdn.spydeals.nl/images/uploads/QEv83MjE4cuZhag4DoaGMxz1tusM7PiYkGxFaRgD.webp" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.fincomercio.com/wp-content/uploads/2019/06/alimentacion-saludable.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://d2z0k43lzfi12d.cloudfront.net/blog/vcdn335/wp-content/uploads/2021/10/calculator-thumbnail_1200x300_BMR.jpg.webp" class="d-block w-100" alt="...">
-                </div>
+                    @php
+                        $activo=0;
+                    @endphp
+                    @foreach($carrusel as $imagen)
+                    @if($activo==0)
+                    <div class="carousel-item active">
+                        <img src="{{Storage::disk('s3')->url($imagen->imagen)}}" class="d-block w-100" height="180px">
+                    </div>    
+                    @php
+                        $activo=$activo+1;
+                    @endphp
+                    @else
+                    <div class="carousel-item ">
+                        <img src="{{Storage::disk('s3')->url($imagen->imagen)}}" class="d-block w-100" height="180px">
+                    </div>
+                    @endif
+                    @endforeach
+
+
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,11 +46,11 @@
                         <h1 class="d-none d-sm-block">Bienvenidos a CASA JUAN</strong></h1>
                         <br class="d-block d-sm-none">
                         <div class="float-center d-block d-sm-none">
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/carrito') }}"> Haz tu pedido</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/pedidoOnline') }}"> Haz tu pedido</a>
                         </div>
                         <br>
                         <div class="float-center d-block d-sm-none">
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/carrito') }}"> Productos</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/pedidoOnline') }}"> Productos</a>
                         </div>
                         <br>
                         <div class="float-center d-block d-sm-none">
@@ -48,14 +58,14 @@
                         </div>
                         <br>
                         <div class="float-center d-block d-sm-none">
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/mesas') }}"> Mesas disponibles</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/mesasdisponibles') }}"> Mesas disponibles</a>
                         </div>              
                         <br>
                         <div class="float-center d-block d-sm-none">
                             <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/cartas&menus') }}"> Menus y cartas</a>
                         </div>              
                         <br><div class="float-center d-block d-sm-none">
-                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/promociones') }}"> Promociones</a>
+                            <a class="btn btn-dark btn-lg btn-block" href="{{ asset('/verpromociones') }}"> Promociones</a>
                         </div>              
                         <br>
                         <div class="container d-none d-sm-block">
@@ -82,7 +92,7 @@
                                     <div class="text-center"><h2>Pedidos</h2></div>
                                 </div>
                                 <div class="card">
-                                    <a href="/mesas">
+                                    <a href="/mesasdisponibles">
                                         <img class="card-img-top" src="{{Storage::disk('s3')->url('Mesas')}}" alt="Card image cap" width="400"
                                             height="200">
                                     </a>

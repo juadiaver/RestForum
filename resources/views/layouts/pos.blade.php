@@ -92,13 +92,33 @@
                                         $user = Auth::user();
                                     @endphp
                                     @if ($user->role == 0)
-                                    <a class="dropdown-item" href="{{ url('/restaurantes') }}" class="nav-link"> Datos Restaurante</a>
+                              
 
                                     <a class="dropdown-item" href="{{ url('/articulos') }}" class="nav-link"> Articulos</a>
 
                                     <a class="dropdown-item" href="{{ url('/categorias') }}" class="nav-link"> Categorias</a>
 
+                                    <a class="dropdown-item" href="{{ url('/restaurantes') }}" class="nav-link"> Datos Restaurante</a>
+
                                     <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Mesas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/ventas') }}" class="nav-link"> Ventas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/pedidos') }}" class="nav-link"> Pedidos</a>
+
+                                    <a class="dropdown-item" href="{{ url('/calendar') }}" class="nav-link"> Reservas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/pos') }}" class="nav-link"> POS</a>
+
+                                    <a class="dropdown-item" href="{{ url('/menus') }}" class="nav-link"> Menus</a>
+
+                                    <a class="dropdown-item" href="{{ url('/cajas') }}" class="nav-link"> Cajas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/cartas') }}" class="nav-link"> Cartas</a>
+
+                                    <a class="dropdown-item" href="{{ url('/promociones') }}" class="nav-link"> Promocion</a>
+
+                                    <a class="dropdown-item" href="{{ url('/carrusel') }}" class="nav-link"> Imagenes carrusel</a>
 
                                     @endif
 

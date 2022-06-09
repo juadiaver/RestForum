@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Carrusel
+    Crear imagen para carrusel
 @endsection
 
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 mx-auto">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Carrusel</span>
+                        <span class="card-title">Crear imagen para carrusel</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('carrusel.store') }}"  role="form" enctype="multipart/form-data">

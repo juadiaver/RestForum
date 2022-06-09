@@ -18,6 +18,7 @@ use App\Http\Controllers\DatosUsuarioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
+use App\Models\Carrusel;
 
 
 
@@ -35,8 +36,9 @@ use App\Models\Articulo;
 Route::get('/', function () {
 
     $articulos = Articulo::all()->sortByDesc('created_at')->take(10);
+    $carrusel = Carrusel::all();
     
-    return view('welcome',compact('articulos'));
+    return view('welcome',compact('articulos','carrusel'));
 });
 
 
@@ -114,14 +116,20 @@ Route::post('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::cl
 
 Route::post('/reserva/{id}',  [App\Http\Controllers\ReservaController::class, 'eliminar'])->name('reservaCliente.eliminar')->middleware('auth');
 
+Route::get('/mesasdisponibles',  [App\Http\Controllers\MesasDisponiblesController::class, 'index'])->name('mesasdisponibles.index');
+
 Route::get('/cartas&menus',  [App\Http\Controllers\CartaMenuController::class, 'index'])->name('cartamenu.index');
 
 Route::get('/cartas&menus/carta/{id}',  [App\Http\Controllers\CartaMenuController::class, 'carta'])->name('cartamenu.carta');
 
 Route::get('/cartas&menus/menu/{id}',  [App\Http\Controllers\CartaMenuController::class, 'menu'])->name('cartamenu.menu');
 
+Route::get('/verpromociones',  [App\Http\Controllers\VerPromocionesController::class, 'index'])->name('verpromociones.index');
+
+Route::get('/verpromociones/{id}',  [App\Http\Controllers\VerPromocionesController::class, 'promocion'])->name('verpromociones.ver');
+
 //rutas para carro de compra
-Route::get('/carrito', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
+Route::get('/pedidoOnline', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
 Route::get('cart', [ProductController::class, 'cart'])->name('cart')->middleware('auth');
 Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart')->middleware('auth');
 Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart')->middleware('auth');

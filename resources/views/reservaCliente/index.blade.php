@@ -77,29 +77,9 @@
                 <div class="row">    
                     <div class="col-sm-6 d-block d-sm-none">
                         @foreach ($reservas as $reserva)
-                        @php
-                            if ($reserva->estado == "Confirmado") {
-                                
-                            } else {
-                                if ($reserva->estado == "Modificada") {
-                                    
-                                } else {
-                                    
-                                }
-                                
-                            }
-                            
-                        @endphp
                         <div class="card  mb-3 ">
-                            <h4 class="card-header">
-                                
+                            <h4 class="card-header">                            
                             <div class="btn-toolbar">
-
-                                
-                                    
-                              
-                                
-                                
                                 <button type="button" class="btn btn-info  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ $reserva->fecha }}
                                 </button>

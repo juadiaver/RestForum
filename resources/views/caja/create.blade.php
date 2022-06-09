@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Caja
+    Abrir caja
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Caja</span>
+                        <span class="card-title">Abrir caja</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('cajas.store') }}"  role="form" enctype="multipart/form-data">

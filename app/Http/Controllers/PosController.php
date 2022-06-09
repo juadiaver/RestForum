@@ -32,7 +32,7 @@ class PosController extends Controller
     {
 
         $mesas = Mesa::all();
-        $caja = Caja::all()->sortByDesc('fechaApertura')->sortByDesc('horaApertura')->first();
+        $caja = Caja::all()->sortByDesc('created_at')->first();
         
 
 
@@ -264,7 +264,7 @@ public function completarCierre(Request $request,$idCaja)
         
     }
     
-    $caja->dineroFinal = 2000;
+    $caja->dineroFinal = $total;
     $caja->tarjeta= $ventasTarjeta;
     $caja->dineroTarjeta=$totalTarjeta;
     $caja->efectivo=$ventasEfectivo;
