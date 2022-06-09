@@ -93,14 +93,24 @@ class ReservaController extends Controller
 
         $input = $request->all();
         $user = auth::user();
-        $input['user_id']=$user->id;
+        if ($user != null) {
+            $input['user_id']=$user->id;
+        } 
+        
+        
         $input['estado']="Pendiente";
 
         $reserva = Reserva::create($input);
 
- 
-        return redirect()->route('reservaCliente.lista')
+        if ($user != null) {
+            return redirect()->route('reservaCliente.lista')
             ->with('success', 'Reserva actualizada correctamente');
+        }else{
+            return redirect()->route('welcome')
+            ->with('success', 'Reserva actualizada correctamente');
+        }
+ 
+        
             
     }
 

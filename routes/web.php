@@ -15,6 +15,7 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\DatosUsuarioController;
+use App\Http\Controllers\VerProductosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
@@ -39,7 +40,7 @@ Route::get('/', function () {
     $carrusel = Carrusel::all();
     
     return view('welcome',compact('articulos','carrusel'));
-});
+})->name('welcome');
 
 
 
@@ -106,9 +107,9 @@ Route::resource('/carrusel', CarruselController::class)->middleware('auth')->mid
 
 Route::get('/reserva',  [App\Http\Controllers\ReservaController::class, 'lista'])->name('reservaCliente.lista')->middleware('auth');
 
-Route::get('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'crear'])->name('reservaCliente.crear')->middleware('auth');
+Route::get('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'crear'])->name('reservaCliente.crear');
 
-Route::post('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'creado'])->name('reservaCliente.crear')->middleware('auth');
+Route::post('/reserva/crear',  [App\Http\Controllers\ReservaController::class, 'creado'])->name('reservaCliente.crear');
 
 Route::get('/reserva/editar/{id}',  [App\Http\Controllers\ReservaController::class, 'editar'])->name('reservaCliente.editar')->middleware('auth');
 
@@ -127,6 +128,8 @@ Route::get('/cartas&menus/menu/{id}',  [App\Http\Controllers\CartaMenuController
 Route::get('/verpromociones',  [App\Http\Controllers\VerPromocionesController::class, 'index'])->name('verpromociones.index');
 
 Route::get('/verpromociones/{id}',  [App\Http\Controllers\VerPromocionesController::class, 'promocion'])->name('verpromociones.ver');
+
+Route::get('/productos', [VerProductosController::class, 'index'])->name('verproducto');
 
 //rutas para carro de compra
 Route::get('/pedidoOnline', [ProductController::class, 'index'])->name('carrito')->middleware('auth');  
