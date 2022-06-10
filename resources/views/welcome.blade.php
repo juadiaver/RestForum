@@ -111,7 +111,7 @@
                                 </div>
                                 @else
                                 <div class="card">
-                                    <a href="/carrito">
+                                    <a href="/pedidoOnline">
                                         <img class="card-img-top" src="{{Storage::disk('s3')->url('Pedidos')}}" alt="Card image cap"
                                             width="400" height="200">
                                     </a>

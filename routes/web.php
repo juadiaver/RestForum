@@ -16,6 +16,7 @@ use App\Http\Controllers\PosController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\DatosUsuarioController;
 use App\Http\Controllers\VerProductosController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Models\Articulo;
@@ -82,6 +83,14 @@ Route::post('/pos/pago/{idMesa}',  [App\Http\Controllers\PosController::class, '
 Route::get('/pos/cerrarCaja/{idCaja}',  [App\Http\Controllers\PosController::class, 'cerrarCaja'])->name('pos.cerrarCaja')->middleware('auth')->middleware('admin');
 
 Route::post('/pos/cerrarCaja/{idCaja}',  [App\Http\Controllers\PosController::class, 'completarCierre'])->name('pos.completarCierre')->middleware('auth')->middleware('admin');
+
+Route::post('/user/eliminar/{id}',  [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy')->middleware('auth')->middleware('admin');
+
+Route::get('/user',  [App\Http\Controllers\UserController::class, 'index'])->name('users.index')->middleware('auth')->middleware('admin');
+
+Route::get('/user/edit/{id}',  [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit')->middleware('auth')->middleware('admin');
+
+Route::post('/user/edit/{id}',  [App\Http\Controllers\UserController::class, 'update'])->name('users.update')->middleware('auth')->middleware('admin');
 
 Route::resource('/categorias', CategoriaController::class)->middleware('auth')->middleware('admin');
 

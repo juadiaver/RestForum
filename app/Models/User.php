@@ -24,6 +24,12 @@ class User extends Authenticatable
         'role'
     ];
 
+    static $rules = [
+		'name' => 'required',
+        'email' => 'required',
+        'role' => 'required',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
