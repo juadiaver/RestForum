@@ -242,6 +242,8 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
 
                                     <a class="dropdown-item" href="{{ asset('/verpromociones') }}" class="nav-link"> Promociones</a>
 
+                                    <a class="dropdown-item" href="{{ asset('/contacto') }}" class="nav-link"> Contacto</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

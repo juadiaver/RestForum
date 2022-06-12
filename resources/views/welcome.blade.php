@@ -4,6 +4,13 @@
 @section('content')
     <div class="container-fluid">
         <div class="container">
+
+            @if ($message = Session::get('success'))
+                        <div class="alert alert-success" id="success-alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     @php

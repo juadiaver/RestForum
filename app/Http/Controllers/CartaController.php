@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class CartaController
@@ -19,6 +20,9 @@ class CartaController extends Controller
     public function index()
     {
         $cartas = Carta::paginate();
+
+
+    
 
         return view('carta.index', compact('cartas'))
             ->with('i', (request()->input('page', 1) - 1) * $cartas->perPage());

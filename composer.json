@@ -18,6 +18,8 @@
         "laravelcollective/html": "^6.3",
         "league/flysystem-aws-s3-v3": "1.0.29",
         "livewire/livewire": "^2.10",
+        "symfony/http-client": "^5.4",
+        "symfony/mailgun-mailer": "^5.4",
         "tinymce/tinymce": "^6.0"
     },
     "require-dev": {

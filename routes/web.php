@@ -16,6 +16,7 @@ use App\Http\Controllers\PosController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\DatosUsuarioController;
 use App\Http\Controllers\VerProductosController;
+use App\Http\Controllers\EnvioMailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +70,10 @@ Route::post('/datos/crear',  [App\Http\Controllers\DatosUsuarioController::class
 Route::get('/datos/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'show'])->name('usuarios.datos')->middleware('auth');
 
 Route::post('/datos/{id}',  [App\Http\Controllers\DatosUsuarioController::class, 'show'])->name('usuarios.datos')->middleware('auth');
+
+Route::get('/contacto',  [App\Http\Controllers\EnvioMailController::class, 'index']);
+
+Route::post('/contacto',  [App\Http\Controllers\EnvioMailController::class, 'enviar'])->name('enviar.mail');
 
 Route::resource('/pos', PosController::class)->middleware('auth')->middleware('admin');
 
