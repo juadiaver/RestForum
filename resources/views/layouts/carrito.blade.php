@@ -186,82 +186,146 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                       </div>
                   </div>
               </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-					@auth()
-                    <ul class="navbar-nav mr-auto">
-						
-						
-                    </ul>
-					@endauth()
-					
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('login') }}">Entrar</a>
-                                </li>
-                                
-                            @endif
-                            
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('register') }}">Registrarse</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Menu
-                                </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @php
-                                        $user = Auth::user();
-                                    @endphp
-                                    @if ($user->role == 0)
-                                    <a class="dropdown-item" href="{{ url('/home') }}" class="nav-link"> Administracion</a>
-
-                                    @endif
-
-                                    @if ($user->datosUsuario == null)
-                                    <a class="dropdown-item" href="{{  route('usuarios.crear') }}" class="nav-link"> Introduce tus datos</a>
-
-                                    @else
-
-                                    <a class="dropdown-item" href="{{ route('usuarios.datos',$user->datosUsuario->id) }}" class="nav-link"> Datos Personales</a>
-                                    @endif
-
-                                    
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Pedidos</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Consultar mesas</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Contacto</a>
-
-                                    <a class="dropdown-item" href="{{ url('/mesas') }}" class="nav-link"> Promociones</a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Desconectar
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                     
+                <!-- Left Side Of Navbar -->
+                @auth()
+                <ul class="navbar-nav mr-auto">
+                    
+                    
+                </ul>
+                @endauth()
+                
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    
+                    @guest
+                    <div>
+                    <a class="navbar-brand text-white " href=" {{ asset('/contacto') }}">
+                        Contacto
+                    </a>
+                    </div> 
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="navbar-brand text-white" href="{{ route('login') }}">Entrar</a>
                             </li>
                             
-                        @endguest
-                    </ul>
-                </div>
+                        @endif
+                        
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="navbar-brand text-white" href="{{ route('register') }}">Registrarse</a>
+                            </li>
+                        @endif
+                    @else
+
+                         
+                        @php
+                            $user = Auth::user();
+                        @endphp
+                        <div>   
+                            @if ($user->role == 1)
+                            <a class="dropdown-item" href="{{ asset('/contacto') }}" class="nav-link"> Contacto</a>
+                            @endif
+                        </div>
+                        @if ($user->role == 0)
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ url('/home') }}" class="nav-link"> Administracion</a>
+                        </div>     
+                        @endif
+        
+                        @if ($user->datosUsuario == null)
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{  route('usuarios.crear') }}" class="nav-link"> Introduce tus datos</a>
+                        </div>
+                        @else
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ route('usuarios.datos',$user->datosUsuario->id) }}" class="nav-link"> Datos Personales</a>
+                       </div>
+                        @endif
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Productos</a>
+                        </div>
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Pedidos</a>
+                        </div>
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ asset('/mesasdisponibles') }}" class="nav-link"> Consultar mesas</a>
+                        </div>
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ asset('/cartas&menus') }}" class="nav-link"> Cartas y menus</a>
+                        </div>
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ asset('/verpromociones') }}" class="nav-link"> Promociones</a>
+                        </div>
+        
+                       
+                        <div>
+                        <a class="navbar-brand text-white d-block d-sm-none" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            Desconectar
+                        </a>    
+                        </div>   
+
+                        
+                        <li class="nav-item dropdown d-none d-sm-block" >
+                            <a id="navbarDropdown" class="navbar-brand dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Menu
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if ($user->role == 1)
+                                <a class="dropdown-item" href="{{ asset('/contacto') }}" class="nav-link"> Contacto</a>
+                                @endif
+                                @php
+                                    $user = Auth::user();
+                                @endphp
+                                @if ($user->role == 0)
+                                <a class="dropdown-item" href="{{ url('/home') }}" class="nav-link"> Administracion</a>
+
+                                @endif
+
+                                @if ($user->datosUsuario == null)
+                                <a class="dropdown-item" href="{{  route('usuarios.crear') }}" class="nav-link"> Introduce tus datos</a>
+
+                                @else
+
+                                <a class="dropdown-item" href="{{ route('usuarios.datos',$user->datosUsuario->id) }}" class="nav-link"> Datos Personales</a>
+                                @endif
+
+                                <a class="dropdown-item" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Productos</a>
+
+                                <a class="dropdown-item" href="{{ asset('/pedidoOnline') }}" class="nav-link"> Pedidos</a>
+
+                                <a class="dropdown-item" href="{{ asset('/mesasdisponibles') }}" class="nav-link"> Consultar mesas</a>
+
+                                <a class="dropdown-item" href="{{ asset('/cartas&menus') }}" class="nav-link"> Cartas y menus</a>
+
+                                <a class="dropdown-item" href="{{ asset('/verpromociones') }}" class="nav-link"> Promociones</a>
+
+                                
+
+                               
+
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    Desconectar
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                 
+                        </li>
+                        
+                    @endguest
+                </ul>
             </div>
-        </nav>
-  
+        </div>
+    </nav>  
 <br/>
 
 <div class="container">
