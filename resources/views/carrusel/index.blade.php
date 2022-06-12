@@ -58,8 +58,7 @@
                                                     Acciones
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item " href="{{ route('carrusel.show',$carrusel->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="dropdown-item" href="{{ route('carrusel.edit',$carrusel->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                    <a class="dropdown-item " href="{{ route('carrusel.show',$carrusel->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>							 
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar la iamgen? \nLa imagen no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   

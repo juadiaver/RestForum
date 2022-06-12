@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Acceso al area de administracion</div>
+                <div class="card-header">Acceso a CASA JUAN</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -19,7 +19,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>Correo electronico no valido</strong>
+                                        <strong>Correo electronico o contraseña no valido</strong>
                                     </span>
                                 @enderror
                             </div>

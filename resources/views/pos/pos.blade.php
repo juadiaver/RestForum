@@ -18,7 +18,7 @@
             
                     @if ($caja->abierta == 'Abierta')
                     
-                    <div class="card " style="width: 30rem;">
+                    <div class="card " style="width: 100%;">
                         <a class="btn btn-secondary" href="{{ route('pos.cerrarCaja', $caja->id) }}"> Cerrar Caja</a>
                     </div>
 
@@ -26,10 +26,10 @@
                         <div class="cards">
                             @foreach ($mesas as $mesa)
                                 @if ($mesa->activo == 'SI')
-                                    <div class="card" style="width: 30rem;">
+                                    <div class="card" style="width: 100%;">
                                         <div class="card-body">
                                             <br>
-                                            <a class="btn btn-primary" style="width: 30rem;" href="{{ route('pos.edit', $mesa->id) }}">
+                                            <a class="btn btn-primary" style="width: 100%;" href="{{ route('pos.edit', $mesa->id) }}">
                                                 {{ $mesa->nombre }}</a>
                                         </div>
                                     </div>
@@ -37,7 +37,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <br>
-                                            <a class="btn btn-danger" style="width: 30rem;" href="{{ route('pos.edit', $mesa->id) }}">
+                                            <a class="btn btn-danger" style="width: 100%;" href="{{ route('pos.edit', $mesa->id) }}">
                                                 {{ $mesa->nombre }}</a>
                                         </div>
                                     </div>

@@ -24,7 +24,7 @@
 
         <div class="form-group">
             @if (Storage::disk('s3')->has($restaurante->imagen)==true)
-            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url($articulo->imagen)}}"
+            <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url($restaurante->imagen)}}"
             alt="Sin imagen" style="max-height: 200px;">
             @else
             <img id="preview-image-before-upload" onerror="this.onerror=null; this.src='/storage/sinimagen.png'"  src="{{Storage::disk('s3')->url('sinimagen.png')}}"

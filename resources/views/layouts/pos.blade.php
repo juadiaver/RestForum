@@ -119,6 +119,8 @@
                                     <a class="dropdown-item" href="{{ url('/promociones') }}" class="nav-link"> Promocion</a>
 
                                     <a class="dropdown-item" href="{{ url('/carrusel') }}" class="nav-link"> Imagenes carrusel</a>
+                                    
+                                    <a class="dropdown-item" href="{{ url('/user') }}" class="nav-link"> Usuarios</a>
 
                                     @endif
 
