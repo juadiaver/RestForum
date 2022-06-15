@@ -157,7 +157,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                           @php $total += $details['price'] * $details['quantity'] @endphp
                                       @endforeach
                                       <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                          <p>Total: <span class="text-info"> {{ $total }} €</span></p>
+                                          <p>Total: <span class="text-info"> {{ number_format($total , 2, ',', '.')}} €</span></p>
                                       </div>
                                   </div>
                                   @if(session('cart'))
@@ -168,7 +168,7 @@ background: radial-gradient(to bottom left, #23EC55, #2D51C1);
                                               </div>
                                               <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                                   <p>{{ $details['name'] }}</p>
-                                                  <span class="price text-info">{{ $details['price'] }} €</span> <span class="count"> Cantidad:{{ $details['quantity'] }}</span>
+                                                  <span class="price text-info">{{ number_format($details['price'] , 2, ',', '.')}} €</span> <span class="count"> Cantidad:{{ $details['quantity'] }}</span>
                                               </div>
                                           </div>
                                       @endforeach
