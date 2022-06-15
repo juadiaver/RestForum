@@ -41,16 +41,16 @@
         </nav>
         </div> 
 
-        
-        <main class="producto">
+         
+        <main class="producto col-md-6 mx-auto">
             
         @foreach($articulos as $product)
             <article class="card">
                 <img class="card-img-top" src="{{Storage::disk('s3')->url($product->imagen)}}" alt="Card image cap" width="400" height="200">
-            <div class="card-header"><h4>{{ $product->nombre }}</h4></div>
-            <div class="card-body">
+            <div class="card-header text-center border-0"><h4>{{ $product->nombre }}</h4></div>
+            <div class="card-body border-0">
             </div>
-            <div class="card-footer ">
+            <div class="card-footer border-0">
                 <p>Precio : {{number_format($product->precio, 2, ',', '.')}} €</p>
                 <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Añadir al carrito</a> </p>
               </div>
@@ -58,9 +58,11 @@
          @endforeach
     
     </main>
-    
+    <div class="card col-md-6 mx-auto">
+    {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!}
     </div>
-    {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!} 
+    </div>
+    
 </div>
 
 

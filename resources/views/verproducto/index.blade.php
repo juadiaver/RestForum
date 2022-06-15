@@ -42,7 +42,7 @@
         </div> 
 
         
-        <main class="producto">
+        <main class="producto col-md-6 mx-auto">
             
         @foreach($articulos as $product)
             <article class="card">
@@ -60,7 +60,10 @@
     </main>
     
     </div>
-    {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!} 
+    <div class="card col-md-6 mx-auto">
+      {!! $articulos->appends(["tipo" => $tipo,"buscarpor" => $buscar]) !!}
+      </div>
+    
 </div>
 
 
