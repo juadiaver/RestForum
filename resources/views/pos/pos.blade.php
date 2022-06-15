@@ -43,7 +43,7 @@
                                     </div>
                                 @endif
                             @endforeach
-                                </div>
+                        </div>
                     @else
                         <div class="card">
                             <h2>Pulse el boton para abrir caja</h2>
