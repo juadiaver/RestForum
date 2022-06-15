@@ -42,9 +42,9 @@
                         <tr>
     
                             <td>{{ $articulos->nombre }}</td>
-                            <td>{{ $articulos->precio }} €</td>
+                            <td>{{  number_format($articulos->precio, 2, ',', '.')}} €</td>
                             <td>{{$articulos->pivot->cantidad}}</td>
-                            <td>{{$articulos->precio*$articulos->pivot->cantidad}} €</td>
+                            <td>{{number_format($articulos->precio*$articulos->pivot->cantidad, 2, ',', '.')}} €</td>
                             
                             <tr>
                         <tbody>
@@ -58,7 +58,7 @@
                 </div>
                 @endforelse
                 @if($precioTotal>0)
-                <h1>Total : {{$precioTotal}}€ </h1>
+                <h1>Total : {{number_format($precioTotal, 2, ',', '.')}}€ </h1>
                 <br>
                 @endif    
             </table>

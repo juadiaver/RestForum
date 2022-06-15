@@ -51,7 +51,7 @@
             <div class="card-body">
             </div>
             <div class="card-footer ">
-                <p>Precio : {{ $product->precio }} €</p>
+                <p>Precio : {{number_format($product->precio, 2, ',', '.')}} €</p>
                 <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Añadir al carrito</a> </p>
               </div>
             </article>

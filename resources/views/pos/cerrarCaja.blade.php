@@ -12,8 +12,8 @@
 
                         @if($total>0)
                         <h1>Total : {{$total}}€ </h1>
-                        <h2>Ventas en efectivo : {{$ventasEfectivo}} , total : {{$totalEfectivo}}€</h2>
-                        <h2>Ventas en tarjeta : {{$ventasTarjeta}}, total : {{$totalTarjeta}}€</h2>
+                        <h2>Ventas en efectivo : {{$ventasEfectivo}} , total : {{number_format($totalEfectivo, 2, ',', '.')}}€</h2>
+                        <h2>Ventas en tarjeta : {{$ventasTarjeta}}, total : {{number_format($totalTarjeta, 2, ',', '.')}}€</h2>
                         @endif
                         </div>
                         @if($total>0)
@@ -51,7 +51,7 @@
                                     <td>{{ $venta->id }}</td>
                                     <td>{{ $venta->mesa->nombre }}</td>
                                     <td>{{ $venta->modo_pago }}</td>
-                                    <td>{{ $venta->precio}} €</td>
+                                    <td>{{ number_format($venta->precio, 2, ',', '.')}} €</td>
                                     <td><a class="btn btn-primary" href="{{ route('ventas.show',$venta->id) }}"><i class="fa fa-fw fa-eye"></i></a></td>
                                 </tr>
 

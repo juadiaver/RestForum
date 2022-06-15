@@ -184,14 +184,14 @@ class PosController extends Controller
             $precioTotal = $precioTotal+$articulo->precio*$articulo->pivot->cantidad;
             $ticket = $ticket."<tbody><tr>";
             $ticket = $ticket."<td>".$articulo->nombre."</td>";
-            $ticket = $ticket."<td>".$articulo->precio." €</td>";
+            $ticket = $ticket."<td>".number_format($articulo->precio, 2, ',', '.')." €</td>";
             $ticket = $ticket."<td>".$articulo->pivot->cantidad."</td>";
-            $ticket = $ticket."<td>".$articulo->precio*$articulo->pivot->cantidad." €</td>";
+            $ticket = $ticket."<td>".number_format($articulo->precio*$articulo->pivot->cantidad, 2, ',', '.')." €</td>";
             $ticket = $ticket."<tr><tbody>";
 
         }
         $ticket = $ticket."</table>";
-        $ticket = $ticket."<h2>Precio total: ".$precioTotal." €</h2>";
+        $ticket = $ticket."<h2>Precio total: ".number_format($precioTotal, 2, ',', '.')." €</h2>";
 
         return $ticket;
 

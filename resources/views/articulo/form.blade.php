@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('orden') }}
-            {{ Form::text('orden', $articulo->orden, ['class' => 'form-control' . ($errors->has('orden') ? ' is-invalid' : ''), 'placeholder' => 'Orden']) }}
+            {{ Form::number('orden', $articulo->orden, ['class' => 'form-control' . ($errors->has('orden') ? ' is-invalid' : ''), 'placeholder' => 'Orden']) }}
             {!! $errors->first('orden', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

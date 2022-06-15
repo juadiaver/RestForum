@@ -31,8 +31,12 @@ class ProductController extends Controller
             //busquedad de la categoria 
             $categoria = Categoria::where("nombre",'like',"%$buscar%")->first();
 
-            //busqueda de lod articulos
-            $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+            if ($categoria != null) {
+                //busqueda de lod articulos
+                $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+            } else {
+                $articulos = Articulo::paginate(10);
+            }
 
         } else {
            $articulos = Articulo::buscarpor($tipo, $buscar)->paginate(10);  
@@ -94,7 +98,7 @@ class ProductController extends Controller
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            session()->flash('success', 'Carrito actualizado correctamente');
         }
     }
   
@@ -111,7 +115,7 @@ class ProductController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('success', 'Producto eliminado correctamente');
         }
     }
 
@@ -130,11 +134,14 @@ class ProductController extends Controller
                 $total += $articulo['price'] * $articulo['quantity'];
             }
             $total = $total - $total*(int)session('porcentaje')/100;
+            $total = round($total,2);
         } else {
             foreach ($cart as $articulo){
             $total += $articulo['price'] * $articulo['quantity'];
+            $total = round($total,2);
             }
         }
+        
             
         
 
@@ -192,20 +199,20 @@ class ProductController extends Controller
             $precioTotal += $articulo['price'] * $articulo['quantity'];
             $ticket = $ticket."<tbody><tr>";
             $ticket = $ticket."<td>".$articulo['name']."</td>";
-            $ticket = $ticket."<td>".$articulo['price']." €</td>";
+            $ticket = $ticket."<td>".number_format($articulo['price'], 2, ',', '.')." €</td>";
             $ticket = $ticket."<td>".$articulo['quantity']."</td>";
-            $ticket = $ticket."<td>".$articulo['price'] * $articulo['quantity']." €</td>";
+            $ticket = $ticket."<td>".number_format($articulo['price'] * $articulo['quantity'], 2, ',', '.')." €</td>";
             $ticket = $ticket."<tr><tbody>";
 
         }
         $ticket = $ticket."</table>";
         if (session()->has('nombrePromocion')) {
-            $precioPromocion = $precioTotal - $precioTotal*(int)session('porcentaje')/100;
-            $ticket = $ticket."<h2>Total: ".$precioTotal." €</h2>";
+            $precioPromocion =  number_format($precioTotal - $precioTotal*(int)session('porcentaje')/100, 2, ',', '.');
+            $ticket = $ticket."<h2>Total: ".number_format($precioTotal, 2, ',', '.')." €</h2>";
             $ticket = $ticket."<h2>Promocion: ".session('nombrePromocion')."</h2>";
             $ticket = $ticket."<h2>Subtotal: ".$precioPromocion." €</h2>";
         } else {
-            $ticket = $ticket."<h2>Precio Total: ".$precioTotal." €</h2>";
+            $ticket = $ticket."<h2>Precio Total: ".number_format($precioTotal, 2, ',', '.')." €</h2>";
 
         }
 

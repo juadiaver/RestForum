@@ -77,7 +77,7 @@
 											<td>{{ $articulo->descripcion }}</td>
 											<td>{{ $articulo->categoria->nombre }}</td>
 											<td>{{ $articulo->activo }}</td>
-											<td>{{ $articulo->precio }}</td>
+											<td>{{  number_format($articulo->precio, 2, ',', '.');}} €</td>
 											<td>{{ $articulo->orden }}</td>
 
                                             <td>

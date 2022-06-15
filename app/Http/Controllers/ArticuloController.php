@@ -31,9 +31,14 @@ class ArticuloController extends Controller
             
             //busquedad de la categoria 
             $categoria = Categoria::where("nombre",'like',"%$buscar%")->first();
+            if ($categoria != null) {
+                //busqueda de lod articulos
+                $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+            } else {
+                $articulos = Articulo::paginate(10);
+            }
 
-            //busqueda de lod articulos
-            $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+            
 
         } else {
            $articulos = Articulo::buscarpor($tipo, $buscar)->paginate(10);  

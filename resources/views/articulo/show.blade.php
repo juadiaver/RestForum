@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Precio:</strong>
-                            {{ $articulo->precio }}
+                            {{ number_format($articulo->precio, 2, ',', '.');}} €
                         </div>
                         <div class="form-group">
                             <strong>Orden:</strong>

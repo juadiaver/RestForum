@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        
+        <br>
         <div class="card-body">
             <div class="row">
                 
@@ -60,9 +60,9 @@
                         <tr>
 
                             <td>{{ $articulos->nombre }}</td>
-                            <td>{{ $articulos->precio }} €</td>
+                            <td>{{ number_format($articulos->precio, 2, ',', '.')}} €</td>
                             <td>{{$articulos->pivot->cantidad}}</td>
-                            <td>{{$articulos->precio*$articulos->pivot->cantidad}} €</td>
+                            <td>{{number_format($articulos->precio*$articulos->pivot->cantidad, 2, ',', '.')}} €</td>
                             <td>
                                 <div class="btn-group">
                                     <form action="{{ route('pos.destroy',$articulos->id) }}" method="POST">
@@ -92,7 +92,7 @@
                 </div>
                 @endforelse
                 @if($precioTotal>0)
-                <h1>Total : {{$precioTotal}}€ </h1>
+                <h1>Total : {{number_format($precioTotal, 2, ',', '.')}}€ </h1>
                 <div class="box-footer mt20">
                     <a class="btn btn-primary" href="{{ route('pos.pago',$mesa->id) }}"> PAGAR</a>
                     <a class="btn btn-primary" href="{{ route('pos.index') }}"> GUARDAR</a>

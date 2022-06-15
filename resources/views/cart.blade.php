@@ -29,11 +29,11 @@
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">{{ $details['price'] }} €</td>
+                    <td data-th="Price">{{ number_format($details['price'], 2, ',', '.')}} €</td>
                     <td data-th="Quantity">
                         <input type="number"  value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
-                    <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} €</td>
+                    <td data-th="Subtotal" class="text-center">{{number_format($details['price'] * $details['quantity'], 2, ',', '.')}} €</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-danger  remove-from-cart">X</button>
                     </td>
@@ -43,15 +43,17 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-right"><h3><strong>Total {{ $total }} €</strong></h3></td>
+            <td colspan="5" class="text-right"><h3><strong>Total {{ number_format($total, 2, ',', '.') }} €</strong></h3></td>
             
         </tr>
         <tr>
             @if (session()->has('nombrePromocion'))
                 @php
                     $porcentaje = (int)session('porcentaje');
+                    $total =  $total - $total*$porcentaje/100;
+                    $total = number_format($total, 2, ',', '.');
                 @endphp
-            <td colspan="5" class="text-right"><h3><strong>Total con promocion: {{ $total - $total*$porcentaje/100 }} €</strong></h3></td>
+            <td colspan="5" class="text-right"><h3><strong>Total con promocion: {{ $total}} €</strong></h3></td>
             @endif
         </tr>
         <tr>
