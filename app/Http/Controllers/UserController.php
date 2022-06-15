@@ -94,10 +94,16 @@ class UserController extends Controller
         
         $user = User::find($id);
 
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' . $id,
+            'role' => 'required',
+        ];
+        request()->validate($rules);
         $user->update($request->all());
 
         return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+            ->with('success', 'User editado correctamente');
     }
 
     /**
@@ -110,6 +116,6 @@ class UserController extends Controller
         $user = User::find($id)->delete();
 
         return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+            ->with('success', 'User borrado correctamente');
     }
 }
