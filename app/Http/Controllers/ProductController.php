@@ -29,17 +29,17 @@ class ProductController extends Controller
         if ($tipo == "categoria" && $buscar != ""){
             
             //busquedad de la categoria 
-            $categoria = Categoria::where("nombre",'like',"%$buscar%")->first();
+            $categoria = Categoria::where("nombre",'like',"%$buscar%")->where('Activo','SI')->first();
 
             if ($categoria != null) {
                 //busqueda de lod articulos
-                $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->paginate(10);
+                $articulos = Articulo::where('categoria_id','like',"%$categoria->id%")->where('Activo','SI')->paginate(10);
             } else {
-                $articulos = Articulo::paginate(10);
+                $articulos = Articulo::where('Activo','SI')->paginate(10);
             }
 
         } else {
-           $articulos = Articulo::buscarpor($tipo, $buscar)->paginate(10);  
+           $articulos = Articulo::buscarpor($tipo, $buscar)->where('Activo','SI')->paginate(10);  
         }
 
         return view('products', compact('articulos','buscar','tipo'))
