@@ -20,7 +20,7 @@ class Menu extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => ['required','unique:menus'],
 		'contenido' => 'required',
     ];
 

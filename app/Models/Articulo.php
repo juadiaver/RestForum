@@ -26,7 +26,7 @@ class Articulo extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => ['required','unique:articulos'],
 		'descripcion' => 'required',
 		'categoria_id' => 'required',
 		'activo' => 'required',

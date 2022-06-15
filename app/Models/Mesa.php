@@ -20,7 +20,7 @@ class Mesa extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => ['required','unique:mesas'],
 		'activo' => 'required',
     ];
 

@@ -48,7 +48,7 @@ class PromocioneController extends Controller
         $promocione = Promocione::create($request->all());
 
         return redirect()->route('promociones.index')
-            ->with('success', 'Promocione created successfully.');
+            ->with('success', 'Promocion creada correctamente.');
     }
 
     /**
@@ -91,7 +91,7 @@ class PromocioneController extends Controller
         $promocione->update($request->all());
 
         return redirect()->route('promociones.index')
-            ->with('success', 'Promocione updated successfully');
+            ->with('success', 'Promocion editada correctamente');
     }
 
     /**
@@ -104,6 +104,6 @@ class PromocioneController extends Controller
         $promocione = Promocione::find($id)->delete();
 
         return redirect()->route('promociones.index')
-            ->with('success', 'Promocione deleted successfully');
+            ->with('success', 'Promocione eliminada correctamente');
     }
 }

@@ -22,8 +22,8 @@ class Promocione extends Model
 {
     
     static $rules = [
-		'codigo' => 'required',
-		'nombre' => 'required',
+		'codigo' => ['required','unique:promociones'],
+		'nombre' => ['required','unique:promociones'],
 		'descuento' => 'required',
 		'activo' => 'required',
     ];

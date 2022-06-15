@@ -21,7 +21,7 @@ class Carta extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => ['required','unique:cartas'],
 		'contenido' => 'required',
 		'activa' => 'required',
     ];

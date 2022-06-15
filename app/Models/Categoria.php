@@ -22,7 +22,7 @@ class Categoria extends Model
 {
     
     static $rules = [
-		'nombre' => 'required',
+		'nombre' => ['required','unique:categorias'],
 		'descripcion' => 'required',
 		'activo' => 'required',
     ];

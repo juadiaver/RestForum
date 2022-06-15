@@ -17,9 +17,11 @@
             {!! $errors->first('descuento', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('activo') }}
-            {{ Form::text('activo', $promocione->activo, ['class' => 'form-control' . ($errors->has('activo') ? ' is-invalid' : ''), 'placeholder' => 'Activo']) }}
-            {!! $errors->first('activo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('activo: ') }} Si
+            {{ Form::radio('activo', 'SI', true) }}
+             No
+            {{ Form::radio('activo', 'NO', false)}}
+            
         </div>
 
     </div>
