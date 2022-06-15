@@ -5,6 +5,7 @@ use App\Models\Categoria;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 
 /**
@@ -70,7 +71,9 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+
         request()->validate(Articulo::$rules);
 
         //guardamos en una variable todos los datos de la request
@@ -134,8 +137,17 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, Articulo $articulo)
     {   
-        //Reglas de validacion.
-        request()->validate(Articulo::$rules);
+        //Reglas de validacion para actualizar
+
+        $rules = [
+            'nombre' => 'required|unique:articulos,nombre,' . $articulo->id,
+            'descripcion' => 'required',
+            'categoria_id' => 'required',
+            'activo' => 'required',
+            'precio' => 'required',
+            'orden' => 'required',
+        ];
+        request()->validate($rules);
 
         //Recuperamos todos los input
         $input = $request->all();

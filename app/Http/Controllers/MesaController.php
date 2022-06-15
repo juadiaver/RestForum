@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mesa;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class MesaController
@@ -86,7 +87,11 @@ class MesaController extends Controller
      */
     public function update(Request $request, Mesa $mesa)
     {
-        request()->validate(Mesa::$rules);
+        $rules = [
+            'nombre' => 'required|unique:mesas,nombre,' . $mesa->id,
+            'activo' => 'required',
+        ];
+        request()->validate($rules);
 
         $mesa->update($request->all());
 

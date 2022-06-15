@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 
 /**
  * Class CartaController
@@ -51,12 +52,13 @@ class CartaController extends Controller
      */
     public function store(Request $request)
     {
+        
         request()->validate(Carta::$rules);
 
         $carta = Carta::create($request->all());
 
         return redirect()->route('cartas.index')
-            ->with('success', 'Carta created successfully.');
+            ->with('success', 'Carta creada correctamente.');
     }
 
     /**
@@ -99,12 +101,17 @@ class CartaController extends Controller
      */
     public function update(Request $request, Carta $carta)
     {
-        request()->validate(Carta::$rules);
+        $rules = [
+            'nombre' => 'required|unique:cartas,nombre,' . $carta->id,
+            'contenido' => 'required',
+            'activa' => 'required',
+        ];
+        request()->validate($rules);
 
         $carta->update($request->all());
 
         return redirect()->route('cartas.index')
-            ->with('success', 'Carta updated successfully');
+            ->with('success', 'Carta actualizada correctamente');
     }
 
     /**
@@ -117,6 +124,6 @@ class CartaController extends Controller
         $carta = Carta::find($id)->delete();
 
         return redirect()->route('cartas.index')
-            ->with('success', 'Carta deleted successfully');
+            ->with('success', 'Carta borrada correctamente');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 /**
  * Class CategoriaController
@@ -100,7 +101,12 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        request()->validate(Categoria::$rules);
+        $rules = [
+            'nombre' => 'required|unique:categorias,nombre,' . $categoria->id,
+            'descripcion' => 'required',
+            'activo' => 'required',
+        ];
+        request()->validate($rules);
 
         $input = $request->all();
 

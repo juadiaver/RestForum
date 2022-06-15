@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('menus.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear menu') }}
                                 </a>
                               </div>
                         </div>

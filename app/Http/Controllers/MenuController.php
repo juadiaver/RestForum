@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class MenuController
@@ -48,7 +49,7 @@ class MenuController extends Controller
         $menu = Menu::create($request->all());
 
         return redirect()->route('menus.index')
-            ->with('success', 'Menu created successfully.');
+            ->with('success', 'Menu creado correctamente.');
     }
 
     /**
@@ -85,13 +86,17 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Menu $menu)
-    {
-        request()->validate(Menu::$rules);
+    {   
+        $rules = [
+            'nombre' => 'required|unique:menus,nombre,' . $menu->id,
+            'contenido' => 'required',
+        ];
+        request()->validate($rules);
 
         $menu->update($request->all());
 
         return redirect()->route('menus.index')
-            ->with('success', 'Menu updated successfully');
+            ->with('success', 'Menu actualizado correctamente');
     }
 
     /**
@@ -104,6 +109,6 @@ class MenuController extends Controller
         $menu = Menu::find($id)->delete();
 
         return redirect()->route('menus.index')
-            ->with('success', 'Menu deleted successfully');
+            ->with('success', 'Menu borrado correctamente');
     }
 }

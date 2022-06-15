@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Promocione;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class PromocioneController
@@ -86,7 +87,13 @@ class PromocioneController extends Controller
      */
     public function update(Request $request, Promocione $promocione)
     {
-        request()->validate(Promocione::$rules);
+        $rules = [
+            'codigo' => 'required|unique:promociones,codigo,' . $promocione->id,
+            'nombre' => 'required|unique:promociones,nombre,' . $promocione->id,
+            'descuento' => 'required',
+            'activo' => 'required',
+        ];
+        request()->validate($rules);
 
         $promocione->update($request->all());
 
