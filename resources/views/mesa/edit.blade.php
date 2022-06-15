@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Update Mesa
+    Actualizar Mesa
 @endsection
 
 @section('content')

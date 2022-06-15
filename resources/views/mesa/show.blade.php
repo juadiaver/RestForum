@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     {{ $mesa->name ?? 'Show Mesa' }}
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Mesa</span>
+                            <span class="card-title">Ver Mesa</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-primary" href="{{ route('mesas.index') }}"> Back</a>

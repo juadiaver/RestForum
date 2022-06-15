@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Update Carrusel
+    Editar imagen
 @endsection
 
 @section('content')

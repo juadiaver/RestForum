@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     Listado de categorias
@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <div class="card-body">
+                    <div class="card-body d-none d-sm-block">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
@@ -53,6 +53,49 @@
                                             <td><img src="{{Storage::disk('s3')->url($categoria->imagen)}}" width="150" height="100"></td>
 											<td>{{ $categoria->nombre }}</td>
 											<td>{{ $categoria->descripcion }}</td>
+											<td>{{ $categoria->activo }}</td>
+
+                                            <td>
+                                                <div class="btn-group">
+                                                    <form action="{{ route('categorias.destroy',$categoria->id) }}" method="POST">
+                                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Acciones
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item " href="{{ route('categorias.show',$categoria->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="dropdown-item" href="{{ route('categorias.edit',$categoria->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item" type="submit" onclick="confirm('Deseas borrar el categoria:  {{$categoria->nombre}}? \nEl categoria no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-body d-block d-sm-none">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                    <tr>
+                                        <th>No</th>
+										<th>Nombre</th>
+                                        <th>Activo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i=0;
+                                    @endphp
+                                    @foreach ($categorias as $categoria)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $categoria->nombre }}</td>
 											<td>{{ $categoria->activo }}</td>
 
                                             <td>

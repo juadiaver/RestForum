@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Update Caja
+    Editar Caja
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Caja</span>
+                        <span class="card-title">Editar Caja</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('cajas.update', $caja->id) }}"  role="form" enctype="multipart/form-data">

@@ -107,11 +107,11 @@
                             <span aria-hidden="true">×</span>
                         </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body ">
                             @foreach  ($dayweek['pendientes'] as $reserva)
                             <div>
-                                <a class="badge badge-primary" href="{{ asset('/reservas') }}/{{ $reserva->id }}">
-                                    Reserva a nombre de {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
+                                <a class="badge badge-primary col-12 mx-auto " href="{{ asset('/reservas') }}/{{ $reserva->id }}">
+                                    {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
                                 </a>
                             </div>
                             @endforeach
@@ -139,8 +139,8 @@
                         <div class="modal-body">
                             @foreach  ($dayweek['confirmadas'] as $reserva)
                             <div>
-                                <a class="badge badge-primary" href="{{ asset('/reservas') }}/{{ $reserva->id }}">
-                                    Reserva a nombre de {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
+                                <a class="badge badge-primary col-12" href="{{ asset('/reservas') }}/{{ $reserva->id }}">
+                                    {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
                                 </a>
                             </div>
                             @endforeach
@@ -168,8 +168,8 @@
                             <div class="modal-body">
                                 @foreach  ($dayweek['modificadas'] as $reserva)
                                 <div>
-                                    <a class="badge badge-primary" href="{{ asset('/reservas') }}/{{ $reserva->id }}">
-                                        Reserva a nombre de {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
+                                    <a class="badge badge-primary col-12" href="{{ asset('/reservas') }}/{{ $reserva->id }}">
+                                        {{$reserva->nombre}} : {{$reserva->comensales}} Pax, a las {{$reserva->hora}}
                                     </a>
                                 </div>
                                 @endforeach

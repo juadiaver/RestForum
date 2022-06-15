@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     Venta
@@ -46,6 +46,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $i=0;
+                                    @endphp
                                     @foreach ($ventas as $venta)
                                         <tr>
                                             <td>{{ ++$i }}</td>

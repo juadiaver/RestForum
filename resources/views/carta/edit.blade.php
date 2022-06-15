@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Update Carta
+    Editar Carta
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Create Venta
+    Crear Venta
 @endsection
 
 @section('content')

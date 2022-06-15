@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     {{ $restaurante->name ?? 'Show Restaurante' }}

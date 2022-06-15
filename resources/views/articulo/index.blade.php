@@ -49,7 +49,7 @@
                         </form>
 
                       </nav>    
-                    <div class="card-body">
+                    <div class="card-body d-none d-sm-block">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
@@ -80,6 +80,50 @@
 											<td>{{ $articulo->precio }}</td>
 											<td>{{ $articulo->orden }}</td>
 
+                                            <td>
+                                               
+                                                <div class="btn-group">
+                                                    <form action="{{ route('articulos.destroy',$articulo->id) }}" method="POST">
+                                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Acciones
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item " href="{{ route('articulos.show',$articulo->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="dropdown-item" href="{{ route('articulos.edit',$articulo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>							 
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item" type="submit" onclick="return confirm('Deseas borrar el articulo:  {{$articulo->nombre}}? \nEl articulo no podra recuperarse!')||event.preventDefault()"><i class="fa fa-trash"></i> Borrar </button>   
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-body d-block d-sm-none">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                    <tr>
+                                        <th>No</th>
+										<th>Nombre</th>
+                                        <th>Activo</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i=0;
+                                    @endphp
+                                    @foreach ($articulos as $articulo)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+											<td>{{ $articulo->nombre }}</td>
+                                            <td>{{ $articulo->activo }}</td>
                                             <td>
                                                
                                                 <div class="btn-group">

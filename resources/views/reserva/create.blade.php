@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Create Reserva
+    Crear Reserva
 @endsection
 
 @section('content')

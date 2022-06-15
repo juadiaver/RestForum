@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
-    Update Venta
+    Actualizar Venta
 @endsection
 
 @section('content')

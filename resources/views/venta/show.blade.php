@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     {{ $venta->name ?? 'Show Venta' }}
@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Venta</span>
+                            <span class="card-title">Ver Venta</span>
                         </div>
                         <div class="float-right">
                             <a class="btn btn-danger" href="{{ route('pos.pdf',$venta->id) }}" target="blank"> Generar ticket</a>

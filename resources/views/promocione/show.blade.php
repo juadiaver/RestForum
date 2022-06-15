@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Promocione</span>
+                            <span class="card-title">Ver promocion</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('promociones.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('promociones.index') }}"> Volver</a>
                         </div>
                     </div>
 
@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Descuento:</strong>
-                            {{ $promocione->descuento }}
+                            {{ $promocione->descuento }} %
                         </div>
                         <div class="form-group">
                             <strong>Activo:</strong>

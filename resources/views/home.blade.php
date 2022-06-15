@@ -1,5 +1,5 @@
 @extends('layouts.pos')
-@section('title', __('Dashboard'))
+@section('title', __('ADMINISTRACION'))
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">

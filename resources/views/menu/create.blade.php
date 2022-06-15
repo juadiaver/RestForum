@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Create Menu
+    Crear Menu
 @endsection
 
 @section('content')

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.pos')
 
 @section('template_title')
     {{ $carrusel->name ?? 'Show Carrusel' }}
@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Carrusel</span>
+                            <span class="card-title">Ver imagen</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('carrusel.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('carrusel.index') }}"> Volver</a>
                         </div>
                     </div>
 
