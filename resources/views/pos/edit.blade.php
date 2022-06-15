@@ -1,5 +1,5 @@
 @extends('layouts.pos')
-
+@section('title', __('POS'))
 @section('template_title')
     Update Mesa
 @endsection

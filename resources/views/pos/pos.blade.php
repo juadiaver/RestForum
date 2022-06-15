@@ -2,7 +2,7 @@
 <style>
 
 </style>
-@section('title', __('Welcome'))
+@section('title', __('POS'))
 @section('content')
 
     @if ($message = Session::get('success'))
