@@ -38,7 +38,7 @@
                                         <th>No</th>
                                         
 										<th>Cliente</th>
-										<th>Precio</th>
+										<th>Total</th>
 										<th>Modo Pago</th>
 										<th>Estado</th>
 										<th>Fecha</th>
@@ -52,7 +52,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $pedido->user->name }}</td>
-											<td>{{ $pedido->precio }}</td>
+											<td>{{  number_format( $pedido->precio, 2, ',', '.');}} €</td>
 											<td>{{ $pedido->modo_pago }}</td>
 											<td>{{ $pedido->estado }}</td>
 											<td>{{ $pedido->fecha }}</td>

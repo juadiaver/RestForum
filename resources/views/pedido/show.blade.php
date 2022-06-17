@@ -25,8 +25,8 @@
                             {{ $pedido->user->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Precio:</strong>
-                            {{ $pedido->precio }}
+                            <strong>Total:</strong>
+                            {{  number_format( $pedido->precio, 2, ',', '.');}} €
                         </div>
                         <div class="form-group">
                             <strong>Modo Pago:</strong>
