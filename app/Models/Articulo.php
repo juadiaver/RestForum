@@ -29,10 +29,12 @@ class Articulo extends Model
 		'nombre' => ['required','unique:articulos'],
 		'descripcion' => 'required',
 		'categoria_id' => 'required',
+        'precio' => 'required',
 		'activo' => 'required',
-		'precio' => 'required',
 		'orden' => 'required',
     ];
+
+    
 
     protected $perPage = 20;
 
@@ -59,7 +61,7 @@ class Articulo extends Model
 
     public function ventas(){
 
-        return $this->belongsToMany(Venta::class , 'articulo_venta')->withPivot('cantidad');
+        return $this->belongsToMany(Venta::class , 'articulo_venta')->withPivot('cantidad','precio');
     }
     
     public function scopeBuscarpor($query, $tipo, $buscar) {

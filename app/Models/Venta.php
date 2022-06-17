@@ -49,7 +49,7 @@ class Venta extends Model
     
     public function articulos(){
 
-      return $this->belongsToMany(Articulo::class, 'articulo_venta')->withPivot('cantidad');;
+      return $this->belongsToMany(Articulo::class, 'articulo_venta')->withPivot('cantidad','precio');;
   }
 
 }

@@ -22,12 +22,12 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Mesa Id:</strong>
-                            {{ $venta->mesa_id }}
+                            <strong>Mesa:</strong>
+                            {{ $venta->mesa->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Precio:</strong>
-                            {{ $venta->precio }}
+                            <strong>Total:</strong>
+                            {{  number_format($venta->precio, 2, ',', '.');}} €
                         </div>
                         <div class="form-group">
                             <strong>Modo Pago:</strong>
@@ -50,7 +50,8 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
-                    <th>Precio total</th>
+                    <th>Total</th>
+                    
                 </tr>
             </thead>
             @forelse ($venta->articulos as $articulos)
@@ -62,9 +63,9 @@
                     <tr>
 
                         <td>{{ $articulos->nombre }}</td>
-                        <td>{{ $articulos->precio }} €</td>
+                        <td>{{  number_format($articulos->pivot->precio, 2, ',', '.');}}  €</td>
                         <td>{{$articulos->pivot->cantidad}}</td>
-                        <td>{{$articulos->precio*$articulos->pivot->cantidad}} €</td>
+                        <td>{{  number_format($articulos->pivot->precio*$articulos->pivot->cantidad, 2, ',', '.');}}  €</td>
                         
                     </tr>
             </tbody>
@@ -78,7 +79,7 @@
             </div>
             @endforelse
             @if($precioTotal>0)
-            <h1>Total : {{$precioTotal}}€ </h1>
+            
             <br>
             @endif    
         </table>

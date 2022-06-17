@@ -38,7 +38,7 @@
                                         <th>No</th>
                                         
 										<th>Mesa</th>
-										<th>Precio</th>
+										<th>Total</th>
 										<th>Modo Pago</th>
 										
 
@@ -54,8 +54,9 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $venta->mesa->nombre }}</td>
-											<td>{{ $venta->precio }}</td>
+											<td>{{  number_format($venta->precio, 2, ',', '.');}} €</td>
 											<td>{{ $venta->modo_pago }}</td>
+                                            
                                             <td>
                                             <div class="btn-group">
                                                 <form action="{{ route('ventas.destroy',$venta->id) }}" method="POST">

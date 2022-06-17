@@ -161,6 +161,7 @@ class PosController extends Controller
             $venta->articulos()->attach($articulo->id);
             $cantidad = $mesa->articulos()->find($articulo->id)->pivot->cantidad;
             $venta->articulos()->sync([$articulo->id => ['cantidad' => $cantidad]], false);
+            $venta->articulos()->sync([$articulo->id => ['precio' => $articulo->precio]], false);
             $venta->articulos()->sync([$articulo->id => ['created_at' => now()->format('Y-m-d')]], false);
         }
 
