@@ -39,7 +39,7 @@ use App\Models\Carrusel;
 Route::get('/', function () {
 
 
-    $articulos = Articulo::where('Activo','SI')->paginate()->sortByDesc('created_at')->take(10);
+    $articulos = Articulo::where('Activo','SI')->get()->sortByDesc('created_at')->take(10);
     $carrusel = Carrusel::all();
     
     return view('welcome',compact('articulos','carrusel'));
